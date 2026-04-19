@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "build": "esbuild app/javascript/application.tsx --bundle --outdir=app/assets/builds --public-path=/assets",
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css --minify"
+  },
   "devDependencies": {
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
