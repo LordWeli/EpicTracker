@@ -1,0 +1,4 @@
+# Logs e temp
+log/*
+tmp/*
+
