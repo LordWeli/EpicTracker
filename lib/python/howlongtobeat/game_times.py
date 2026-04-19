@@ -4,12 +4,25 @@ import asyncio
 import sys
 import json
 import logging
+import re
 from howlongtobeatpy import HowLongToBeat
 
 logging.disable(logging.CRITICAL)
 
+def normalize_name(name: str) -> str:
+    # Remove caracteres especiais como ™ e ®
+    name = re.sub(r'[™®©]', '', name)
+    # Remove subtítulos após ':' ou ' - '
+    name = re.sub(r'\s*[:\-]\s*.+$', '', name)
+    # Remove conteúdo entre parênteses
+    name = re.sub(r'\s*\(.*?\)', '', name)
+    # Remove espaços extras
+    name = name.strip()
+    return name
+
 async def fetch_game_times(game_name: str) -> dict:
-    results = await HowLongToBeat().async_search(game_name, similarity_case_sensitive=False)
+    normalized = normalize_name(game_name)
+    results = await HowLongToBeat().async_search(normalized, similarity_case_sensitive=False)
 
     if not results:
         return { "error": f"Jogo não encontrado: {game_name}" }

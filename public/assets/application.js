@@ -1330,7 +1330,7 @@
           return dispatcher;
         }
         "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-        var React2 = require_react(), Internals = {
+        var React3 = require_react(), Internals = {
           d: {
             f: noop,
             r: function() {
@@ -1348,7 +1348,7 @@
           },
           p: 0,
           findDOMNode: null
-        }, REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), ReactSharedInternals = React2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+        }, REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
         "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error(
           "React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"
         );
@@ -2883,7 +2883,7 @@
           "number" === type && getActiveElement(node.ownerDocument) === node || node.defaultValue === "" + value || (node.defaultValue = "" + value);
         }
         function validateOptionProps(element, props) {
-          null == props.value && ("object" === typeof props.children && null !== props.children ? React2.Children.forEach(props.children, function(child) {
+          null == props.value && ("object" === typeof props.children && null !== props.children ? React3.Children.forEach(props.children, function(child) {
             null == child || "string" === typeof child || "number" === typeof child || "bigint" === typeof child || didWarnInvalidChild || (didWarnInvalidChild = true, console.error(
               "Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>."
             ));
@@ -18515,14 +18515,14 @@
           ));
         }
         "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-        var Scheduler = require_scheduler(), React2 = require_react(), ReactDOM = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.element"), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy");
+        var Scheduler = require_scheduler(), React3 = require_react(), ReactDOM = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.element"), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy");
         /* @__PURE__ */ Symbol.for("react.scope");
         var REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity");
         /* @__PURE__ */ Symbol.for("react.legacy_hidden");
         /* @__PURE__ */ Symbol.for("react.tracing_marker");
         var REACT_MEMO_CACHE_SENTINEL = /* @__PURE__ */ Symbol.for("react.memo_cache_sentinel");
         /* @__PURE__ */ Symbol.for("react.view_transition");
-        var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
+        var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
           pending: false,
           data: null,
           method: null,
@@ -21310,7 +21310,7 @@
           }
         };
         (function() {
-          var isomorphicReactPackageVersion = React2.version;
+          var isomorphicReactPackageVersion = React3.version;
           if ("19.2.5" !== isomorphicReactPackageVersion)
             throw Error(
               'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.2.5\nLearn more: https://react.dev/warnings/version-mismatch")
@@ -21451,14 +21451,308 @@
   });
 
   // app/javascript/application.tsx
-  var import_react = __toESM(require_react());
+  var import_react2 = __toESM(require_react());
   var import_client = __toESM(require_client());
-  var App = () => {
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "min-h-screen bg-gray-900 text-white flex items-center justify-center" }, /* @__PURE__ */ import_react.default.createElement("h1", { className: "text-2xl font-bold" }, "EpicTracker"));
+
+  // app/javascript/Dashboard.tsx
+  var import_react = __toESM(require_react());
+  var fmt = (h) => {
+    if (h === null) return "\u2014";
+    if (h >= 100) return `${Math.round(h)}h`;
+    const whole = Math.floor(h);
+    const frac = h - whole;
+    if (frac >= 0.75) return `${whole}\xBEh`;
+    if (frac >= 0.5) return `${whole}\xBDh`;
+    if (frac >= 0.25) return `${whole}\xBCh`;
+    return `${whole}h`;
   };
+  var GlowOrb = ({ cx, cy, r, color }) => /* @__PURE__ */ import_react.default.createElement(
+    "div",
+    {
+      style: {
+        position: "absolute",
+        left: cx,
+        top: cy,
+        width: r,
+        height: r,
+        borderRadius: "50%",
+        background: color,
+        filter: "blur(80px)",
+        transform: "translate(-50%, -50%)",
+        pointerEvents: "none",
+        zIndex: 0
+      }
+    }
+  );
+  var TimeRow = ({ label, value }) => /* @__PURE__ */ import_react.default.createElement("tr", { style: { borderBottom: "1px solid rgba(167,139,250,0.1)" } }, /* @__PURE__ */ import_react.default.createElement("td", { style: { padding: "10px 16px", color: "rgba(196,181,253,0.7)", fontSize: 13, fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" } }, label), /* @__PURE__ */ import_react.default.createElement("td", { style: { padding: "10px 16px", textAlign: "right" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: {
+    fontFamily: "'DM Mono', monospace",
+    fontSize: 15,
+    fontWeight: 600,
+    color: value !== null ? "#e9d5ff" : "rgba(196,181,253,0.3)",
+    letterSpacing: "0.05em"
+  } }, fmt(value))));
+  var FeaturedCard = ({ game }) => /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    display: "flex",
+    gap: 0,
+    background: "rgba(88,28,135,0.15)",
+    backdropFilter: "blur(24px)",
+    WebkitBackdropFilter: "blur(24px)",
+    border: "1px solid rgba(167,139,250,0.2)",
+    borderRadius: 20,
+    overflow: "hidden",
+    boxShadow: "0 0 60px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.05)",
+    minHeight: 320
+  } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { position: "relative", width: 260, flexShrink: 0 } }, game.image_url ? /* @__PURE__ */ import_react.default.createElement(
+    "img",
+    {
+      src: game.image_url,
+      alt: game.name,
+      style: { width: "100%", height: "100%", objectFit: "cover", display: "block" }
+    }
+  ) : /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    width: "100%",
+    height: "100%",
+    minHeight: 320,
+    background: "linear-gradient(135deg, rgba(88,28,135,0.4), rgba(49,10,101,0.6))",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 48, opacity: 0.3 } }, "\u{1F3AE}")), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    position: "absolute",
+    inset: 0,
+    background: "linear-gradient(to right, transparent 60%, rgba(13,5,21,0.8))"
+  } }), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    padding: "24px 20px 20px",
+    background: "linear-gradient(to top, rgba(13,5,21,0.95) 0%, transparent 100%)"
+  } }, /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    fontFamily: "'Syne', sans-serif",
+    fontSize: 18,
+    fontWeight: 700,
+    color: "#f3e8ff",
+    lineHeight: 1.2,
+    marginBottom: 4
+  } }, game.name), game.release_year && /* @__PURE__ */ import_react.default.createElement("div", { style: { fontFamily: "'DM Mono', monospace", fontSize: 12, color: "rgba(196,181,253,0.6)" } }, game.release_year))), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1, padding: "28px 24px", display: "flex", flexDirection: "column", justifyContent: "center" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    fontFamily: "'Syne', sans-serif",
+    fontSize: 11,
+    fontWeight: 600,
+    letterSpacing: "0.2em",
+    color: "rgba(167,139,250,0.5)",
+    textTransform: "uppercase",
+    marginBottom: 16
+  } }, "Time to Beat"), game.found ? /* @__PURE__ */ import_react.default.createElement("table", { style: { width: "100%", borderCollapse: "collapse" } }, /* @__PURE__ */ import_react.default.createElement("tbody", null, /* @__PURE__ */ import_react.default.createElement(TimeRow, { label: "Main Story", value: game.main_story }), /* @__PURE__ */ import_react.default.createElement(TimeRow, { label: "Main + Extra", value: game.main_extra }), /* @__PURE__ */ import_react.default.createElement(TimeRow, { label: "Completionist", value: game.completionist }))) : /* @__PURE__ */ import_react.default.createElement("div", { style: { color: "rgba(196,181,253,0.35)", fontFamily: "'DM Mono', monospace", fontSize: 13 } }, "Not found on HowLongToBeat")));
+  var MiniCard = ({ game, onClick, active }) => /* @__PURE__ */ import_react.default.createElement(
+    "div",
+    {
+      onClick,
+      style: {
+        cursor: "pointer",
+        borderRadius: 14,
+        overflow: "hidden",
+        border: active ? "1px solid rgba(167,139,250,0.6)" : "1px solid rgba(167,139,250,0.12)",
+        boxShadow: active ? "0 0 20px rgba(124,58,237,0.3)" : "none",
+        background: "rgba(88,28,135,0.1)",
+        backdropFilter: "blur(12px)",
+        transition: "all 0.2s ease",
+        transform: active ? "translateY(-2px)" : "none"
+      }
+    },
+    /* @__PURE__ */ import_react.default.createElement("div", { style: { position: "relative", aspectRatio: "3/4", overflow: "hidden" } }, game.image_url ? /* @__PURE__ */ import_react.default.createElement(
+      "img",
+      {
+        src: game.image_url,
+        alt: game.name,
+        style: { width: "100%", height: "100%", objectFit: "cover", display: "block" }
+      }
+    ) : /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      width: "100%",
+      height: "100%",
+      background: "linear-gradient(135deg, rgba(88,28,135,0.4), rgba(49,10,101,0.6))",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 28, opacity: 0.3 } }, "\u{1F3AE}")), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      right: 0,
+      padding: "20px 10px 10px",
+      background: "linear-gradient(to top, rgba(13,5,21,0.95), transparent)"
+    } }, /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      fontFamily: "'Syne', sans-serif",
+      fontSize: 11,
+      fontWeight: 600,
+      color: "#e9d5ff",
+      lineHeight: 1.3,
+      overflow: "hidden",
+      display: "-webkit-box",
+      WebkitLineClamp: 2,
+      WebkitBoxOrient: "vertical"
+    } }, game.name)))
+  );
+  function Dashboard() {
+    const [authCode, setAuthCode] = (0, import_react.useState)("");
+    const [games, setGames] = (0, import_react.useState)([]);
+    const [featured, setFeatured] = (0, import_react.useState)(null);
+    const [loading, setLoading] = (0, import_react.useState)(false);
+    const [error, setError] = (0, import_react.useState)(null);
+    const [loadingGame, setLoadingGame] = (0, import_react.useState)(null);
+    const fetchLibrary = async () => {
+      if (!authCode.trim()) return;
+      setLoading(true);
+      setError(null);
+      setGames([]);
+      setFeatured(null);
+      try {
+        const res = await fetch(`/epic_games/library?auth_code=${encodeURIComponent(authCode)}`);
+        const data = await res.json();
+        if (data.error) {
+          setError(data.error);
+          return;
+        }
+        const names = (data.library || []).map((g) => g.name);
+        if (!names.length) {
+          setError("No games found.");
+          return;
+        }
+        const result = [];
+        for (const name of names) {
+          setLoadingGame(name);
+          try {
+            const r = await fetch(`/howlongtobeat/game?name=${encodeURIComponent(name)}`);
+            const d = await r.json();
+            const game = d.error ? { name, image_url: null, release_year: null, main_story: null, main_extra: null, completionist: null, found: false } : { ...d.game, found: true };
+            result.push(game);
+            setGames([...result]);
+            if (result.length === 1) setFeatured(game);
+          } catch {
+            result.push({ name, image_url: null, release_year: null, main_story: null, main_extra: null, completionist: null, found: false });
+            setGames([...result]);
+          }
+        }
+        setLoadingGame(null);
+      } catch (e) {
+        setError("Failed to connect to server.");
+      } finally {
+        setLoading(false);
+        setLoadingGame(null);
+      }
+    };
+    const others = featured ? games.filter((g) => g.name !== featured.name) : games;
+    return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("link", { rel: "preconnect", href: "https://fonts.googleapis.com" }), /* @__PURE__ */ import_react.default.createElement("link", { href: "https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap", rel: "stylesheet" }), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      minHeight: "100vh",
+      background: "#0D0515",
+      position: "relative",
+      overflow: "hidden",
+      fontFamily: "'Syne', sans-serif"
+    } }, /* @__PURE__ */ import_react.default.createElement(GlowOrb, { cx: "15%", cy: "20%", r: "500px", color: "rgba(109,40,217,0.18)" }), /* @__PURE__ */ import_react.default.createElement(GlowOrb, { cx: "80%", cy: "60%", r: "400px", color: "rgba(139,92,246,0.12)" }), /* @__PURE__ */ import_react.default.createElement(GlowOrb, { cx: "50%", cy: "90%", r: "300px", color: "rgba(168,85,247,0.1)" }), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      position: "fixed",
+      inset: 0,
+      pointerEvents: "none",
+      zIndex: 1,
+      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E")`,
+      opacity: 0.4
+    } }), /* @__PURE__ */ import_react.default.createElement("div", { style: { position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", padding: "32px 24px" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 40 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      fontFamily: "'Syne', sans-serif",
+      fontSize: 22,
+      fontWeight: 800,
+      letterSpacing: "0.05em",
+      background: "linear-gradient(135deg, #e9d5ff, #a855f7)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent"
+    } }, "EPIC", /* @__PURE__ */ import_react.default.createElement("span", { style: { fontWeight: 400 } }, "TRACKER")), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 10, alignItems: "center" } }, /* @__PURE__ */ import_react.default.createElement(
+      "input",
+      {
+        type: "text",
+        placeholder: "Paste your auth_code\u2026",
+        value: authCode,
+        onChange: (e) => setAuthCode(e.target.value),
+        onKeyDown: (e) => e.key === "Enter" && fetchLibrary(),
+        style: {
+          background: "rgba(88,28,135,0.15)",
+          border: "1px solid rgba(167,139,250,0.25)",
+          borderRadius: 10,
+          padding: "10px 16px",
+          color: "#e9d5ff",
+          fontFamily: "'DM Mono', monospace",
+          fontSize: 13,
+          width: 280,
+          outline: "none",
+          backdropFilter: "blur(12px)"
+        }
+      }
+    ), /* @__PURE__ */ import_react.default.createElement(
+      "button",
+      {
+        onClick: fetchLibrary,
+        disabled: loading || !authCode.trim(),
+        style: {
+          background: loading ? "rgba(88,28,135,0.3)" : "linear-gradient(135deg, #7c3aed, #a855f7)",
+          border: "1px solid rgba(167,139,250,0.3)",
+          borderRadius: 10,
+          padding: "10px 22px",
+          color: "#f3e8ff",
+          fontFamily: "'Syne', sans-serif",
+          fontSize: 13,
+          fontWeight: 600,
+          cursor: loading ? "not-allowed" : "pointer",
+          letterSpacing: "0.05em",
+          boxShadow: loading ? "none" : "0 0 20px rgba(124,58,237,0.3)",
+          transition: "all 0.2s ease",
+          opacity: loading ? 0.6 : 1
+        }
+      },
+      loading ? "Loading\u2026" : "Fetch"
+    ))), error && /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      background: "rgba(220,38,38,0.1)",
+      border: "1px solid rgba(220,38,38,0.3)",
+      borderRadius: 12,
+      padding: "12px 20px",
+      color: "#fca5a5",
+      fontFamily: "'DM Mono', monospace",
+      fontSize: 13,
+      marginBottom: 24
+    } }, error), loadingGame && /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 12,
+      marginBottom: 24,
+      color: "rgba(196,181,253,0.6)",
+      fontFamily: "'DM Mono', monospace",
+      fontSize: 12
+    } }, /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      width: 6,
+      height: 6,
+      borderRadius: "50%",
+      background: "#a855f7",
+      boxShadow: "0 0 8px #a855f7",
+      animation: "pulse 1s infinite"
+    } }), "Fetching ", /* @__PURE__ */ import_react.default.createElement("span", { style: { color: "#c4b5fd" } }, loadingGame), "\u2026", /* @__PURE__ */ import_react.default.createElement("style", null, `@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`)), featured && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 32 } }, /* @__PURE__ */ import_react.default.createElement(FeaturedCard, { game: featured })), others.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))",
+      gap: 14
+    } }, others.map((game) => /* @__PURE__ */ import_react.default.createElement(
+      MiniCard,
+      {
+        key: game.name,
+        game,
+        active: false,
+        onClick: () => setFeatured(game)
+      }
+    ))), !loading && games.length === 0 && !error && /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      textAlign: "center",
+      padding: "80px 0",
+      color: "rgba(196,181,253,0.3)"
+    } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 48, marginBottom: 16 } }, "\u{1F3AE}"), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontFamily: "'Syne', sans-serif", fontSize: 15, fontWeight: 600, letterSpacing: "0.1em" } }, "ENTER YOUR AUTH CODE TO BEGIN")))));
+  }
+
+  // app/javascript/application.tsx
   var container = document.getElementById("root");
   if (container) {
-    (0, import_client.createRoot)(container).render(/* @__PURE__ */ import_react.default.createElement(App, null));
+    (0, import_client.createRoot)(container).render(/* @__PURE__ */ import_react2.default.createElement(Dashboard, null));
   }
 })();
 /*! Bundled license information:
