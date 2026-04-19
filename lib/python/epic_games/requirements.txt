@@ -1,0 +1,4 @@
+egs-api-py
+aiohttp
+pydantic
+howlongtobeatpy
