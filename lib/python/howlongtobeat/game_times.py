@@ -10,13 +10,7 @@ from howlongtobeatpy import HowLongToBeat
 logging.disable(logging.CRITICAL)
 
 def normalize_name(name: str) -> str:
-    # Remove caracteres especiais como ™ e ®
     name = re.sub(r'[™®©]', '', name)
-    # Remove subtítulos após ':' ou ' - '
-    name = re.sub(r'\s*[:\-]\s*.+$', '', name)
-    # Remove conteúdo entre parênteses
-    name = re.sub(r'\s*\(.*?\)', '', name)
-    # Remove espaços extras
     name = name.strip()
     return name
 
