@@ -21634,7 +21634,7 @@
           }
         }
         setLoadingGame(null);
-      } catch (e) {
+      } catch {
         setError("Failed to connect to server.");
       } finally {
         setLoading(false);
@@ -21664,6 +21664,26 @@
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent"
     } }, "EPIC", /* @__PURE__ */ import_react.default.createElement("span", { style: { fontWeight: 400 } }, "TRACKER")), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 10, alignItems: "center" } }, /* @__PURE__ */ import_react.default.createElement(
+      "a",
+      {
+        href: "https://www.epicgames.com/id/api/redirect?clientId=34a02cf8f4414e29b15921876da36f9a&responseType=code",
+        target: "_blank",
+        rel: "noopener noreferrer",
+        style: {
+          fontFamily: "'DM Mono', monospace",
+          fontSize: 11,
+          color: "rgba(196,181,253,0.5)",
+          textDecoration: "none",
+          letterSpacing: "0.05em",
+          borderBottom: "1px solid rgba(196,181,253,0.2)",
+          paddingBottom: 1,
+          transition: "color 0.2s ease"
+        },
+        onMouseEnter: (e) => e.currentTarget.style.color = "rgba(196,181,253,0.9)",
+        onMouseLeave: (e) => e.currentTarget.style.color = "rgba(196,181,253,0.5)"
+      },
+      "Get Auth Code \u2197"
+    ), /* @__PURE__ */ import_react.default.createElement(
       "input",
       {
         type: "text",
@@ -21706,7 +21726,22 @@
         }
       },
       loading ? "Loading\u2026" : "Fetch"
-    ))), error && /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    ))), games.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8, marginBottom: 24 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: {
+      fontFamily: "'DM Mono', monospace",
+      fontSize: 12,
+      color: "rgba(196,181,253,0.4)",
+      letterSpacing: "0.1em"
+    } }, "LIBRARY"), /* @__PURE__ */ import_react.default.createElement("span", { style: {
+      fontFamily: "'Syne', sans-serif",
+      fontSize: 13,
+      fontWeight: 700,
+      color: "#a855f7"
+    } }, games.length), /* @__PURE__ */ import_react.default.createElement("span", { style: {
+      fontFamily: "'DM Mono', monospace",
+      fontSize: 12,
+      color: "rgba(196,181,253,0.4)",
+      letterSpacing: "0.1em"
+    } }, loadingGame ? "GAMES LOADED" : "GAMES")), error && /* @__PURE__ */ import_react.default.createElement("div", { style: {
       background: "rgba(220,38,38,0.1)",
       border: "1px solid rgba(220,38,38,0.3)",
       borderRadius: 12,
@@ -21730,7 +21765,7 @@
       background: "#a855f7",
       boxShadow: "0 0 8px #a855f7",
       animation: "pulse 1s infinite"
-    } }), "Fetching ", /* @__PURE__ */ import_react.default.createElement("span", { style: { color: "#c4b5fd" } }, loadingGame), "\u2026", /* @__PURE__ */ import_react.default.createElement("style", null, `@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`)), featured && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 32 } }, /* @__PURE__ */ import_react.default.createElement(FeaturedCard, { game: featured })), others.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    } }), "Fetching ", /* @__PURE__ */ import_react.default.createElement("span", { style: { color: "#c4b5fd", marginLeft: 4 } }, loadingGame), "\u2026", /* @__PURE__ */ import_react.default.createElement("style", null, `@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`)), featured && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 32 } }, /* @__PURE__ */ import_react.default.createElement(FeaturedCard, { game: featured })), others.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: {
       display: "grid",
       gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))",
       gap: 14

@@ -72,7 +72,6 @@ const FeaturedCard = ({ game }: { game: Game }) => (
     boxShadow: "0 0 60px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.05)",
     minHeight: 320,
   }}>
-    {/* Left: image */}
     <div style={{ position: "relative", width: 260, flexShrink: 0 }}>
       {game.image_url ? (
         <img
@@ -89,12 +88,10 @@ const FeaturedCard = ({ game }: { game: Game }) => (
           <span style={{ fontSize: 48, opacity: 0.3 }}>🎮</span>
         </div>
       )}
-      {/* Overlay gradient */}
       <div style={{
         position: "absolute", inset: 0,
         background: "linear-gradient(to right, transparent 60%, rgba(13,5,21,0.8))",
       }} />
-      {/* Name + year overlay */}
       <div style={{
         position: "absolute", bottom: 0, left: 0, right: 0,
         padding: "24px 20px 20px",
@@ -118,7 +115,6 @@ const FeaturedCard = ({ game }: { game: Game }) => (
       </div>
     </div>
 
-    {/* Right: times table */}
     <div style={{ flex: 1, padding: "28px 24px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
       <div style={{
         fontFamily: "'Syne', sans-serif",
@@ -134,9 +130,9 @@ const FeaturedCard = ({ game }: { game: Game }) => (
       {game.found ? (
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <tbody>
-            <TimeRow label="Main Story"      value={game.main_story} />
-            <TimeRow label="Main + Extra"    value={game.main_extra} />
-            <TimeRow label="Completionist"   value={game.completionist} />
+            <TimeRow label="Main Story"    value={game.main_story} />
+            <TimeRow label="Main + Extra"  value={game.main_extra} />
+            <TimeRow label="Completionist" value={game.completionist} />
           </tbody>
         </table>
       ) : (
@@ -158,9 +154,7 @@ const MiniCard = ({ game, onClick, active }: { game: Game; onClick: () => void; 
       border: active
         ? "1px solid rgba(167,139,250,0.6)"
         : "1px solid rgba(167,139,250,0.12)",
-      boxShadow: active
-        ? "0 0 20px rgba(124,58,237,0.3)"
-        : "none",
+      boxShadow: active ? "0 0 20px rgba(124,58,237,0.3)" : "none",
       background: "rgba(88,28,135,0.1)",
       backdropFilter: "blur(12px)",
       transition: "all 0.2s ease",
@@ -208,11 +202,11 @@ const MiniCard = ({ game, onClick, active }: { game: Game; onClick: () => void; 
 
 // ── Main App ─────────────────────────────────────────────────────────────────
 export default function Dashboard() {
-  const [authCode, setAuthCode]     = useState("")
-  const [games, setGames]           = useState<Game[]>([])
-  const [featured, setFeatured]     = useState<Game | null>(null)
-  const [loading, setLoading]       = useState(false)
-  const [error, setError]           = useState<string | null>(null)
+  const [authCode, setAuthCode]       = useState("")
+  const [games, setGames]             = useState<Game[]>([])
+  const [featured, setFeatured]       = useState<Game | null>(null)
+  const [loading, setLoading]         = useState(false)
+  const [error, setError]             = useState<string | null>(null)
   const [loadingGame, setLoadingGame] = useState<string | null>(null)
 
   const fetchLibrary = async () => {
@@ -231,7 +225,6 @@ export default function Dashboard() {
       const names: string[] = (data.library || []).map((g: { name: string }) => g.name)
       if (!names.length) { setError("No games found."); return }
 
-      // Fetch HLTB data one by one, updating state progressively
       const result: Game[] = []
       for (const name of names) {
         setLoadingGame(name)
@@ -250,7 +243,7 @@ export default function Dashboard() {
         }
       }
       setLoadingGame(null)
-    } catch (e) {
+    } catch {
       setError("Failed to connect to server.")
     } finally {
       setLoading(false)
@@ -262,7 +255,6 @@ export default function Dashboard() {
 
   return (
     <>
-      {/* Google Fonts */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
@@ -273,12 +265,10 @@ export default function Dashboard() {
         overflow: "hidden",
         fontFamily: "'Syne', sans-serif",
       }}>
-        {/* Ambient orbs */}
         <GlowOrb cx="15%"  cy="20%"  r="500px" color="rgba(109,40,217,0.18)" />
         <GlowOrb cx="80%"  cy="60%"  r="400px" color="rgba(139,92,246,0.12)" />
         <GlowOrb cx="50%"  cy="90%"  r="300px" color="rgba(168,85,247,0.1)"  />
 
-        {/* Noise texture overlay */}
         <div style={{
           position: "fixed", inset: 0, pointerEvents: "none", zIndex: 1,
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E")`,
@@ -302,6 +292,25 @@ export default function Dashboard() {
             </div>
 
             <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+              <a
+                href="https://www.epicgames.com/id/api/redirect?clientId=34a02cf8f4414e29b15921876da36f9a&responseType=code"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "'DM Mono', monospace",
+                  fontSize: 11,
+                  color: "rgba(196,181,253,0.5)",
+                  textDecoration: "none",
+                  letterSpacing: "0.05em",
+                  borderBottom: "1px solid rgba(196,181,253,0.2)",
+                  paddingBottom: 1,
+                  transition: "color 0.2s ease",
+                }}
+                onMouseEnter={e => (e.currentTarget.style.color = "rgba(196,181,253,0.9)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "rgba(196,181,253,0.5)")}
+              >
+                Get Auth Code ↗
+              </a>
               <input
                 type="text"
                 placeholder="Paste your auth_code…"
@@ -347,6 +356,36 @@ export default function Dashboard() {
             </div>
           </div>
 
+          {/* ── Game counter ── */}
+          {games.length > 0 && (
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 24 }}>
+              <span style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: 12,
+                color: "rgba(196,181,253,0.4)",
+                letterSpacing: "0.1em",
+              }}>
+                LIBRARY
+              </span>
+              <span style={{
+                fontFamily: "'Syne', sans-serif",
+                fontSize: 13,
+                fontWeight: 700,
+                color: "#a855f7",
+              }}>
+                {games.length}
+              </span>
+              <span style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: 12,
+                color: "rgba(196,181,253,0.4)",
+                letterSpacing: "0.1em",
+              }}>
+                {loadingGame ? "GAMES LOADED" : "GAMES"}
+              </span>
+            </div>
+          )}
+
           {/* ── Error ── */}
           {error && (
             <div style={{
@@ -378,7 +417,7 @@ export default function Dashboard() {
                 boxShadow: "0 0 8px #a855f7",
                 animation: "pulse 1s infinite",
               }} />
-              Fetching <span style={{ color: "#c4b5fd" }}>{loadingGame}</span>…
+              Fetching <span style={{ color: "#c4b5fd", marginLeft: 4 }}>{loadingGame}</span>…
               <style>{`@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`}</style>
             </div>
           )}
