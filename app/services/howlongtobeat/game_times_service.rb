@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "open3"
 require "json"
 
@@ -11,6 +13,17 @@ module Howlongtobeat
     end
 
     def call
+      cached = CacheService.get(@game_name)
+      return { success: true, game: cached } if cached
+
+      result = run_script
+      CacheService.set(@game_name, result[:game]) if result[:success]
+      result
+    end
+
+    private
+
+    def run_script
       stdout, stderr, status = Open3.capture3(PYTHON_BIN, PYTHON_SCRIPT, @game_name)
 
       unless status.success?
