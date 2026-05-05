@@ -1,0 +1,30 @@
+# .github/workflows/ruby_lint.yml
+name: Ruby Lint
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  rubocop:
+    name: RuboCop
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+
+      - name: Install RuboCop
+        run: gem install rubocop rubocop-rails
+
+      - name: Run autocorrect (safe only)
+        run: rubocop -a --format github
+        continue-on-error: true
+
+      - name: Run RuboCop (check remaining)
+        run: rubocop --format github
