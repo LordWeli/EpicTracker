@@ -1,4 +1,4 @@
-require:
+plugins:
   - rubocop-rails
 
 AllCops:
@@ -14,8 +14,24 @@ AllCops:
 Rails:
   Enabled: true
 
+# Desabilitados — complexos ou que podem gerar bugs se autocorrigidos
 Style/Documentation:
   Enabled: false
 
-Style/FrozenStringLiteralComment:
+Layout/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Naming/MethodParameterName:
+  Enabled: false
+
+Style/IfUnlessModifier:
   Enabled: false

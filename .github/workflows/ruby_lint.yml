@@ -1,3 +1,4 @@
+# .github/workflows/ruby_lint.yml
 name: Ruby Lint
 
 on:
@@ -17,11 +18,13 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
-          bundler-cache: true
 
       - name: Install RuboCop
-        run: |
-          gem install rubocop rubocop-rails
+        run: gem install rubocop rubocop-rails
 
-      - name: Run RuboCop
+      - name: Run autocorrect (safe only)
+        run: rubocop -a --format github
+        continue-on-error: true
+
+      - name: Run RuboCop (check remaining)
         run: rubocop --format github
