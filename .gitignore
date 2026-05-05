@@ -1,4 +1,6 @@
-# Logs e temp
+# Logs and temp
 log/*
 tmp/*
 
+# Dependencies
+node_modules/
