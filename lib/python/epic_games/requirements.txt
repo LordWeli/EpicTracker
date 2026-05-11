@@ -1,4 +1,3 @@
-egs-api-py
+legendary-gl
 aiohttp
-pydantic
 howlongtobeatpy
