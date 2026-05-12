@@ -208,6 +208,22 @@ const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
 
   const slides = [
     {
+      badge: "WELCOME",
+      title: "Meet EpicTracker",
+      body: (
+        <>
+          Your{" "}
+          <span style={{ color: "#f0abfc", fontWeight: 600 }}>Epic Games</span>{" "}
+          library, paired with{" "}
+          <span style={{ color: "#f0abfc", fontWeight: 600 }}>HowLongToBeat</span>{" "}
+          completion times — in one place. See how many hours each game in your
+          collection will actually take, from a quick main story run to a full
+          completionist playthrough. Two short steps and you're in.
+        </>
+      ),
+      icon: "🎮",
+    },
+    {
       badge: "STEP 01",
       title: "Get your auth code",
       body: (
