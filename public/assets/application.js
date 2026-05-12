@@ -1330,7 +1330,7 @@
           return dispatcher;
         }
         "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-        var React3 = require_react(), Internals = {
+        var React4 = require_react(), Internals = {
           d: {
             f: noop,
             r: function() {
@@ -1348,7 +1348,7 @@
           },
           p: 0,
           findDOMNode: null
-        }, REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+        }, REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), ReactSharedInternals = React4.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
         "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error(
           "React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"
         );
@@ -2883,7 +2883,7 @@
           "number" === type && getActiveElement(node.ownerDocument) === node || node.defaultValue === "" + value || (node.defaultValue = "" + value);
         }
         function validateOptionProps(element, props) {
-          null == props.value && ("object" === typeof props.children && null !== props.children ? React3.Children.forEach(props.children, function(child) {
+          null == props.value && ("object" === typeof props.children && null !== props.children ? React4.Children.forEach(props.children, function(child) {
             null == child || "string" === typeof child || "number" === typeof child || "bigint" === typeof child || didWarnInvalidChild || (didWarnInvalidChild = true, console.error(
               "Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>."
             ));
@@ -18515,14 +18515,14 @@
           ));
         }
         "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-        var Scheduler = require_scheduler(), React3 = require_react(), ReactDOM = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.element"), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy");
+        var Scheduler = require_scheduler(), React4 = require_react(), ReactDOM = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.element"), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy");
         /* @__PURE__ */ Symbol.for("react.scope");
         var REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity");
         /* @__PURE__ */ Symbol.for("react.legacy_hidden");
         /* @__PURE__ */ Symbol.for("react.tracing_marker");
         var REACT_MEMO_CACHE_SENTINEL = /* @__PURE__ */ Symbol.for("react.memo_cache_sentinel");
         /* @__PURE__ */ Symbol.for("react.view_transition");
-        var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
+        var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React4.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
           pending: false,
           data: null,
           method: null,
@@ -21310,7 +21310,7 @@
           }
         };
         (function() {
-          var isomorphicReactPackageVersion = React3.version;
+          var isomorphicReactPackageVersion = React4.version;
           if ("19.2.5" !== isomorphicReactPackageVersion)
             throw Error(
               'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.2.5\nLearn more: https://react.dev/warnings/version-mismatch")
@@ -21451,11 +21451,559 @@
   });
 
   // app/javascript/application.tsx
-  var import_react2 = __toESM(require_react());
+  var import_react3 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // app/javascript/Dashboard.tsx
+  var import_react2 = __toESM(require_react());
+
+  // app/javascript/i18n.tsx
   var import_react = __toESM(require_react());
+  var LANGS = [
+    { code: "en", label: "English", flag: "\u{1F1EC}\u{1F1E7}" },
+    { code: "pt", label: "Portugu\xEAs", flag: "\u{1F1E7}\u{1F1F7}" },
+    { code: "es", label: "Espa\xF1ol", flag: "\u{1F1EA}\u{1F1F8}" },
+    { code: "ja", label: "\u65E5\u672C\u8A9E", flag: "\u{1F1EF}\u{1F1F5}" },
+    { code: "ru", label: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439", flag: "\u{1F1F7}\u{1F1FA}" },
+    { code: "de", label: "Deutsch", flag: "\u{1F1E9}\u{1F1EA}" },
+    { code: "fr", label: "Fran\xE7ais", flag: "\u{1F1EB}\u{1F1F7}" },
+    { code: "zh", label: "\u4E2D\u6587", flag: "\u{1F1E8}\u{1F1F3}" },
+    { code: "it", label: "Italiano", flag: "\u{1F1EE}\u{1F1F9}" }
+  ];
+  var en = {
+    "header.getAuthCode": "Get Auth Code \u2197",
+    "header.placeholder": "Paste your auth_code\u2026",
+    "header.fetch": "Fetch",
+    "header.loading": "Loading\u2026",
+    "header.help": "Show instructions",
+    "header.helpTitle": "How to use",
+    "header.changeLanguage": "Change language",
+    "library.label": "LIBRARY",
+    "library.gamesLoaded": "GAMES LOADED",
+    "library.games": "GAMES",
+    "library.fetchingPrefix": "Fetching",
+    "library.notFound": "Not found on HowLongToBeat",
+    "library.timeToBeat": "Time to Beat",
+    "library.mainStory": "Main Story",
+    "library.mainExtra": "Main + Extra",
+    "library.completionist": "Completionist",
+    "empty.message": "ENTER YOUR AUTH CODE TO BEGIN",
+    "error.noGames": "No games found.",
+    "error.serverConnection": "Failed to connect to server.",
+    "modal.back": "\u2190 BACK",
+    "modal.next": "NEXT \u2192",
+    "modal.gotIt": "GOT IT",
+    "modal.close": "Close",
+    "modal.dotAria": "Go to step {n}",
+    "modal.welcome.badge": "WELCOME",
+    "modal.welcome.title": "Meet EpicTracker",
+    "modal.welcome.body": "Your {epic} library, paired with {hltb} completion times \u2014 in one place. See how many hours each game in your collection will actually take, from a quick main story run to a full completionist playthrough. Two short steps and you're in.",
+    "modal.welcome.epic": "Epic Games",
+    "modal.welcome.hltb": "HowLongToBeat",
+    "modal.step1.badge": "STEP 01",
+    "modal.step1.title": "Get your auth code",
+    "modal.step1.body": "Click the {button} button at the top right. A new tab will open with a JSON response from Epic Games. Copy the value of the {field} field.",
+    "modal.step1.button": "Get Auth Code \u2197",
+    "modal.step1.field": "authorizationCode",
+    "modal.step2.badge": "STEP 02",
+    "modal.step2.title": "Fetch your library",
+    "modal.step2.body": "Paste the code into the {input} input, then click {fetch}. EpicTracker will load your games and match them against HowLongToBeat.",
+    "modal.step2.input": "Paste your auth_code\u2026",
+    "modal.step2.fetch": "Fetch"
+  };
+  var pt = {
+    "header.getAuthCode": "Obter Auth Code \u2197",
+    "header.placeholder": "Cole seu auth_code\u2026",
+    "header.fetch": "Buscar",
+    "header.loading": "Carregando\u2026",
+    "header.help": "Mostrar instru\xE7\xF5es",
+    "header.helpTitle": "Como usar",
+    "header.changeLanguage": "Mudar idioma",
+    "library.label": "BIBLIOTECA",
+    "library.gamesLoaded": "JOGOS CARREGADOS",
+    "library.games": "JOGOS",
+    "library.fetchingPrefix": "Buscando",
+    "library.notFound": "N\xE3o encontrado no HowLongToBeat",
+    "library.timeToBeat": "Tempo para Terminar",
+    "library.mainStory": "Hist\xF3ria Principal",
+    "library.mainExtra": "Principal + Extras",
+    "library.completionist": "Completista",
+    "empty.message": "INSIRA SEU AUTH CODE PARA COME\xC7AR",
+    "error.noGames": "Nenhum jogo encontrado.",
+    "error.serverConnection": "Falha ao conectar ao servidor.",
+    "modal.back": "\u2190 VOLTAR",
+    "modal.next": "PR\xD3XIMO \u2192",
+    "modal.gotIt": "ENTENDI",
+    "modal.close": "Fechar",
+    "modal.dotAria": "Ir para passo {n}",
+    "modal.welcome.badge": "BEM-VINDO",
+    "modal.welcome.title": "Conhe\xE7a o EpicTracker",
+    "modal.welcome.body": "Sua biblioteca da {epic}, combinada com os tempos de conclus\xE3o do {hltb} \u2014 num s\xF3 lugar. Veja quantas horas cada jogo da sua cole\xE7\xE3o realmente leva, da campanha r\xE1pida at\xE9 o playthrough completista. Dois passos curtos e est\xE1 pronto.",
+    "modal.welcome.epic": "Epic Games",
+    "modal.welcome.hltb": "HowLongToBeat",
+    "modal.step1.badge": "PASSO 01",
+    "modal.step1.title": "Pegue seu auth code",
+    "modal.step1.body": "Clique no bot\xE3o {button} no canto superior direito. Uma nova aba abrir\xE1 com a resposta JSON da Epic Games. Copie o valor do campo {field}.",
+    "modal.step1.button": "Obter Auth Code \u2197",
+    "modal.step1.field": "authorizationCode",
+    "modal.step2.badge": "PASSO 02",
+    "modal.step2.title": "Carregue sua biblioteca",
+    "modal.step2.body": "Cole o c\xF3digo no campo {input}, depois clique em {fetch}. O EpicTracker carregar\xE1 seus jogos e cruzar\xE1 com o HowLongToBeat.",
+    "modal.step2.input": "Cole seu auth_code\u2026",
+    "modal.step2.fetch": "Buscar"
+  };
+  var es = {
+    "header.getAuthCode": "Obtener Auth Code \u2197",
+    "header.placeholder": "Pega tu auth_code\u2026",
+    "header.fetch": "Buscar",
+    "header.loading": "Cargando\u2026",
+    "header.help": "Mostrar instrucciones",
+    "header.helpTitle": "C\xF3mo usar",
+    "header.changeLanguage": "Cambiar idioma",
+    "library.label": "BIBLIOTECA",
+    "library.gamesLoaded": "JUEGOS CARGADOS",
+    "library.games": "JUEGOS",
+    "library.fetchingPrefix": "Buscando",
+    "library.notFound": "No encontrado en HowLongToBeat",
+    "library.timeToBeat": "Tiempo para Completar",
+    "library.mainStory": "Historia Principal",
+    "library.mainExtra": "Principal + Extras",
+    "library.completionist": "Completista",
+    "empty.message": "INTRODUCE TU AUTH CODE PARA EMPEZAR",
+    "error.noGames": "No se encontraron juegos.",
+    "error.serverConnection": "Fallo al conectar con el servidor.",
+    "modal.back": "\u2190 ATR\xC1S",
+    "modal.next": "SIGUIENTE \u2192",
+    "modal.gotIt": "ENTENDIDO",
+    "modal.close": "Cerrar",
+    "modal.dotAria": "Ir al paso {n}",
+    "modal.welcome.badge": "BIENVENIDO",
+    "modal.welcome.title": "Conoce EpicTracker",
+    "modal.welcome.body": "Tu biblioteca de {epic}, junto con los tiempos de finalizaci\xF3n de {hltb} \u2014 en un solo lugar. Mira cu\xE1ntas horas tomar\xE1 realmente cada juego de tu colecci\xF3n, desde una pasada r\xE1pida de la historia hasta una completista. Dos pasos cortos y listo.",
+    "modal.welcome.epic": "Epic Games",
+    "modal.welcome.hltb": "HowLongToBeat",
+    "modal.step1.badge": "PASO 01",
+    "modal.step1.title": "Obt\xE9n tu auth code",
+    "modal.step1.body": "Haz clic en el bot\xF3n {button} arriba a la derecha. Se abrir\xE1 una nueva pesta\xF1a con la respuesta JSON de Epic Games. Copia el valor del campo {field}.",
+    "modal.step1.button": "Obtener Auth Code \u2197",
+    "modal.step1.field": "authorizationCode",
+    "modal.step2.badge": "PASO 02",
+    "modal.step2.title": "Carga tu biblioteca",
+    "modal.step2.body": "Pega el c\xF3digo en el campo {input}, luego haz clic en {fetch}. EpicTracker cargar\xE1 tus juegos y los cruzar\xE1 con HowLongToBeat.",
+    "modal.step2.input": "Pega tu auth_code\u2026",
+    "modal.step2.fetch": "Buscar"
+  };
+  var ja = {
+    "header.getAuthCode": "\u8A8D\u8A3C\u30B3\u30FC\u30C9\u3092\u53D6\u5F97 \u2197",
+    "header.placeholder": "auth_code\u3092\u8CBC\u308A\u4ED8\u3051\u2026",
+    "header.fetch": "\u53D6\u5F97",
+    "header.loading": "\u8AAD\u307F\u8FBC\u307F\u4E2D\u2026",
+    "header.help": "\u4F7F\u3044\u65B9\u3092\u8868\u793A",
+    "header.helpTitle": "\u4F7F\u3044\u65B9",
+    "header.changeLanguage": "\u8A00\u8A9E\u3092\u5909\u66F4",
+    "library.label": "\u30E9\u30A4\u30D6\u30E9\u30EA",
+    "library.gamesLoaded": "\u30B2\u30FC\u30E0\u8AAD\u307F\u8FBC\u307F\u6E08\u307F",
+    "library.games": "\u30B2\u30FC\u30E0",
+    "library.fetchingPrefix": "\u53D6\u5F97\u4E2D",
+    "library.notFound": "HowLongToBeat\u3067\u898B\u3064\u304B\u308A\u307E\u305B\u3093",
+    "library.timeToBeat": "\u30AF\u30EA\u30A2\u6642\u9593",
+    "library.mainStory": "\u30E1\u30A4\u30F3\u30B9\u30C8\u30FC\u30EA\u30FC",
+    "library.mainExtra": "\u30E1\u30A4\u30F3+\u30B5\u30D6",
+    "library.completionist": "\u30B3\u30F3\u30D7\u30EA\u30FC\u30C8",
+    "empty.message": "AUTH\u30B3\u30FC\u30C9\u3092\u5165\u529B\u3057\u3066\u958B\u59CB",
+    "error.noGames": "\u30B2\u30FC\u30E0\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3002",
+    "error.serverConnection": "\u30B5\u30FC\u30D0\u30FC\u3078\u306E\u63A5\u7D9A\u306B\u5931\u6557\u3057\u307E\u3057\u305F\u3002",
+    "modal.back": "\u2190 \u623B\u308B",
+    "modal.next": "\u6B21\u3078 \u2192",
+    "modal.gotIt": "\u4E86\u89E3",
+    "modal.close": "\u9589\u3058\u308B",
+    "modal.dotAria": "\u30B9\u30C6\u30C3\u30D7{n}\u3078",
+    "modal.welcome.badge": "\u3088\u3046\u3053\u305D",
+    "modal.welcome.title": "EpicTracker\u3078\u3088\u3046\u3053\u305D",
+    "modal.welcome.body": "\u3042\u306A\u305F\u306E{epic}\u30E9\u30A4\u30D6\u30E9\u30EA\u3068{hltb}\u306E\u30AF\u30EA\u30A2\u6642\u9593\u3092\u4E00\u3064\u306E\u5834\u6240\u306B\u3002\u30B3\u30EC\u30AF\u30B7\u30E7\u30F3\u5185\u306E\u5404\u30B2\u30FC\u30E0\u304C\u5B9F\u969B\u306B\u3069\u308C\u3060\u3051\u6642\u9593\u304C\u304B\u304B\u308B\u304B\u3001\u30E1\u30A4\u30F3\u30B9\u30C8\u30FC\u30EA\u30FC\u304B\u3089\u5B8C\u5168\u30AF\u30EA\u30A2\u307E\u3067\u78BA\u8A8D\u3067\u304D\u307E\u3059\u30022\u3064\u306E\u7C21\u5358\u306A\u30B9\u30C6\u30C3\u30D7\u3067\u59CB\u3081\u3089\u308C\u307E\u3059\u3002",
+    "modal.welcome.epic": "Epic Games",
+    "modal.welcome.hltb": "HowLongToBeat",
+    "modal.step1.badge": "\u30B9\u30C6\u30C3\u30D701",
+    "modal.step1.title": "\u8A8D\u8A3C\u30B3\u30FC\u30C9\u3092\u53D6\u5F97",
+    "modal.step1.body": "\u53F3\u4E0A\u306E{button}\u30DC\u30BF\u30F3\u3092\u30AF\u30EA\u30C3\u30AF\u3057\u307E\u3059\u3002Epic Games\u306EJSON\u30EC\u30B9\u30DD\u30F3\u30B9\u3092\u542B\u3080\u65B0\u3057\u3044\u30BF\u30D6\u304C\u958B\u304D\u307E\u3059\u3002{field}\u30D5\u30A3\u30FC\u30EB\u30C9\u306E\u5024\u3092\u30B3\u30D4\u30FC\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
+    "modal.step1.button": "Auth Code\u3092\u53D6\u5F97\u3057\u307E\u3059 \u2197",
+    "modal.step1.field": "authorizationCode",
+    "modal.step2.badge": "\u30B9\u30C6\u30C3\u30D702",
+    "modal.step2.title": "\u30E9\u30A4\u30D6\u30E9\u30EA\u3092\u53D6\u5F97",
+    "modal.step2.body": "\u30B3\u30FC\u30C9\u3092{input}\u30D5\u30A3\u30FC\u30EB\u30C9\u306B\u8CBC\u308A\u4ED8\u3051\u3001{fetch}\u3092\u30AF\u30EA\u30C3\u30AF\u3057\u307E\u3059\u3002EpicTracker\u304C\u30B2\u30FC\u30E0\u3092\u8AAD\u307F\u8FBC\u307F\u3001HowLongToBeat\u3068\u7167\u5408\u3057\u307E\u3059\u3002",
+    "modal.step2.input": "auth_code\u3092\u8CBC\u308A\u4ED8\u3051\u2026",
+    "modal.step2.fetch": "\u53D6\u5F97"
+  };
+  var ru = {
+    "header.getAuthCode": "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C Auth Code \u2197",
+    "header.placeholder": "\u0412\u0441\u0442\u0430\u0432\u044C\u0442\u0435 auth_code\u2026",
+    "header.fetch": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C",
+    "header.loading": "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430\u2026",
+    "header.help": "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u0438\u043D\u0441\u0442\u0440\u0443\u043A\u0446\u0438\u0438",
+    "header.helpTitle": "\u041A\u0430\u043A \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C",
+    "header.changeLanguage": "\u0421\u043C\u0435\u043D\u0438\u0442\u044C \u044F\u0437\u044B\u043A",
+    "library.label": "\u0411\u0418\u0411\u041B\u0418\u041E\u0422\u0415\u041A\u0410",
+    "library.gamesLoaded": "\u0418\u0413\u0420 \u0417\u0410\u0413\u0420\u0423\u0416\u0415\u041D\u041E",
+    "library.games": "\u0418\u0413\u0420",
+    "library.fetchingPrefix": "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430",
+    "library.notFound": "\u041D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u043E \u043D\u0430 HowLongToBeat",
+    "library.timeToBeat": "\u0412\u0440\u0435\u043C\u044F \u043F\u0440\u043E\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u044F",
+    "library.mainStory": "\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0439 \u0441\u044E\u0436\u0435\u0442",
+    "library.mainExtra": "\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0439 + \u0414\u043E\u043F.",
+    "library.completionist": "100%",
+    "empty.message": "\u0412\u0412\u0415\u0414\u0418\u0422\u0415 AUTH CODE \u0414\u041B\u042F \u041D\u0410\u0427\u0410\u041B\u0410",
+    "error.noGames": "\u0418\u0433\u0440\u044B \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u044B.",
+    "error.serverConnection": "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u0441\u044F \u043A \u0441\u0435\u0440\u0432\u0435\u0440\u0443.",
+    "modal.back": "\u2190 \u041D\u0410\u0417\u0410\u0414",
+    "modal.next": "\u0414\u0410\u041B\u0415\u0415 \u2192",
+    "modal.gotIt": "\u041F\u041E\u041D\u042F\u0422\u041D\u041E",
+    "modal.close": "\u0417\u0430\u043A\u0440\u044B\u0442\u044C",
+    "modal.dotAria": "\u041A \u0448\u0430\u0433\u0443 {n}",
+    "modal.welcome.badge": "\u0414\u041E\u0411\u0420\u041E \u041F\u041E\u0416\u0410\u041B\u041E\u0412\u0410\u0422\u042C",
+    "modal.welcome.title": "\u0417\u043D\u0430\u043A\u043E\u043C\u044C\u0442\u0435\u0441\u044C, EpicTracker",
+    "modal.welcome.body": "\u0412\u0430\u0448\u0430 \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 {epic} \u0432\u043C\u0435\u0441\u0442\u0435 \u0441\u043E \u0432\u0440\u0435\u043C\u0435\u043D\u0435\u043C \u043F\u0440\u043E\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u044F \u043E\u0442 {hltb} \u2014 \u0432 \u043E\u0434\u043D\u043E\u043C \u043C\u0435\u0441\u0442\u0435. \u0423\u0437\u043D\u0430\u0439\u0442\u0435, \u0441\u043A\u043E\u043B\u044C\u043A\u043E \u0447\u0430\u0441\u043E\u0432 \u043F\u043E\u0442\u0440\u0435\u0431\u0443\u0435\u0442 \u043A\u0430\u0436\u0434\u0430\u044F \u0438\u0433\u0440\u0430 \u0432\u0430\u0448\u0435\u0439 \u043A\u043E\u043B\u043B\u0435\u043A\u0446\u0438\u0438 \u2014 \u043E\u0442 \u0431\u044B\u0441\u0442\u0440\u043E\u0433\u043E \u0441\u044E\u0436\u0435\u0442\u0430 \u0434\u043E \u043F\u043E\u043B\u043D\u043E\u0433\u043E 100%. \u0412\u0441\u0435\u0433\u043E \u0434\u0432\u0430 \u0448\u0430\u0433\u0430.",
+    "modal.welcome.epic": "Epic Games",
+    "modal.welcome.hltb": "HowLongToBeat",
+    "modal.step1.badge": "\u0428\u0410\u0413 01",
+    "modal.step1.title": "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u0435 \u0432\u0430\u0448 auth code",
+    "modal.step1.body": "\u041D\u0430\u0436\u043C\u0438\u0442\u0435 \u043A\u043D\u043E\u043F\u043A\u0443 {button} \u0432 \u043F\u0440\u0430\u0432\u043E\u043C \u0432\u0435\u0440\u0445\u043D\u0435\u043C \u0443\u0433\u043B\u0443. \u041E\u0442\u043A\u0440\u043E\u0435\u0442\u0441\u044F \u043D\u043E\u0432\u0430\u044F \u0432\u043A\u043B\u0430\u0434\u043A\u0430 \u0441 JSON-\u043E\u0442\u0432\u0435\u0442\u043E\u043C \u043E\u0442 Epic Games. \u0421\u043A\u043E\u043F\u0438\u0440\u0443\u0439\u0442\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043F\u043E\u043B\u044F {field}.",
+    "modal.step1.button": "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C Auth Code \u2197",
+    "modal.step1.field": "authorizationCode",
+    "modal.step2.badge": "\u0428\u0410\u0413 02",
+    "modal.step2.title": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u0435 \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0443",
+    "modal.step2.body": "\u0412\u0441\u0442\u0430\u0432\u044C\u0442\u0435 \u043A\u043E\u0434 \u0432 \u043F\u043E\u043B\u0435 {input}, \u0437\u0430\u0442\u0435\u043C \u043D\u0430\u0436\u043C\u0438\u0442\u0435 {fetch}. EpicTracker \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442 \u0432\u0430\u0448\u0438 \u0438\u0433\u0440\u044B \u0438 \u0441\u043E\u043F\u043E\u0441\u0442\u0430\u0432\u0438\u0442 \u0438\u0445 \u0441 HowLongToBeat.",
+    "modal.step2.input": "\u0412\u0441\u0442\u0430\u0432\u044C\u0442\u0435 auth_code\u2026",
+    "modal.step2.fetch": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C"
+  };
+  var de = {
+    "header.getAuthCode": "Auth Code holen \u2197",
+    "header.placeholder": "auth_code einf\xFCgen\u2026",
+    "header.fetch": "Laden",
+    "header.loading": "Laden\u2026",
+    "header.help": "Anleitung anzeigen",
+    "header.helpTitle": "Bedienung",
+    "header.changeLanguage": "Sprache wechseln",
+    "library.label": "BIBLIOTHEK",
+    "library.gamesLoaded": "SPIELE GELADEN",
+    "library.games": "SPIELE",
+    "library.fetchingPrefix": "Lade",
+    "library.notFound": "Auf HowLongToBeat nicht gefunden",
+    "library.timeToBeat": "Spielzeit",
+    "library.mainStory": "Hauptstory",
+    "library.mainExtra": "Haupt + Extras",
+    "library.completionist": "Komplettist",
+    "empty.message": "AUTH CODE EINGEBEN, UM ZU STARTEN",
+    "error.noGames": "Keine Spiele gefunden.",
+    "error.serverConnection": "Verbindung zum Server fehlgeschlagen.",
+    "modal.back": "\u2190 ZUR\xDCCK",
+    "modal.next": "WEITER \u2192",
+    "modal.gotIt": "VERSTANDEN",
+    "modal.close": "Schlie\xDFen",
+    "modal.dotAria": "Zu Schritt {n}",
+    "modal.welcome.badge": "WILLKOMMEN",
+    "modal.welcome.title": "Das ist EpicTracker",
+    "modal.welcome.body": "Deine {epic}-Bibliothek, kombiniert mit den Spielzeiten von {hltb} \u2014 an einem Ort. Sieh, wie lange jedes Spiel deiner Sammlung wirklich dauert \u2014 von einem schnellen Story-Durchlauf bis zum Komplettisten. Zwei kurze Schritte und los.",
+    "modal.welcome.epic": "Epic Games",
+    "modal.welcome.hltb": "HowLongToBeat",
+    "modal.step1.badge": "SCHRITT 01",
+    "modal.step1.title": "Hol deinen Auth Code",
+    "modal.step1.body": "Klicke auf den Button {button} oben rechts. Ein neuer Tab \xF6ffnet sich mit der JSON-Antwort von Epic Games. Kopiere den Wert des Feldes {field}.",
+    "modal.step1.button": "Auth Code holen \u2197",
+    "modal.step1.field": "authorizationCode",
+    "modal.step2.badge": "SCHRITT 02",
+    "modal.step2.title": "Lade deine Bibliothek",
+    "modal.step2.body": "F\xFCge den Code in das Feld {input} ein und klicke auf {fetch}. EpicTracker l\xE4dt deine Spiele und gleicht sie mit HowLongToBeat ab.",
+    "modal.step2.input": "auth_code einf\xFCgen\u2026",
+    "modal.step2.fetch": "Laden"
+  };
+  var fr = {
+    "header.getAuthCode": "Obtenir Auth Code \u2197",
+    "header.placeholder": "Collez votre auth_code\u2026",
+    "header.fetch": "Charger",
+    "header.loading": "Chargement\u2026",
+    "header.help": "Afficher les instructions",
+    "header.helpTitle": "Utilisation",
+    "header.changeLanguage": "Changer la langue",
+    "library.label": "BIBLIOTH\xC8QUE",
+    "library.gamesLoaded": "JEUX CHARG\xC9S",
+    "library.games": "JEUX",
+    "library.fetchingPrefix": "Chargement",
+    "library.notFound": "Introuvable sur HowLongToBeat",
+    "library.timeToBeat": "Temps de jeu",
+    "library.mainStory": "Histoire principale",
+    "library.mainExtra": "Principale + Extras",
+    "library.completionist": "100%",
+    "empty.message": "ENTREZ VOTRE AUTH CODE POUR COMMENCER",
+    "error.noGames": "Aucun jeu trouv\xE9.",
+    "error.serverConnection": "\xC9chec de la connexion au serveur.",
+    "modal.back": "\u2190 RETOUR",
+    "modal.next": "SUIVANT \u2192",
+    "modal.gotIt": "COMPRIS",
+    "modal.close": "Fermer",
+    "modal.dotAria": "Aller \xE0 l'\xE9tape {n}",
+    "modal.welcome.badge": "BIENVENUE",
+    "modal.welcome.title": "D\xE9couvrez EpicTracker",
+    "modal.welcome.body": "Votre biblioth\xE8que {epic}, associ\xE9e aux temps de compl\xE9tion de {hltb} \u2014 au m\xEAme endroit. Voyez combien d'heures chaque jeu de votre collection prendra r\xE9ellement, de la campagne rapide au compl\xE9tiste. Deux \xE9tapes rapides et c'est parti.",
+    "modal.welcome.epic": "Epic Games",
+    "modal.welcome.hltb": "HowLongToBeat",
+    "modal.step1.badge": "\xC9TAPE 01",
+    "modal.step1.title": "Obtenez votre auth code",
+    "modal.step1.body": "Cliquez sur le bouton {button} en haut \xE0 droite. Un nouvel onglet s'ouvrira avec la r\xE9ponse JSON d'Epic Games. Copiez la valeur du champ {field}.",
+    "modal.step1.button": "Obtenir Auth Code \u2197",
+    "modal.step1.field": "authorizationCode",
+    "modal.step2.badge": "\xC9TAPE 02",
+    "modal.step2.title": "Chargez votre biblioth\xE8que",
+    "modal.step2.body": "Collez le code dans le champ {input}, puis cliquez sur {fetch}. EpicTracker chargera vos jeux et les comparera \xE0 HowLongToBeat.",
+    "modal.step2.input": "Collez votre auth_code\u2026",
+    "modal.step2.fetch": "Charger"
+  };
+  var zh = {
+    "header.getAuthCode": "\u83B7\u53D6 Auth Code \u2197",
+    "header.placeholder": "\u7C98\u8D34\u4F60\u7684 auth_code\u2026",
+    "header.fetch": "\u52A0\u8F7D",
+    "header.loading": "\u52A0\u8F7D\u4E2D\u2026",
+    "header.help": "\u663E\u793A\u8BF4\u660E",
+    "header.helpTitle": "\u5982\u4F55\u4F7F\u7528",
+    "header.changeLanguage": "\u66F4\u6539\u8BED\u8A00",
+    "library.label": "\u6E38\u620F\u5E93",
+    "library.gamesLoaded": "\u5DF2\u52A0\u8F7D\u6E38\u620F",
+    "library.games": "\u6E38\u620F",
+    "library.fetchingPrefix": "\u6B63\u5728\u83B7\u53D6",
+    "library.notFound": "HowLongToBeat \u4E0A\u672A\u627E\u5230",
+    "library.timeToBeat": "\u901A\u5173\u65F6\u957F",
+    "library.mainStory": "\u4E3B\u7EBF",
+    "library.mainExtra": "\u4E3B\u7EBF+\u652F\u7EBF",
+    "library.completionist": "\u5168\u5B8C\u6210",
+    "empty.message": "\u8BF7\u8F93\u5165 AUTH CODE \u5F00\u59CB",
+    "error.noGames": "\u672A\u627E\u5230\u6E38\u620F\u3002",
+    "error.serverConnection": "\u65E0\u6CD5\u8FDE\u63A5\u5230\u670D\u52A1\u5668\u3002",
+    "modal.back": "\u2190 \u4E0A\u4E00\u6B65",
+    "modal.next": "\u4E0B\u4E00\u6B65 \u2192",
+    "modal.gotIt": "\u77E5\u9053\u4E86",
+    "modal.close": "\u5173\u95ED",
+    "modal.dotAria": "\u524D\u5F80\u7B2C{n}\u6B65",
+    "modal.welcome.badge": "\u6B22\u8FCE",
+    "modal.welcome.title": "\u8BA4\u8BC6 EpicTracker",
+    "modal.welcome.body": "\u4F60\u7684 {epic} \u6E38\u620F\u5E93\uFF0C\u642D\u914D {hltb} \u7684\u901A\u5173\u65F6\u957F \u2014 \u5168\u5728\u4E00\u5904\u3002\u770B\u770B\u4F60\u6536\u85CF\u4E2D\u7684\u6BCF\u6B3E\u6E38\u620F\u5230\u5E95\u8981\u82B1\u591A\u5C11\u5C0F\u65F6\uFF0C\u4ECE\u5FEB\u901F\u901A\u5173\u5230\u5168\u5B8C\u6210\u3002\u4E24\u4E2A\u7B80\u5355\u6B65\u9AA4\u5373\u53EF\u5F00\u59CB\u3002",
+    "modal.welcome.epic": "Epic Games",
+    "modal.welcome.hltb": "HowLongToBeat",
+    "modal.step1.badge": "\u6B65\u9AA4 01",
+    "modal.step1.title": "\u83B7\u53D6\u4F60\u7684 auth code",
+    "modal.step1.body": "\u70B9\u51FB\u53F3\u4E0A\u89D2\u7684 {button} \u6309\u94AE\u3002\u65B0\u6807\u7B7E\u9875\u5C06\u6253\u5F00\u6765\u81EA Epic Games \u7684 JSON \u54CD\u5E94\u3002\u590D\u5236 {field} \u5B57\u6BB5\u7684\u503C\u3002",
+    "modal.step1.button": "\u83B7\u53D6 Auth Code \u2197",
+    "modal.step1.field": "authorizationCode",
+    "modal.step2.badge": "\u6B65\u9AA4 02",
+    "modal.step2.title": "\u52A0\u8F7D\u4F60\u7684\u6E38\u620F\u5E93",
+    "modal.step2.body": "\u5C06\u4EE3\u7801\u7C98\u8D34\u5230 {input} \u8F93\u5165\u6846\uFF0C\u7136\u540E\u70B9\u51FB {fetch}\u3002EpicTracker \u5C06\u52A0\u8F7D\u4F60\u7684\u6E38\u620F\u5E76\u4E0E HowLongToBeat \u5BF9\u6BD4\u3002",
+    "modal.step2.input": "\u7C98\u8D34\u4F60\u7684 auth_code\u2026",
+    "modal.step2.fetch": "\u52A0\u8F7D"
+  };
+  var it = {
+    "header.getAuthCode": "Ottieni Auth Code \u2197",
+    "header.placeholder": "Incolla il tuo auth_code\u2026",
+    "header.fetch": "Carica",
+    "header.loading": "Caricamento\u2026",
+    "header.help": "Mostra istruzioni",
+    "header.helpTitle": "Come usare",
+    "header.changeLanguage": "Cambia lingua",
+    "library.label": "LIBRERIA",
+    "library.gamesLoaded": "GIOCHI CARICATI",
+    "library.games": "GIOCHI",
+    "library.fetchingPrefix": "Caricamento",
+    "library.notFound": "Non trovato su HowLongToBeat",
+    "library.timeToBeat": "Tempo di completamento",
+    "library.mainStory": "Storia principale",
+    "library.mainExtra": "Principale + Extra",
+    "library.completionist": "Completista",
+    "empty.message": "INSERISCI L'AUTH CODE PER INIZIARE",
+    "error.noGames": "Nessun gioco trovato.",
+    "error.serverConnection": "Connessione al server fallita.",
+    "modal.back": "\u2190 INDIETRO",
+    "modal.next": "AVANTI \u2192",
+    "modal.gotIt": "CAPITO",
+    "modal.close": "Chiudi",
+    "modal.dotAria": "Vai al passo {n}",
+    "modal.welcome.badge": "BENVENUTO",
+    "modal.welcome.title": "Ecco EpicTracker",
+    "modal.welcome.body": "La tua libreria {epic}, abbinata ai tempi di completamento di {hltb} \u2014 in un unico posto. Scopri quante ore richiede ogni gioco della tua collezione, dalla storia principale al completamento al 100%. Due passi rapidi e sei pronto.",
+    "modal.welcome.epic": "Epic Games",
+    "modal.welcome.hltb": "HowLongToBeat",
+    "modal.step1.badge": "PASSO 01",
+    "modal.step1.title": "Ottieni il tuo auth code",
+    "modal.step1.body": "Clicca sul pulsante {button} in alto a destra. Si aprir\xE0 una nuova scheda con la risposta JSON di Epic Games. Copia il valore del campo {field}.",
+    "modal.step1.button": "Ottieni Auth Code \u2197",
+    "modal.step1.field": "authorizationCode",
+    "modal.step2.badge": "PASSO 02",
+    "modal.step2.title": "Carica la tua libreria",
+    "modal.step2.body": "Incolla il codice nel campo {input}, poi clicca {fetch}. EpicTracker caricher\xE0 i tuoi giochi e li confronter\xE0 con HowLongToBeat.",
+    "modal.step2.input": "Incolla il tuo auth_code\u2026",
+    "modal.step2.fetch": "Carica"
+  };
+  var dicts = { en, pt, es, ja, ru, de, fr, zh, it };
+  var LANG_KEY = "epictracker.lang.v1";
+  function detectLang() {
+    try {
+      const saved = localStorage.getItem(LANG_KEY);
+      if (saved && saved in dicts) return saved;
+    } catch {
+    }
+    const nav = (typeof navigator !== "undefined" ? navigator.language : "en").slice(0, 2).toLowerCase();
+    return nav in dicts ? nav : "en";
+  }
+  var I18nCtx = (0, import_react.createContext)(null);
+  function interpolate(str, vars) {
+    if (!vars) return str;
+    return str.replace(/\{(\w+)\}/g, (m, k) => k in vars ? String(vars[k]) : m);
+  }
+  function I18nProvider({ children }) {
+    const [lang, setLangState] = (0, import_react.useState)(() => detectLang());
+    const setLang = (l) => {
+      setLangState(l);
+      try {
+        localStorage.setItem(LANG_KEY, l);
+      } catch {
+      }
+    };
+    const t = (key, vars) => {
+      const raw = dicts[lang][key] ?? dicts.en[key] ?? key;
+      return interpolate(raw, vars);
+    };
+    return /* @__PURE__ */ import_react.default.createElement(I18nCtx.Provider, { value: { lang, setLang, t } }, children);
+  }
+  function useI18n() {
+    const c = (0, import_react.useContext)(I18nCtx);
+    if (!c) throw new Error("useI18n must be used inside I18nProvider");
+    return c;
+  }
+  function format(str, parts) {
+    return str.split(/(\{[^}]+\})/g).map((seg, i) => {
+      const m = seg.match(/^\{([^}]+)\}$/);
+      if (m) return /* @__PURE__ */ import_react.default.createElement(import_react.Fragment, { key: i }, parts[m[1]] ?? seg);
+      return /* @__PURE__ */ import_react.default.createElement(import_react.Fragment, { key: i }, seg);
+    });
+  }
+  function LangSelector() {
+    const { lang, setLang, t } = useI18n();
+    const [open, setOpen] = (0, import_react.useState)(false);
+    const ref = (0, import_react.useRef)(null);
+    (0, import_react.useEffect)(() => {
+      if (!open) return;
+      const handler = (e) => {
+        if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+      };
+      document.addEventListener("mousedown", handler);
+      return () => document.removeEventListener("mousedown", handler);
+    }, [open]);
+    const current = LANGS.find((l) => l.code === lang) ?? LANGS[0];
+    return /* @__PURE__ */ import_react.default.createElement("div", { ref, style: { position: "relative", display: "inline-block" } }, /* @__PURE__ */ import_react.default.createElement(
+      "button",
+      {
+        onClick: () => setOpen((o) => !o),
+        "aria-label": t("header.changeLanguage"),
+        title: t("header.changeLanguage"),
+        style: {
+          background: "rgba(88,28,135,0.15)",
+          border: "1px solid rgba(167,139,250,0.25)",
+          borderRadius: 10,
+          height: 38,
+          padding: "0 12px",
+          color: "#c4b5fd",
+          fontFamily: "'Syne', sans-serif",
+          fontSize: 13,
+          fontWeight: 600,
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          gap: 6,
+          backdropFilter: "blur(12px)",
+          transition: "all 0.2s ease",
+          flexShrink: 0
+        },
+        onMouseEnter: (e) => {
+          e.currentTarget.style.color = "#f3e8ff";
+          e.currentTarget.style.borderColor = "rgba(167,139,250,0.5)";
+          e.currentTarget.style.boxShadow = "0 0 16px rgba(124,58,237,0.25)";
+        },
+        onMouseLeave: (e) => {
+          e.currentTarget.style.color = "#c4b5fd";
+          e.currentTarget.style.borderColor = "rgba(167,139,250,0.25)";
+          e.currentTarget.style.boxShadow = "none";
+        }
+      },
+      /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 16, lineHeight: 1 } }, current.flag),
+      /* @__PURE__ */ import_react.default.createElement("span", { style: { fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: "0.1em" } }, current.code.toUpperCase()),
+      /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 9, opacity: 0.6, marginLeft: 2 } }, "\u25BE")
+    ), open && /* @__PURE__ */ import_react.default.createElement(
+      "div",
+      {
+        role: "listbox",
+        style: {
+          position: "absolute",
+          top: "calc(100% + 8px)",
+          right: 0,
+          minWidth: 180,
+          background: "rgba(30,15,50,0.92)",
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+          border: "1px solid rgba(167,139,250,0.25)",
+          borderRadius: 12,
+          boxShadow: "0 12px 40px rgba(13,5,21,0.6), 0 0 24px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.05)",
+          padding: 6,
+          zIndex: 60,
+          maxHeight: 360,
+          overflowY: "auto"
+        }
+      },
+      LANGS.map((opt) => {
+        const active = opt.code === lang;
+        return /* @__PURE__ */ import_react.default.createElement(
+          "button",
+          {
+            key: opt.code,
+            role: "option",
+            "aria-selected": active,
+            onClick: () => {
+              setLang(opt.code);
+              setOpen(false);
+            },
+            style: {
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              width: "100%",
+              padding: "9px 12px",
+              background: active ? "rgba(124,58,237,0.25)" : "transparent",
+              border: "none",
+              borderRadius: 8,
+              color: active ? "#f3e8ff" : "rgba(196,181,253,0.85)",
+              fontFamily: "'Syne', sans-serif",
+              fontSize: 13,
+              fontWeight: active ? 700 : 500,
+              textAlign: "left",
+              cursor: "pointer",
+              transition: "background 0.15s ease, color 0.15s ease"
+            },
+            onMouseEnter: (e) => {
+              if (!active) e.currentTarget.style.background = "rgba(124,58,237,0.12)";
+            },
+            onMouseLeave: (e) => {
+              if (!active) e.currentTarget.style.background = "transparent";
+            }
+          },
+          /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 18, lineHeight: 1 } }, opt.flag),
+          /* @__PURE__ */ import_react.default.createElement("span", { style: { flex: 1 } }, opt.label),
+          /* @__PURE__ */ import_react.default.createElement("span", { style: {
+            fontFamily: "'DM Mono', monospace",
+            fontSize: 10,
+            letterSpacing: "0.1em",
+            color: active ? "rgba(243,232,255,0.7)" : "rgba(196,181,253,0.4)"
+          } }, opt.code.toUpperCase())
+        );
+      })
+    ));
+  }
+
+  // app/javascript/Dashboard.tsx
   var fmt = (h) => {
     if (h === null) return "\u2014";
     if (h >= 100) return `${Math.round(h)}h`;
@@ -21466,7 +22014,7 @@
     if (frac >= 0.25) return `${whole}\xBCh`;
     return `${whole}h`;
   };
-  var GlowOrb = ({ cx, cy, r, color }) => /* @__PURE__ */ import_react.default.createElement(
+  var GlowOrb = ({ cx, cy, r, color }) => /* @__PURE__ */ import_react2.default.createElement(
     "div",
     {
       style: {
@@ -21484,67 +22032,70 @@
       }
     }
   );
-  var TimeRow = ({ label, value }) => /* @__PURE__ */ import_react.default.createElement("tr", { style: { borderBottom: "1px solid rgba(167,139,250,0.1)" } }, /* @__PURE__ */ import_react.default.createElement("td", { style: { padding: "10px 16px", color: "rgba(196,181,253,0.7)", fontSize: 13, fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" } }, label), /* @__PURE__ */ import_react.default.createElement("td", { style: { padding: "10px 16px", textAlign: "right" } }, /* @__PURE__ */ import_react.default.createElement("span", { style: {
+  var TimeRow = ({ label, value }) => /* @__PURE__ */ import_react2.default.createElement("tr", { style: { borderBottom: "1px solid rgba(167,139,250,0.1)" } }, /* @__PURE__ */ import_react2.default.createElement("td", { style: { padding: "10px 16px", color: "rgba(196,181,253,0.7)", fontSize: 13, fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" } }, label), /* @__PURE__ */ import_react2.default.createElement("td", { style: { padding: "10px 16px", textAlign: "right" } }, /* @__PURE__ */ import_react2.default.createElement("span", { style: {
     fontFamily: "'DM Mono', monospace",
     fontSize: 15,
     fontWeight: 600,
     color: value !== null ? "#e9d5ff" : "rgba(196,181,253,0.3)",
     letterSpacing: "0.05em"
   } }, fmt(value))));
-  var FeaturedCard = ({ game }) => /* @__PURE__ */ import_react.default.createElement("div", { style: {
-    display: "flex",
-    gap: 0,
-    background: "rgba(88,28,135,0.15)",
-    backdropFilter: "blur(24px)",
-    WebkitBackdropFilter: "blur(24px)",
-    border: "1px solid rgba(167,139,250,0.2)",
-    borderRadius: 20,
-    overflow: "hidden",
-    boxShadow: "0 0 60px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.05)",
-    minHeight: 320
-  } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { position: "relative", width: 260, flexShrink: 0 } }, game.image_url ? /* @__PURE__ */ import_react.default.createElement(
-    "img",
-    {
-      src: game.image_url,
-      alt: game.name,
-      style: { width: "100%", height: "100%", objectFit: "cover", display: "block" }
-    }
-  ) : /* @__PURE__ */ import_react.default.createElement("div", { style: {
-    width: "100%",
-    height: "100%",
-    minHeight: 320,
-    background: "linear-gradient(135deg, rgba(88,28,135,0.4), rgba(49,10,101,0.6))",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 48, opacity: 0.3 } }, "\u{1F3AE}")), /* @__PURE__ */ import_react.default.createElement("div", { style: {
-    position: "absolute",
-    inset: 0,
-    background: "linear-gradient(to right, transparent 60%, rgba(13,5,21,0.8))"
-  } }), /* @__PURE__ */ import_react.default.createElement("div", { style: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    padding: "24px 20px 20px",
-    background: "linear-gradient(to top, rgba(13,5,21,0.95) 0%, transparent 100%)"
-  } }, /* @__PURE__ */ import_react.default.createElement("div", { style: {
-    fontFamily: "'Syne', sans-serif",
-    fontSize: 18,
-    fontWeight: 700,
-    color: "#f3e8ff",
-    lineHeight: 1.2,
-    marginBottom: 4
-  } }, game.name), game.release_year && /* @__PURE__ */ import_react.default.createElement("div", { style: { fontFamily: "'DM Mono', monospace", fontSize: 12, color: "rgba(196,181,253,0.6)" } }, game.release_year))), /* @__PURE__ */ import_react.default.createElement("div", { style: { flex: 1, padding: "28px 24px", display: "flex", flexDirection: "column", justifyContent: "center" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: {
-    fontFamily: "'Syne', sans-serif",
-    fontSize: 11,
-    fontWeight: 600,
-    letterSpacing: "0.2em",
-    color: "rgba(167,139,250,0.5)",
-    textTransform: "uppercase",
-    marginBottom: 16
-  } }, "Time to Beat"), game.found ? /* @__PURE__ */ import_react.default.createElement("table", { style: { width: "100%", borderCollapse: "collapse" } }, /* @__PURE__ */ import_react.default.createElement("tbody", null, /* @__PURE__ */ import_react.default.createElement(TimeRow, { label: "Main Story", value: game.main_story }), /* @__PURE__ */ import_react.default.createElement(TimeRow, { label: "Main + Extra", value: game.main_extra }), /* @__PURE__ */ import_react.default.createElement(TimeRow, { label: "Completionist", value: game.completionist }))) : /* @__PURE__ */ import_react.default.createElement("div", { style: { color: "rgba(196,181,253,0.35)", fontFamily: "'DM Mono', monospace", fontSize: 13 } }, "Not found on HowLongToBeat")));
-  var MiniCard = ({ game, onClick, active }) => /* @__PURE__ */ import_react.default.createElement(
+  var FeaturedCard = ({ game }) => {
+    const { t } = useI18n();
+    return /* @__PURE__ */ import_react2.default.createElement("div", { style: {
+      display: "flex",
+      gap: 0,
+      background: "rgba(88,28,135,0.15)",
+      backdropFilter: "blur(24px)",
+      WebkitBackdropFilter: "blur(24px)",
+      border: "1px solid rgba(167,139,250,0.2)",
+      borderRadius: 20,
+      overflow: "hidden",
+      boxShadow: "0 0 60px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.05)",
+      minHeight: 320
+    } }, /* @__PURE__ */ import_react2.default.createElement("div", { style: { position: "relative", width: 260, flexShrink: 0 } }, game.image_url ? /* @__PURE__ */ import_react2.default.createElement(
+      "img",
+      {
+        src: game.image_url,
+        alt: game.name,
+        style: { width: "100%", height: "100%", objectFit: "cover", display: "block" }
+      }
+    ) : /* @__PURE__ */ import_react2.default.createElement("div", { style: {
+      width: "100%",
+      height: "100%",
+      minHeight: 320,
+      background: "linear-gradient(135deg, rgba(88,28,135,0.4), rgba(49,10,101,0.6))",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    } }, /* @__PURE__ */ import_react2.default.createElement("span", { style: { fontSize: 48, opacity: 0.3 } }, "\u{1F3AE}")), /* @__PURE__ */ import_react2.default.createElement("div", { style: {
+      position: "absolute",
+      inset: 0,
+      background: "linear-gradient(to right, transparent 60%, rgba(13,5,21,0.8))"
+    } }), /* @__PURE__ */ import_react2.default.createElement("div", { style: {
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      right: 0,
+      padding: "24px 20px 20px",
+      background: "linear-gradient(to top, rgba(13,5,21,0.95) 0%, transparent 100%)"
+    } }, /* @__PURE__ */ import_react2.default.createElement("div", { style: {
+      fontFamily: "'Syne', sans-serif",
+      fontSize: 18,
+      fontWeight: 700,
+      color: "#f3e8ff",
+      lineHeight: 1.2,
+      marginBottom: 4
+    } }, game.name), game.release_year && /* @__PURE__ */ import_react2.default.createElement("div", { style: { fontFamily: "'DM Mono', monospace", fontSize: 12, color: "rgba(196,181,253,0.6)" } }, game.release_year))), /* @__PURE__ */ import_react2.default.createElement("div", { style: { flex: 1, padding: "28px 24px", display: "flex", flexDirection: "column", justifyContent: "center" } }, /* @__PURE__ */ import_react2.default.createElement("div", { style: {
+      fontFamily: "'Syne', sans-serif",
+      fontSize: 11,
+      fontWeight: 600,
+      letterSpacing: "0.2em",
+      color: "rgba(167,139,250,0.5)",
+      textTransform: "uppercase",
+      marginBottom: 16
+    } }, t("library.timeToBeat")), game.found ? /* @__PURE__ */ import_react2.default.createElement("table", { style: { width: "100%", borderCollapse: "collapse" } }, /* @__PURE__ */ import_react2.default.createElement("tbody", null, /* @__PURE__ */ import_react2.default.createElement(TimeRow, { label: t("library.mainStory"), value: game.main_story }), /* @__PURE__ */ import_react2.default.createElement(TimeRow, { label: t("library.mainExtra"), value: game.main_extra }), /* @__PURE__ */ import_react2.default.createElement(TimeRow, { label: t("library.completionist"), value: game.completionist }))) : /* @__PURE__ */ import_react2.default.createElement("div", { style: { color: "rgba(196,181,253,0.35)", fontFamily: "'DM Mono', monospace", fontSize: 13 } }, t("library.notFound"))));
+  };
+  var MiniCard = ({ game, onClick, active }) => /* @__PURE__ */ import_react2.default.createElement(
     "div",
     {
       onClick,
@@ -21560,28 +22111,28 @@
         transform: active ? "translateY(-2px)" : "none"
       }
     },
-    /* @__PURE__ */ import_react.default.createElement("div", { style: { position: "relative", aspectRatio: "3/4", overflow: "hidden" } }, game.image_url ? /* @__PURE__ */ import_react.default.createElement(
+    /* @__PURE__ */ import_react2.default.createElement("div", { style: { position: "relative", aspectRatio: "3/4", overflow: "hidden" } }, game.image_url ? /* @__PURE__ */ import_react2.default.createElement(
       "img",
       {
         src: game.image_url,
         alt: game.name,
         style: { width: "100%", height: "100%", objectFit: "cover", display: "block" }
       }
-    ) : /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    ) : /* @__PURE__ */ import_react2.default.createElement("div", { style: {
       width: "100%",
       height: "100%",
       background: "linear-gradient(135deg, rgba(88,28,135,0.4), rgba(49,10,101,0.6))",
       display: "flex",
       alignItems: "center",
       justifyContent: "center"
-    } }, /* @__PURE__ */ import_react.default.createElement("span", { style: { fontSize: 28, opacity: 0.3 } }, "\u{1F3AE}")), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    } }, /* @__PURE__ */ import_react2.default.createElement("span", { style: { fontSize: 28, opacity: 0.3 } }, "\u{1F3AE}")), /* @__PURE__ */ import_react2.default.createElement("div", { style: {
       position: "absolute",
       bottom: 0,
       left: 0,
       right: 0,
       padding: "20px 10px 10px",
       background: "linear-gradient(to top, rgba(13,5,21,0.95), transparent)"
-    } }, /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    } }, /* @__PURE__ */ import_react2.default.createElement("div", { style: {
       fontFamily: "'Syne', sans-serif",
       fontSize: 11,
       fontWeight: 600,
@@ -21595,52 +22146,54 @@
   );
   var ONBOARDING_KEY = "epictracker.onboarded.v1";
   var OnboardingModal = ({ onClose }) => {
-    const [step, setStep] = (0, import_react.useState)(0);
+    const { t } = useI18n();
+    const [step, setStep] = (0, import_react2.useState)(0);
+    const pillMono = {
+      fontFamily: "'DM Mono', monospace",
+      color: "#e9d5ff",
+      background: "rgba(124,58,237,0.25)",
+      border: "1px solid rgba(167,139,250,0.3)",
+      borderRadius: 6,
+      padding: "2px 8px",
+      fontSize: 12
+    };
+    const highlight = { color: "#f0abfc", fontWeight: 600 };
+    const pillFetch = {
+      fontFamily: "'Syne', sans-serif",
+      fontWeight: 700,
+      color: "#f3e8ff",
+      background: "linear-gradient(135deg, #7c3aed, #a855f7)",
+      borderRadius: 6,
+      padding: "2px 10px",
+      fontSize: 12,
+      letterSpacing: "0.05em"
+    };
     const slides = [
       {
-        badge: "WELCOME",
-        title: "Meet EpicTracker",
-        body: /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, "Your", " ", /* @__PURE__ */ import_react.default.createElement("span", { style: { color: "#f0abfc", fontWeight: 600 } }, "Epic Games"), " ", "library, paired with", " ", /* @__PURE__ */ import_react.default.createElement("span", { style: { color: "#f0abfc", fontWeight: 600 } }, "HowLongToBeat"), " ", "completion times \u2014 in one place. See how many hours each game in your collection will actually take, from a quick main story run to a full completionist playthrough. Two short steps and you're in."),
+        badge: t("modal.welcome.badge"),
+        title: t("modal.welcome.title"),
+        body: format(t("modal.welcome.body"), {
+          epic: /* @__PURE__ */ import_react2.default.createElement("span", { style: highlight }, t("modal.welcome.epic")),
+          hltb: /* @__PURE__ */ import_react2.default.createElement("span", { style: highlight }, t("modal.welcome.hltb"))
+        }),
         icon: "\u{1F3AE}"
       },
       {
-        badge: "STEP 01",
-        title: "Get your auth code",
-        body: /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, "Click the", " ", /* @__PURE__ */ import_react.default.createElement("span", { style: {
-          fontFamily: "'DM Mono', monospace",
-          color: "#e9d5ff",
-          background: "rgba(124,58,237,0.25)",
-          border: "1px solid rgba(167,139,250,0.3)",
-          borderRadius: 6,
-          padding: "2px 8px",
-          fontSize: 12
-        } }, "Get Auth Code \u2197"), " ", "button at the top right. A new tab will open with a JSON response from Epic Games. Copy the value of the", " ", /* @__PURE__ */ import_react.default.createElement("span", { style: {
-          fontFamily: "'DM Mono', monospace",
-          color: "#f0abfc"
-        } }, "authorizationCode"), " ", "field."),
+        badge: t("modal.step1.badge"),
+        title: t("modal.step1.title"),
+        body: format(t("modal.step1.body"), {
+          button: /* @__PURE__ */ import_react2.default.createElement("span", { style: pillMono }, t("modal.step1.button")),
+          field: /* @__PURE__ */ import_react2.default.createElement("span", { style: { fontFamily: "'DM Mono', monospace", color: "#f0abfc" } }, t("modal.step1.field"))
+        }),
         icon: "\u{1F511}"
       },
       {
-        badge: "STEP 02",
-        title: "Fetch your library",
-        body: /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, "Paste the code into the", " ", /* @__PURE__ */ import_react.default.createElement("span", { style: {
-          fontFamily: "'DM Mono', monospace",
-          color: "#e9d5ff",
-          background: "rgba(124,58,237,0.25)",
-          border: "1px solid rgba(167,139,250,0.3)",
-          borderRadius: 6,
-          padding: "2px 8px",
-          fontSize: 12
-        } }, "Paste your auth_code\u2026"), " ", "input, then click", " ", /* @__PURE__ */ import_react.default.createElement("span", { style: {
-          fontFamily: "'Syne', sans-serif",
-          fontWeight: 700,
-          color: "#f3e8ff",
-          background: "linear-gradient(135deg, #7c3aed, #a855f7)",
-          borderRadius: 6,
-          padding: "2px 10px",
-          fontSize: 12,
-          letterSpacing: "0.05em"
-        } }, "Fetch"), ". EpicTracker will load your games and match them against HowLongToBeat."),
+        badge: t("modal.step2.badge"),
+        title: t("modal.step2.title"),
+        body: format(t("modal.step2.body"), {
+          input: /* @__PURE__ */ import_react2.default.createElement("span", { style: pillMono }, t("modal.step2.input")),
+          fetch: /* @__PURE__ */ import_react2.default.createElement("span", { style: pillFetch }, t("modal.step2.fetch"))
+        }),
         icon: "\u{1F4DA}"
       }
     ];
@@ -21653,7 +22206,7 @@
       }
       onClose();
     };
-    return /* @__PURE__ */ import_react.default.createElement(
+    return /* @__PURE__ */ import_react2.default.createElement(
       "div",
       {
         onClick: finish,
@@ -21671,8 +22224,8 @@
           animation: "fadeIn 0.25s ease"
         }
       },
-      /* @__PURE__ */ import_react.default.createElement("style", null, `@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }`),
-      /* @__PURE__ */ import_react.default.createElement(
+      /* @__PURE__ */ import_react2.default.createElement("style", null, `@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }`),
+      /* @__PURE__ */ import_react2.default.createElement(
         "div",
         {
           onClick: (e) => e.stopPropagation(),
@@ -21689,11 +22242,11 @@
             overflow: "hidden"
           }
         },
-        /* @__PURE__ */ import_react.default.createElement(
+        /* @__PURE__ */ import_react2.default.createElement(
           "button",
           {
             onClick: finish,
-            "aria-label": "Close",
+            "aria-label": t("modal.close"),
             style: {
               position: "absolute",
               top: 14,
@@ -21723,7 +22276,7 @@
           },
           "\xD7"
         ),
-        /* @__PURE__ */ import_react.default.createElement("div", { style: { padding: "44px 40px 32px" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 48, marginBottom: 20, textAlign: "center" } }, current.icon), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+        /* @__PURE__ */ import_react2.default.createElement("div", { style: { padding: "44px 40px 32px" } }, /* @__PURE__ */ import_react2.default.createElement("div", { style: { fontSize: 48, marginBottom: 20, textAlign: "center" } }, current.icon), /* @__PURE__ */ import_react2.default.createElement("div", { style: {
           fontFamily: "'Syne', sans-serif",
           fontSize: 11,
           fontWeight: 600,
@@ -21732,7 +22285,7 @@
           textTransform: "uppercase",
           marginBottom: 12,
           textAlign: "center"
-        } }, current.badge), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+        } }, current.badge), /* @__PURE__ */ import_react2.default.createElement("div", { style: {
           fontFamily: "'Syne', sans-serif",
           fontSize: 24,
           fontWeight: 700,
@@ -21742,7 +22295,7 @@
           marginBottom: 18,
           textAlign: "center",
           letterSpacing: "0.02em"
-        } }, current.title), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+        } }, current.title), /* @__PURE__ */ import_react2.default.createElement("div", { style: {
           fontFamily: "'DM Mono', monospace",
           fontSize: 13,
           lineHeight: 1.7,
@@ -21750,13 +22303,13 @@
           textAlign: "center",
           minHeight: 110
         } }, current.body)),
-        /* @__PURE__ */ import_react.default.createElement("div", { style: {
+        /* @__PURE__ */ import_react2.default.createElement("div", { style: {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           padding: "20px 28px 28px",
           gap: 16
-        } }, /* @__PURE__ */ import_react.default.createElement(
+        } }, /* @__PURE__ */ import_react2.default.createElement(
           "button",
           {
             onClick: () => setStep((s) => Math.max(0, s - 1)),
@@ -21776,13 +22329,13 @@
               opacity: step === 0 ? 0.4 : 1
             }
           },
-          "\u2190 BACK"
-        ), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 8 } }, slides.map((_, i) => /* @__PURE__ */ import_react.default.createElement(
+          t("modal.back")
+        ), /* @__PURE__ */ import_react2.default.createElement("div", { style: { display: "flex", gap: 8 } }, slides.map((_, i) => /* @__PURE__ */ import_react2.default.createElement(
           "button",
           {
             key: i,
             onClick: () => setStep(i),
-            "aria-label": `Go to step ${i + 1}`,
+            "aria-label": t("modal.dotAria", { n: i + 1 }),
             style: {
               width: i === step ? 24 : 8,
               height: 8,
@@ -21795,7 +22348,7 @@
               transition: "all 0.3s ease"
             }
           }
-        ))), /* @__PURE__ */ import_react.default.createElement(
+        ))), /* @__PURE__ */ import_react2.default.createElement(
           "button",
           {
             onClick: () => isLast ? finish() : setStep((s) => s + 1),
@@ -21814,20 +22367,21 @@
               transition: "all 0.2s ease"
             }
           },
-          isLast ? "GOT IT" : "NEXT \u2192"
+          isLast ? t("modal.gotIt") : t("modal.next")
         ))
       )
     );
   };
   function Dashboard() {
-    const [authCode, setAuthCode] = (0, import_react.useState)("");
-    const [games, setGames] = (0, import_react.useState)([]);
-    const [featured, setFeatured] = (0, import_react.useState)(null);
-    const [loading, setLoading] = (0, import_react.useState)(false);
-    const [error, setError] = (0, import_react.useState)(null);
-    const [loadingGame, setLoadingGame] = (0, import_react.useState)(null);
-    const [showOnboarding, setShowOnboarding] = (0, import_react.useState)(false);
-    (0, import_react.useEffect)(() => {
+    const { t } = useI18n();
+    const [authCode, setAuthCode] = (0, import_react2.useState)("");
+    const [games, setGames] = (0, import_react2.useState)([]);
+    const [featured, setFeatured] = (0, import_react2.useState)(null);
+    const [loading, setLoading] = (0, import_react2.useState)(false);
+    const [error, setError] = (0, import_react2.useState)(null);
+    const [loadingGame, setLoadingGame] = (0, import_react2.useState)(null);
+    const [showOnboarding, setShowOnboarding] = (0, import_react2.useState)(false);
+    (0, import_react2.useEffect)(() => {
       try {
         if (!localStorage.getItem(ONBOARDING_KEY)) setShowOnboarding(true);
       } catch {
@@ -21849,7 +22403,7 @@
         }
         const names = (data.library || []).map((g) => g.name);
         if (!names.length) {
-          setError("No games found.");
+          setError(t("error.noGames"));
           return;
         }
         const result = [];
@@ -21869,27 +22423,27 @@
         }
         setLoadingGame(null);
       } catch {
-        setError("Failed to connect to server.");
+        setError(t("error.serverConnection"));
       } finally {
         setLoading(false);
         setLoadingGame(null);
       }
     };
     const others = featured ? games.filter((g) => g.name !== featured.name) : games;
-    return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("link", { rel: "preconnect", href: "https://fonts.googleapis.com" }), /* @__PURE__ */ import_react.default.createElement("link", { href: "https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap", rel: "stylesheet" }), showOnboarding && /* @__PURE__ */ import_react.default.createElement(OnboardingModal, { onClose: () => setShowOnboarding(false) }), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    return /* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, /* @__PURE__ */ import_react2.default.createElement("link", { rel: "preconnect", href: "https://fonts.googleapis.com" }), /* @__PURE__ */ import_react2.default.createElement("link", { href: "https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap", rel: "stylesheet" }), showOnboarding && /* @__PURE__ */ import_react2.default.createElement(OnboardingModal, { onClose: () => setShowOnboarding(false) }), /* @__PURE__ */ import_react2.default.createElement("div", { style: {
       minHeight: "100vh",
       background: "#0D0515",
       position: "relative",
       overflow: "hidden",
       fontFamily: "'Syne', sans-serif"
-    } }, /* @__PURE__ */ import_react.default.createElement(GlowOrb, { cx: "15%", cy: "20%", r: "500px", color: "rgba(109,40,217,0.18)" }), /* @__PURE__ */ import_react.default.createElement(GlowOrb, { cx: "80%", cy: "60%", r: "400px", color: "rgba(139,92,246,0.12)" }), /* @__PURE__ */ import_react.default.createElement(GlowOrb, { cx: "50%", cy: "90%", r: "300px", color: "rgba(168,85,247,0.1)" }), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    } }, /* @__PURE__ */ import_react2.default.createElement(GlowOrb, { cx: "15%", cy: "20%", r: "500px", color: "rgba(109,40,217,0.18)" }), /* @__PURE__ */ import_react2.default.createElement(GlowOrb, { cx: "80%", cy: "60%", r: "400px", color: "rgba(139,92,246,0.12)" }), /* @__PURE__ */ import_react2.default.createElement(GlowOrb, { cx: "50%", cy: "90%", r: "300px", color: "rgba(168,85,247,0.1)" }), /* @__PURE__ */ import_react2.default.createElement("div", { style: {
       position: "fixed",
       inset: 0,
       pointerEvents: "none",
       zIndex: 1,
       backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E")`,
       opacity: 0.4
-    } }), /* @__PURE__ */ import_react.default.createElement("div", { style: { position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", padding: "32px 24px" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 40 } }, /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    } }), /* @__PURE__ */ import_react2.default.createElement("div", { style: { position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", padding: "32px 24px" } }, /* @__PURE__ */ import_react2.default.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 40 } }, /* @__PURE__ */ import_react2.default.createElement("div", { style: {
       fontFamily: "'Syne', sans-serif",
       fontSize: 22,
       fontWeight: 800,
@@ -21897,7 +22451,7 @@
       background: "linear-gradient(135deg, #e9d5ff, #a855f7)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent"
-    } }, "EPIC", /* @__PURE__ */ import_react.default.createElement("span", { style: { fontWeight: 400 } }, "TRACKER")), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 10, alignItems: "center" } }, /* @__PURE__ */ import_react.default.createElement(
+    } }, "EPIC", /* @__PURE__ */ import_react2.default.createElement("span", { style: { fontWeight: 400 } }, "TRACKER")), /* @__PURE__ */ import_react2.default.createElement("div", { style: { display: "flex", gap: 10, alignItems: "center" } }, /* @__PURE__ */ import_react2.default.createElement(
       "a",
       {
         href: "https://www.epicgames.com/id/api/redirect?clientId=34a02cf8f4414e29b15921876da36f9a&responseType=code",
@@ -21916,12 +22470,12 @@
         onMouseEnter: (e) => e.currentTarget.style.color = "rgba(196,181,253,0.9)",
         onMouseLeave: (e) => e.currentTarget.style.color = "rgba(196,181,253,0.5)"
       },
-      "Get Auth Code \u2197"
-    ), /* @__PURE__ */ import_react.default.createElement(
+      t("header.getAuthCode")
+    ), /* @__PURE__ */ import_react2.default.createElement(
       "input",
       {
         type: "text",
-        placeholder: "Paste your auth_code\u2026",
+        placeholder: t("header.placeholder"),
         value: authCode,
         onChange: (e) => setAuthCode(e.target.value),
         onKeyDown: (e) => e.key === "Enter" && fetchLibrary(),
@@ -21938,7 +22492,7 @@
           backdropFilter: "blur(12px)"
         }
       }
-    ), /* @__PURE__ */ import_react.default.createElement(
+    ), /* @__PURE__ */ import_react2.default.createElement(
       "button",
       {
         onClick: fetchLibrary,
@@ -21959,13 +22513,13 @@
           opacity: loading ? 0.6 : 1
         }
       },
-      loading ? "Loading\u2026" : "Fetch"
-    ), /* @__PURE__ */ import_react.default.createElement(
+      loading ? t("header.loading") : t("header.fetch")
+    ), /* @__PURE__ */ import_react2.default.createElement(
       "button",
       {
         onClick: () => setShowOnboarding(true),
-        "aria-label": "Show instructions",
-        title: "How to use",
+        "aria-label": t("header.help"),
+        title: t("header.helpTitle"),
         style: {
           background: "rgba(88,28,135,0.15)",
           border: "1px solid rgba(167,139,250,0.25)",
@@ -21997,22 +22551,22 @@
         }
       },
       "?"
-    ))), games.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8, marginBottom: 24 } }, /* @__PURE__ */ import_react.default.createElement("span", { style: {
+    ), /* @__PURE__ */ import_react2.default.createElement(LangSelector, null))), games.length > 0 && /* @__PURE__ */ import_react2.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8, marginBottom: 24 } }, /* @__PURE__ */ import_react2.default.createElement("span", { style: {
       fontFamily: "'DM Mono', monospace",
       fontSize: 12,
       color: "rgba(196,181,253,0.4)",
       letterSpacing: "0.1em"
-    } }, "LIBRARY"), /* @__PURE__ */ import_react.default.createElement("span", { style: {
+    } }, t("library.label")), /* @__PURE__ */ import_react2.default.createElement("span", { style: {
       fontFamily: "'Syne', sans-serif",
       fontSize: 13,
       fontWeight: 700,
       color: "#a855f7"
-    } }, games.length), /* @__PURE__ */ import_react.default.createElement("span", { style: {
+    } }, games.length), /* @__PURE__ */ import_react2.default.createElement("span", { style: {
       fontFamily: "'DM Mono', monospace",
       fontSize: 12,
       color: "rgba(196,181,253,0.4)",
       letterSpacing: "0.1em"
-    } }, loadingGame ? "GAMES LOADED" : "GAMES")), error && /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    } }, loadingGame ? t("library.gamesLoaded") : t("library.games"))), error && /* @__PURE__ */ import_react2.default.createElement("div", { style: {
       background: "rgba(220,38,38,0.1)",
       border: "1px solid rgba(220,38,38,0.3)",
       borderRadius: 12,
@@ -22021,7 +22575,7 @@
       fontFamily: "'DM Mono', monospace",
       fontSize: 13,
       marginBottom: 24
-    } }, error), loadingGame && /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    } }, error), loadingGame && /* @__PURE__ */ import_react2.default.createElement("div", { style: {
       display: "flex",
       alignItems: "center",
       gap: 12,
@@ -22029,18 +22583,18 @@
       color: "rgba(196,181,253,0.6)",
       fontFamily: "'DM Mono', monospace",
       fontSize: 12
-    } }, /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    } }, /* @__PURE__ */ import_react2.default.createElement("div", { style: {
       width: 6,
       height: 6,
       borderRadius: "50%",
       background: "#a855f7",
       boxShadow: "0 0 8px #a855f7",
       animation: "pulse 1s infinite"
-    } }), "Fetching ", /* @__PURE__ */ import_react.default.createElement("span", { style: { color: "#c4b5fd", marginLeft: 4 } }, loadingGame), "\u2026", /* @__PURE__ */ import_react.default.createElement("style", null, `@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`)), featured && /* @__PURE__ */ import_react.default.createElement("div", { style: { marginBottom: 32 } }, /* @__PURE__ */ import_react.default.createElement(FeaturedCard, { game: featured })), others.length > 0 && /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    } }), t("library.fetchingPrefix"), " ", /* @__PURE__ */ import_react2.default.createElement("span", { style: { color: "#c4b5fd", marginLeft: 4 } }, loadingGame), "\u2026", /* @__PURE__ */ import_react2.default.createElement("style", null, `@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`)), featured && /* @__PURE__ */ import_react2.default.createElement("div", { style: { marginBottom: 32 } }, /* @__PURE__ */ import_react2.default.createElement(FeaturedCard, { game: featured })), others.length > 0 && /* @__PURE__ */ import_react2.default.createElement("div", { style: {
       display: "grid",
       gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))",
       gap: 14
-    } }, others.map((game) => /* @__PURE__ */ import_react.default.createElement(
+    } }, others.map((game) => /* @__PURE__ */ import_react2.default.createElement(
       MiniCard,
       {
         key: game.name,
@@ -22048,17 +22602,19 @@
         active: false,
         onClick: () => setFeatured(game)
       }
-    ))), !loading && games.length === 0 && !error && /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    ))), !loading && games.length === 0 && !error && /* @__PURE__ */ import_react2.default.createElement("div", { style: {
       textAlign: "center",
       padding: "80px 0",
       color: "rgba(196,181,253,0.3)"
-    } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 48, marginBottom: 16 } }, "\u{1F3AE}"), /* @__PURE__ */ import_react.default.createElement("div", { style: { fontFamily: "'Syne', sans-serif", fontSize: 15, fontWeight: 600, letterSpacing: "0.1em" } }, "ENTER YOUR AUTH CODE TO BEGIN")))));
+    } }, /* @__PURE__ */ import_react2.default.createElement("div", { style: { fontSize: 48, marginBottom: 16 } }, "\u{1F3AE}"), /* @__PURE__ */ import_react2.default.createElement("div", { style: { fontFamily: "'Syne', sans-serif", fontSize: 15, fontWeight: 600, letterSpacing: "0.1em" } }, t("empty.message"))))));
   }
 
   // app/javascript/application.tsx
   var container = document.getElementById("root");
   if (container) {
-    (0, import_client.createRoot)(container).render(/* @__PURE__ */ import_react2.default.createElement(Dashboard, null));
+    (0, import_client.createRoot)(container).render(
+      /* @__PURE__ */ import_react3.default.createElement(I18nProvider, null, /* @__PURE__ */ import_react3.default.createElement(Dashboard, null))
+    );
   }
 })();
 /*! Bundled license information:
