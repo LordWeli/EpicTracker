@@ -631,6 +631,42 @@ export default function Dashboard() {
               >
                 {loading ? "Loading…" : "Fetch"}
               </button>
+              <button
+                onClick={() => setShowOnboarding(true)}
+                aria-label="Show instructions"
+                title="How to use"
+                style={{
+                  background: "rgba(88,28,135,0.15)",
+                  border: "1px solid rgba(167,139,250,0.25)",
+                  borderRadius: 10,
+                  width: 38,
+                  height: 38,
+                  color: "#c4b5fd",
+                  fontFamily: "'Syne', sans-serif",
+                  fontSize: 16,
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backdropFilter: "blur(12px)",
+                  transition: "all 0.2s ease",
+                  flexShrink: 0,
+                  marginLeft: 18,
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.color = "#f3e8ff"
+                  e.currentTarget.style.borderColor = "rgba(167,139,250,0.5)"
+                  e.currentTarget.style.boxShadow = "0 0 16px rgba(124,58,237,0.25)"
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = "#c4b5fd"
+                  e.currentTarget.style.borderColor = "rgba(167,139,250,0.25)"
+                  e.currentTarget.style.boxShadow = "none"
+                }}
+              >
+                ?
+              </button>
             </div>
           </div>
 
