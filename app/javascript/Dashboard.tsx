@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 // ── Types ────────────────────────────────────────────────────────────────────
 interface Game {
@@ -200,6 +200,289 @@ const MiniCard = ({ game, onClick, active }: { game: Game; onClick: () => void; 
   </div>
 )
 
+// ── Onboarding Modal ─────────────────────────────────────────────────────────
+const ONBOARDING_KEY = "epictracker.onboarded.v1"
+
+const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
+  const [step, setStep] = useState(0)
+
+  const slides = [
+    {
+      badge: "WELCOME",
+      title: "Meet EpicTracker",
+      body: (
+        <>
+          Your{" "}
+          <span style={{ color: "#f0abfc", fontWeight: 600 }}>Epic Games</span>{" "}
+          library, paired with{" "}
+          <span style={{ color: "#f0abfc", fontWeight: 600 }}>HowLongToBeat</span>{" "}
+          completion times — in one place. See how many hours each game in your
+          collection will actually take, from a quick main story run to a full
+          completionist playthrough. Two short steps and you're in.
+        </>
+      ),
+      icon: "🎮",
+    },
+    {
+      badge: "STEP 01",
+      title: "Get your auth code",
+      body: (
+        <>
+          Click the{" "}
+          <span style={{
+            fontFamily: "'DM Mono', monospace",
+            color: "#e9d5ff",
+            background: "rgba(124,58,237,0.25)",
+            border: "1px solid rgba(167,139,250,0.3)",
+            borderRadius: 6,
+            padding: "2px 8px",
+            fontSize: 12,
+          }}>
+            Get Auth Code ↗
+          </span>{" "}
+          button at the top right. A new tab will open with a JSON response from Epic Games. Copy the value of the{" "}
+          <span style={{
+            fontFamily: "'DM Mono', monospace",
+            color: "#f0abfc",
+          }}>
+            authorizationCode
+          </span>{" "}
+          field.
+        </>
+      ),
+      icon: "🔑",
+    },
+    {
+      badge: "STEP 02",
+      title: "Fetch your library",
+      body: (
+        <>
+          Paste the code into the{" "}
+          <span style={{
+            fontFamily: "'DM Mono', monospace",
+            color: "#e9d5ff",
+            background: "rgba(124,58,237,0.25)",
+            border: "1px solid rgba(167,139,250,0.3)",
+            borderRadius: 6,
+            padding: "2px 8px",
+            fontSize: 12,
+          }}>
+            Paste your auth_code…
+          </span>{" "}
+          input, then click{" "}
+          <span style={{
+            fontFamily: "'Syne', sans-serif",
+            fontWeight: 700,
+            color: "#f3e8ff",
+            background: "linear-gradient(135deg, #7c3aed, #a855f7)",
+            borderRadius: 6,
+            padding: "2px 10px",
+            fontSize: 12,
+            letterSpacing: "0.05em",
+          }}>
+            Fetch
+          </span>
+          . EpicTracker will load your games and match them against HowLongToBeat.
+        </>
+      ),
+      icon: "📚",
+    },
+  ]
+
+  const current = slides[step]
+  const isLast = step === slides.length - 1
+
+  const finish = () => {
+    try { localStorage.setItem(ONBOARDING_KEY, "1") } catch {}
+    onClose()
+  }
+
+  return (
+    <div
+      onClick={finish}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 100,
+        background: "rgba(13,5,21,0.75)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 24,
+        animation: "fadeIn 0.25s ease",
+      }}
+    >
+      <style>{`@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }`}</style>
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{
+          position: "relative",
+          width: "100%",
+          maxWidth: 540,
+          background: "rgba(88,28,135,0.18)",
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+          border: "1px solid rgba(167,139,250,0.25)",
+          borderRadius: 24,
+          boxShadow: "0 0 80px rgba(124,58,237,0.25), inset 0 1px 0 rgba(255,255,255,0.05)",
+          overflow: "hidden",
+        }}
+      >
+        <button
+          onClick={finish}
+          aria-label="Close"
+          style={{
+            position: "absolute",
+            top: 14,
+            right: 14,
+            background: "transparent",
+            border: "none",
+            color: "rgba(196,181,253,0.5)",
+            fontSize: 20,
+            cursor: "pointer",
+            width: 32,
+            height: 32,
+            borderRadius: 8,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "all 0.2s ease",
+            zIndex: 1,
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.color = "#e9d5ff"
+            e.currentTarget.style.background = "rgba(167,139,250,0.1)"
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.color = "rgba(196,181,253,0.5)"
+            e.currentTarget.style.background = "transparent"
+          }}
+        >
+          ×
+        </button>
+
+        <div style={{ padding: "44px 40px 32px" }}>
+          <div style={{ fontSize: 48, marginBottom: 20, textAlign: "center" }}>
+            {current.icon}
+          </div>
+
+          <div style={{
+            fontFamily: "'Syne', sans-serif",
+            fontSize: 11,
+            fontWeight: 600,
+            letterSpacing: "0.25em",
+            color: "rgba(167,139,250,0.6)",
+            textTransform: "uppercase",
+            marginBottom: 12,
+            textAlign: "center",
+          }}>
+            {current.badge}
+          </div>
+
+          <div style={{
+            fontFamily: "'Syne', sans-serif",
+            fontSize: 24,
+            fontWeight: 700,
+            background: "linear-gradient(135deg, #e9d5ff, #a855f7)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            marginBottom: 18,
+            textAlign: "center",
+            letterSpacing: "0.02em",
+          }}>
+            {current.title}
+          </div>
+
+          <div style={{
+            fontFamily: "'DM Mono', monospace",
+            fontSize: 13,
+            lineHeight: 1.7,
+            color: "rgba(196,181,253,0.8)",
+            textAlign: "center",
+            minHeight: 110,
+          }}>
+            {current.body}
+          </div>
+        </div>
+
+        <div style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "20px 28px 28px",
+          gap: 16,
+        }}>
+          <button
+            onClick={() => setStep(s => Math.max(0, s - 1))}
+            disabled={step === 0}
+            style={{
+              background: "transparent",
+              border: "1px solid rgba(167,139,250,0.2)",
+              borderRadius: 10,
+              padding: "10px 18px",
+              color: step === 0 ? "rgba(196,181,253,0.25)" : "rgba(196,181,253,0.8)",
+              fontFamily: "'Syne', sans-serif",
+              fontSize: 12,
+              fontWeight: 600,
+              letterSpacing: "0.1em",
+              cursor: step === 0 ? "not-allowed" : "pointer",
+              transition: "all 0.2s ease",
+              opacity: step === 0 ? 0.4 : 1,
+            }}
+          >
+            ← BACK
+          </button>
+
+          <div style={{ display: "flex", gap: 8 }}>
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setStep(i)}
+                aria-label={`Go to step ${i + 1}`}
+                style={{
+                  width: i === step ? 24 : 8,
+                  height: 8,
+                  borderRadius: 4,
+                  border: "none",
+                  background: i === step
+                    ? "linear-gradient(135deg, #7c3aed, #a855f7)"
+                    : "rgba(167,139,250,0.25)",
+                  boxShadow: i === step ? "0 0 12px rgba(124,58,237,0.5)" : "none",
+                  cursor: "pointer",
+                  padding: 0,
+                  transition: "all 0.3s ease",
+                }}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={() => isLast ? finish() : setStep(s => s + 1)}
+            style={{
+              background: "linear-gradient(135deg, #7c3aed, #a855f7)",
+              border: "1px solid rgba(167,139,250,0.3)",
+              borderRadius: 10,
+              padding: "10px 22px",
+              color: "#f3e8ff",
+              fontFamily: "'Syne', sans-serif",
+              fontSize: 12,
+              fontWeight: 600,
+              cursor: "pointer",
+              letterSpacing: "0.1em",
+              boxShadow: "0 0 20px rgba(124,58,237,0.3)",
+              transition: "all 0.2s ease",
+            }}
+          >
+            {isLast ? "GOT IT" : "NEXT →"}
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ── Main App ─────────────────────────────────────────────────────────────────
 export default function Dashboard() {
   const [authCode, setAuthCode]       = useState("")
@@ -208,6 +491,15 @@ export default function Dashboard() {
   const [loading, setLoading]         = useState(false)
   const [error, setError]             = useState<string | null>(null)
   const [loadingGame, setLoadingGame] = useState<string | null>(null)
+  const [showOnboarding, setShowOnboarding] = useState(false)
+
+  useEffect(() => {
+    try {
+      if (!localStorage.getItem(ONBOARDING_KEY)) setShowOnboarding(true)
+    } catch {
+      setShowOnboarding(true)
+    }
+  }, [])
 
   const fetchLibrary = async () => {
     if (!authCode.trim()) return
@@ -257,6 +549,8 @@ export default function Dashboard() {
     <>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+      {showOnboarding && <OnboardingModal onClose={() => setShowOnboarding(false)} />}
 
       <div style={{
         minHeight: "100vh",
@@ -352,6 +646,42 @@ export default function Dashboard() {
                 }}
               >
                 {loading ? "Loading…" : "Fetch"}
+              </button>
+              <button
+                onClick={() => setShowOnboarding(true)}
+                aria-label="Show instructions"
+                title="How to use"
+                style={{
+                  background: "rgba(88,28,135,0.15)",
+                  border: "1px solid rgba(167,139,250,0.25)",
+                  borderRadius: 10,
+                  width: 38,
+                  height: 38,
+                  color: "#c4b5fd",
+                  fontFamily: "'Syne', sans-serif",
+                  fontSize: 16,
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backdropFilter: "blur(12px)",
+                  transition: "all 0.2s ease",
+                  flexShrink: 0,
+                  marginLeft: 18,
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.color = "#f3e8ff"
+                  e.currentTarget.style.borderColor = "rgba(167,139,250,0.5)"
+                  e.currentTarget.style.boxShadow = "0 0 16px rgba(124,58,237,0.25)"
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = "#c4b5fd"
+                  e.currentTarget.style.borderColor = "rgba(167,139,250,0.25)"
+                  e.currentTarget.style.boxShadow = "none"
+                }}
+              >
+                ?
               </button>
             </div>
           </div>
