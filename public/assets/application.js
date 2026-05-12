@@ -21593,6 +21593,226 @@
       WebkitBoxOrient: "vertical"
     } }, game.name)))
   );
+  var ONBOARDING_KEY = "epictracker.onboarded.v1";
+  var OnboardingModal = ({ onClose }) => {
+    const [step, setStep] = (0, import_react.useState)(0);
+    const slides = [
+      {
+        badge: "STEP 01",
+        title: "Get your auth code",
+        body: /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, "Click the", " ", /* @__PURE__ */ import_react.default.createElement("span", { style: {
+          fontFamily: "'DM Mono', monospace",
+          color: "#e9d5ff",
+          background: "rgba(124,58,237,0.25)",
+          border: "1px solid rgba(167,139,250,0.3)",
+          borderRadius: 6,
+          padding: "2px 8px",
+          fontSize: 12
+        } }, "Get Auth Code \u2197"), " ", "button at the top right. A new tab will open with a JSON response from Epic Games. Copy the value of the", " ", /* @__PURE__ */ import_react.default.createElement("span", { style: {
+          fontFamily: "'DM Mono', monospace",
+          color: "#f0abfc"
+        } }, "authorizationCode"), " ", "field."),
+        icon: "\u{1F511}"
+      },
+      {
+        badge: "STEP 02",
+        title: "Fetch your library",
+        body: /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, "Paste the code into the", " ", /* @__PURE__ */ import_react.default.createElement("span", { style: {
+          fontFamily: "'DM Mono', monospace",
+          color: "#e9d5ff",
+          background: "rgba(124,58,237,0.25)",
+          border: "1px solid rgba(167,139,250,0.3)",
+          borderRadius: 6,
+          padding: "2px 8px",
+          fontSize: 12
+        } }, "Paste your auth_code\u2026"), " ", "input, then click", " ", /* @__PURE__ */ import_react.default.createElement("span", { style: {
+          fontFamily: "'Syne', sans-serif",
+          fontWeight: 700,
+          color: "#f3e8ff",
+          background: "linear-gradient(135deg, #7c3aed, #a855f7)",
+          borderRadius: 6,
+          padding: "2px 10px",
+          fontSize: 12,
+          letterSpacing: "0.05em"
+        } }, "Fetch"), ". EpicTracker will load your games and match them against HowLongToBeat."),
+        icon: "\u{1F4DA}"
+      }
+    ];
+    const current = slides[step];
+    const isLast = step === slides.length - 1;
+    const finish = () => {
+      try {
+        localStorage.setItem(ONBOARDING_KEY, "1");
+      } catch {
+      }
+      onClose();
+    };
+    return /* @__PURE__ */ import_react.default.createElement(
+      "div",
+      {
+        onClick: finish,
+        style: {
+          position: "fixed",
+          inset: 0,
+          zIndex: 100,
+          background: "rgba(13,5,21,0.75)",
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 24,
+          animation: "fadeIn 0.25s ease"
+        }
+      },
+      /* @__PURE__ */ import_react.default.createElement("style", null, `@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }`),
+      /* @__PURE__ */ import_react.default.createElement(
+        "div",
+        {
+          onClick: (e) => e.stopPropagation(),
+          style: {
+            position: "relative",
+            width: "100%",
+            maxWidth: 540,
+            background: "rgba(88,28,135,0.18)",
+            backdropFilter: "blur(24px)",
+            WebkitBackdropFilter: "blur(24px)",
+            border: "1px solid rgba(167,139,250,0.25)",
+            borderRadius: 24,
+            boxShadow: "0 0 80px rgba(124,58,237,0.25), inset 0 1px 0 rgba(255,255,255,0.05)",
+            overflow: "hidden"
+          }
+        },
+        /* @__PURE__ */ import_react.default.createElement(
+          "button",
+          {
+            onClick: finish,
+            "aria-label": "Close",
+            style: {
+              position: "absolute",
+              top: 14,
+              right: 14,
+              background: "transparent",
+              border: "none",
+              color: "rgba(196,181,253,0.5)",
+              fontSize: 20,
+              cursor: "pointer",
+              width: 32,
+              height: 32,
+              borderRadius: 8,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "all 0.2s ease",
+              zIndex: 1
+            },
+            onMouseEnter: (e) => {
+              e.currentTarget.style.color = "#e9d5ff";
+              e.currentTarget.style.background = "rgba(167,139,250,0.1)";
+            },
+            onMouseLeave: (e) => {
+              e.currentTarget.style.color = "rgba(196,181,253,0.5)";
+              e.currentTarget.style.background = "transparent";
+            }
+          },
+          "\xD7"
+        ),
+        /* @__PURE__ */ import_react.default.createElement("div", { style: { padding: "44px 40px 32px" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { fontSize: 48, marginBottom: 20, textAlign: "center" } }, current.icon), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+          fontFamily: "'Syne', sans-serif",
+          fontSize: 11,
+          fontWeight: 600,
+          letterSpacing: "0.25em",
+          color: "rgba(167,139,250,0.6)",
+          textTransform: "uppercase",
+          marginBottom: 12,
+          textAlign: "center"
+        } }, current.badge), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+          fontFamily: "'Syne', sans-serif",
+          fontSize: 24,
+          fontWeight: 700,
+          background: "linear-gradient(135deg, #e9d5ff, #a855f7)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          marginBottom: 18,
+          textAlign: "center",
+          letterSpacing: "0.02em"
+        } }, current.title), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+          fontFamily: "'DM Mono', monospace",
+          fontSize: 13,
+          lineHeight: 1.7,
+          color: "rgba(196,181,253,0.8)",
+          textAlign: "center",
+          minHeight: 110
+        } }, current.body)),
+        /* @__PURE__ */ import_react.default.createElement("div", { style: {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "20px 28px 28px",
+          gap: 16
+        } }, /* @__PURE__ */ import_react.default.createElement(
+          "button",
+          {
+            onClick: () => setStep((s) => Math.max(0, s - 1)),
+            disabled: step === 0,
+            style: {
+              background: "transparent",
+              border: "1px solid rgba(167,139,250,0.2)",
+              borderRadius: 10,
+              padding: "10px 18px",
+              color: step === 0 ? "rgba(196,181,253,0.25)" : "rgba(196,181,253,0.8)",
+              fontFamily: "'Syne', sans-serif",
+              fontSize: 12,
+              fontWeight: 600,
+              letterSpacing: "0.1em",
+              cursor: step === 0 ? "not-allowed" : "pointer",
+              transition: "all 0.2s ease",
+              opacity: step === 0 ? 0.4 : 1
+            }
+          },
+          "\u2190 BACK"
+        ), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "flex", gap: 8 } }, slides.map((_, i) => /* @__PURE__ */ import_react.default.createElement(
+          "button",
+          {
+            key: i,
+            onClick: () => setStep(i),
+            "aria-label": `Go to step ${i + 1}`,
+            style: {
+              width: i === step ? 24 : 8,
+              height: 8,
+              borderRadius: 4,
+              border: "none",
+              background: i === step ? "linear-gradient(135deg, #7c3aed, #a855f7)" : "rgba(167,139,250,0.25)",
+              boxShadow: i === step ? "0 0 12px rgba(124,58,237,0.5)" : "none",
+              cursor: "pointer",
+              padding: 0,
+              transition: "all 0.3s ease"
+            }
+          }
+        ))), /* @__PURE__ */ import_react.default.createElement(
+          "button",
+          {
+            onClick: () => isLast ? finish() : setStep((s) => s + 1),
+            style: {
+              background: "linear-gradient(135deg, #7c3aed, #a855f7)",
+              border: "1px solid rgba(167,139,250,0.3)",
+              borderRadius: 10,
+              padding: "10px 22px",
+              color: "#f3e8ff",
+              fontFamily: "'Syne', sans-serif",
+              fontSize: 12,
+              fontWeight: 600,
+              cursor: "pointer",
+              letterSpacing: "0.1em",
+              boxShadow: "0 0 20px rgba(124,58,237,0.3)",
+              transition: "all 0.2s ease"
+            }
+          },
+          isLast ? "GOT IT" : "NEXT \u2192"
+        ))
+      )
+    );
+  };
   function Dashboard() {
     const [authCode, setAuthCode] = (0, import_react.useState)("");
     const [games, setGames] = (0, import_react.useState)([]);
@@ -21600,6 +21820,14 @@
     const [loading, setLoading] = (0, import_react.useState)(false);
     const [error, setError] = (0, import_react.useState)(null);
     const [loadingGame, setLoadingGame] = (0, import_react.useState)(null);
+    const [showOnboarding, setShowOnboarding] = (0, import_react.useState)(false);
+    (0, import_react.useEffect)(() => {
+      try {
+        if (!localStorage.getItem(ONBOARDING_KEY)) setShowOnboarding(true);
+      } catch {
+        setShowOnboarding(true);
+      }
+    }, []);
     const fetchLibrary = async () => {
       if (!authCode.trim()) return;
       setLoading(true);
@@ -21642,7 +21870,7 @@
       }
     };
     const others = featured ? games.filter((g) => g.name !== featured.name) : games;
-    return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("link", { rel: "preconnect", href: "https://fonts.googleapis.com" }), /* @__PURE__ */ import_react.default.createElement("link", { href: "https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap", rel: "stylesheet" }), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+    return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("link", { rel: "preconnect", href: "https://fonts.googleapis.com" }), /* @__PURE__ */ import_react.default.createElement("link", { href: "https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap", rel: "stylesheet" }), showOnboarding && /* @__PURE__ */ import_react.default.createElement(OnboardingModal, { onClose: () => setShowOnboarding(false) }), /* @__PURE__ */ import_react.default.createElement("div", { style: {
       minHeight: "100vh",
       background: "#0D0515",
       position: "relative",
