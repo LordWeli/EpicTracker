@@ -22412,7 +22412,8 @@
           try {
             const r = await fetch(`/howlongtobeat/game?name=${encodeURIComponent(name)}`);
             const d = await r.json();
-            const game = d.error ? { name, image_url: null, release_year: null, main_story: null, main_extra: null, completionist: null, found: false } : { ...d.game, found: true };
+            const game = d.error ? { name, image_url: null, release_year: null, main_story: null, main_extra: null, completionist: null, found: false } : { ...d.game, name, found: true };
+            if (result.some((g) => g.name === game.name)) continue;
             result.push(game);
             setGames([...result]);
             if (result.length === 1) setFeatured(game);
@@ -22429,7 +22430,15 @@
         setLoadingGame(null);
       }
     };
-    const others = featured ? games.filter((g) => g.name !== featured.name) : games;
+    const others = (() => {
+      const seen = /* @__PURE__ */ new Set();
+      const base = featured ? games.filter((g) => g.name !== featured.name) : games;
+      return base.filter((g) => {
+        if (seen.has(g.name)) return false;
+        seen.add(g.name);
+        return true;
+      });
+    })();
     return /* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, /* @__PURE__ */ import_react2.default.createElement("link", { rel: "preconnect", href: "https://fonts.googleapis.com" }), /* @__PURE__ */ import_react2.default.createElement("link", { href: "https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap", rel: "stylesheet" }), showOnboarding && /* @__PURE__ */ import_react2.default.createElement(OnboardingModal, { onClose: () => setShowOnboarding(false) }), /* @__PURE__ */ import_react2.default.createElement("div", { style: {
       minHeight: "100vh",
       background: "#0D0515",
