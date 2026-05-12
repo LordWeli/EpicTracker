@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { useI18n, format, LangSelector } from "./i18n"
 
 // ── Types ────────────────────────────────────────────────────────────────────
 interface Game {
@@ -59,7 +60,9 @@ const TimeRow = ({ label, value }: { label: string; value: number | null }) => (
   </tr>
 )
 
-const FeaturedCard = ({ game }: { game: Game }) => (
+const FeaturedCard = ({ game }: { game: Game }) => {
+  const { t } = useI18n()
+  return (
   <div style={{
     display: "flex",
     gap: 0,
@@ -125,24 +128,25 @@ const FeaturedCard = ({ game }: { game: Game }) => (
         textTransform: "uppercase",
         marginBottom: 16,
       }}>
-        Time to Beat
+        {t("library.timeToBeat")}
       </div>
       {game.found ? (
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <tbody>
-            <TimeRow label="Main Story"    value={game.main_story} />
-            <TimeRow label="Main + Extra"  value={game.main_extra} />
-            <TimeRow label="Completionist" value={game.completionist} />
+            <TimeRow label={t("library.mainStory")}    value={game.main_story} />
+            <TimeRow label={t("library.mainExtra")}    value={game.main_extra} />
+            <TimeRow label={t("library.completionist")} value={game.completionist} />
           </tbody>
         </table>
       ) : (
         <div style={{ color: "rgba(196,181,253,0.35)", fontFamily: "'DM Mono', monospace", fontSize: 13 }}>
-          Not found on HowLongToBeat
+          {t("library.notFound")}
         </div>
       )}
     </div>
   </div>
-)
+  )
+}
 
 const MiniCard = ({ game, onClick, active }: { game: Game; onClick: () => void; active: boolean }) => (
   <div
@@ -204,87 +208,58 @@ const MiniCard = ({ game, onClick, active }: { game: Game; onClick: () => void; 
 const ONBOARDING_KEY = "epictracker.onboarded.v1"
 
 const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
+  const { t } = useI18n()
   const [step, setStep] = useState(0)
+
+  const pillMono = {
+    fontFamily: "'DM Mono', monospace",
+    color: "#e9d5ff",
+    background: "rgba(124,58,237,0.25)",
+    border: "1px solid rgba(167,139,250,0.3)",
+    borderRadius: 6,
+    padding: "2px 8px",
+    fontSize: 12,
+  } as React.CSSProperties
+
+  const highlight = { color: "#f0abfc", fontWeight: 600 } as React.CSSProperties
+
+  const pillFetch = {
+    fontFamily: "'Syne', sans-serif",
+    fontWeight: 700,
+    color: "#f3e8ff",
+    background: "linear-gradient(135deg, #7c3aed, #a855f7)",
+    borderRadius: 6,
+    padding: "2px 10px",
+    fontSize: 12,
+    letterSpacing: "0.05em",
+  } as React.CSSProperties
 
   const slides = [
     {
-      badge: "WELCOME",
-      title: "Meet EpicTracker",
-      body: (
-        <>
-          Your{" "}
-          <span style={{ color: "#f0abfc", fontWeight: 600 }}>Epic Games</span>{" "}
-          library, paired with{" "}
-          <span style={{ color: "#f0abfc", fontWeight: 600 }}>HowLongToBeat</span>{" "}
-          completion times — in one place. See how many hours each game in your
-          collection will actually take, from a quick main story run to a full
-          completionist playthrough. Two short steps and you're in.
-        </>
-      ),
+      badge: t("modal.welcome.badge"),
+      title: t("modal.welcome.title"),
+      body: format(t("modal.welcome.body"), {
+        epic: <span style={highlight}>{t("modal.welcome.epic")}</span>,
+        hltb: <span style={highlight}>{t("modal.welcome.hltb")}</span>,
+      }),
       icon: "🎮",
     },
     {
-      badge: "STEP 01",
-      title: "Get your auth code",
-      body: (
-        <>
-          Click the{" "}
-          <span style={{
-            fontFamily: "'DM Mono', monospace",
-            color: "#e9d5ff",
-            background: "rgba(124,58,237,0.25)",
-            border: "1px solid rgba(167,139,250,0.3)",
-            borderRadius: 6,
-            padding: "2px 8px",
-            fontSize: 12,
-          }}>
-            Get Auth Code ↗
-          </span>{" "}
-          button at the top right. A new tab will open with a JSON response from Epic Games. Copy the value of the{" "}
-          <span style={{
-            fontFamily: "'DM Mono', monospace",
-            color: "#f0abfc",
-          }}>
-            authorizationCode
-          </span>{" "}
-          field.
-        </>
-      ),
+      badge: t("modal.step1.badge"),
+      title: t("modal.step1.title"),
+      body: format(t("modal.step1.body"), {
+        button: <span style={pillMono}>{t("modal.step1.button")}</span>,
+        field: <span style={{ fontFamily: "'DM Mono', monospace", color: "#f0abfc" }}>{t("modal.step1.field")}</span>,
+      }),
       icon: "🔑",
     },
     {
-      badge: "STEP 02",
-      title: "Fetch your library",
-      body: (
-        <>
-          Paste the code into the{" "}
-          <span style={{
-            fontFamily: "'DM Mono', monospace",
-            color: "#e9d5ff",
-            background: "rgba(124,58,237,0.25)",
-            border: "1px solid rgba(167,139,250,0.3)",
-            borderRadius: 6,
-            padding: "2px 8px",
-            fontSize: 12,
-          }}>
-            Paste your auth_code…
-          </span>{" "}
-          input, then click{" "}
-          <span style={{
-            fontFamily: "'Syne', sans-serif",
-            fontWeight: 700,
-            color: "#f3e8ff",
-            background: "linear-gradient(135deg, #7c3aed, #a855f7)",
-            borderRadius: 6,
-            padding: "2px 10px",
-            fontSize: 12,
-            letterSpacing: "0.05em",
-          }}>
-            Fetch
-          </span>
-          . EpicTracker will load your games and match them against HowLongToBeat.
-        </>
-      ),
+      badge: t("modal.step2.badge"),
+      title: t("modal.step2.title"),
+      body: format(t("modal.step2.body"), {
+        input: <span style={pillMono}>{t("modal.step2.input")}</span>,
+        fetch: <span style={pillFetch}>{t("modal.step2.fetch")}</span>,
+      }),
       icon: "📚",
     },
   ]
@@ -332,7 +307,7 @@ const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
       >
         <button
           onClick={finish}
-          aria-label="Close"
+          aria-label={t("modal.close")}
           style={{
             position: "absolute",
             top: 14,
@@ -432,7 +407,7 @@ const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
               opacity: step === 0 ? 0.4 : 1,
             }}
           >
-            ← BACK
+            {t("modal.back")}
           </button>
 
           <div style={{ display: "flex", gap: 8 }}>
@@ -440,7 +415,7 @@ const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
               <button
                 key={i}
                 onClick={() => setStep(i)}
-                aria-label={`Go to step ${i + 1}`}
+                aria-label={t("modal.dotAria", { n: i + 1 })}
                 style={{
                   width: i === step ? 24 : 8,
                   height: 8,
@@ -475,7 +450,7 @@ const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
               transition: "all 0.2s ease",
             }}
           >
-            {isLast ? "GOT IT" : "NEXT →"}
+            {isLast ? t("modal.gotIt") : t("modal.next")}
           </button>
         </div>
       </div>
@@ -485,6 +460,7 @@ const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
 
 // ── Main App ─────────────────────────────────────────────────────────────────
 export default function Dashboard() {
+  const { t } = useI18n()
   const [authCode, setAuthCode]       = useState("")
   const [games, setGames]             = useState<Game[]>([])
   const [featured, setFeatured]       = useState<Game | null>(null)
@@ -515,7 +491,7 @@ export default function Dashboard() {
       if (data.error) { setError(data.error); return }
 
       const names: string[] = (data.library || []).map((g: { name: string }) => g.name)
-      if (!names.length) { setError("No games found."); return }
+      if (!names.length) { setError(t("error.noGames")); return }
 
       const result: Game[] = []
       for (const name of names) {
@@ -536,7 +512,7 @@ export default function Dashboard() {
       }
       setLoadingGame(null)
     } catch {
-      setError("Failed to connect to server.")
+      setError(t("error.serverConnection"))
     } finally {
       setLoading(false)
       setLoadingGame(null)
@@ -603,11 +579,11 @@ export default function Dashboard() {
                 onMouseEnter={e => (e.currentTarget.style.color = "rgba(196,181,253,0.9)")}
                 onMouseLeave={e => (e.currentTarget.style.color = "rgba(196,181,253,0.5)")}
               >
-                Get Auth Code ↗
+                {t("header.getAuthCode")}
               </a>
               <input
                 type="text"
-                placeholder="Paste your auth_code…"
+                placeholder={t("header.placeholder")}
                 value={authCode}
                 onChange={e => setAuthCode(e.target.value)}
                 onKeyDown={e => e.key === "Enter" && fetchLibrary()}
@@ -645,12 +621,12 @@ export default function Dashboard() {
                   opacity: loading ? 0.6 : 1,
                 }}
               >
-                {loading ? "Loading…" : "Fetch"}
+                {loading ? t("header.loading") : t("header.fetch")}
               </button>
               <button
                 onClick={() => setShowOnboarding(true)}
-                aria-label="Show instructions"
-                title="How to use"
+                aria-label={t("header.help")}
+                title={t("header.helpTitle")}
                 style={{
                   background: "rgba(88,28,135,0.15)",
                   border: "1px solid rgba(167,139,250,0.25)",
@@ -683,6 +659,7 @@ export default function Dashboard() {
               >
                 ?
               </button>
+              <LangSelector />
             </div>
           </div>
 
@@ -695,7 +672,7 @@ export default function Dashboard() {
                 color: "rgba(196,181,253,0.4)",
                 letterSpacing: "0.1em",
               }}>
-                LIBRARY
+                {t("library.label")}
               </span>
               <span style={{
                 fontFamily: "'Syne', sans-serif",
@@ -711,7 +688,7 @@ export default function Dashboard() {
                 color: "rgba(196,181,253,0.4)",
                 letterSpacing: "0.1em",
               }}>
-                {loadingGame ? "GAMES LOADED" : "GAMES"}
+                {loadingGame ? t("library.gamesLoaded") : t("library.games")}
               </span>
             </div>
           )}
@@ -747,7 +724,7 @@ export default function Dashboard() {
                 boxShadow: "0 0 8px #a855f7",
                 animation: "pulse 1s infinite",
               }} />
-              Fetching <span style={{ color: "#c4b5fd", marginLeft: 4 }}>{loadingGame}</span>…
+              {t("library.fetchingPrefix")} <span style={{ color: "#c4b5fd", marginLeft: 4 }}>{loadingGame}</span>…
               <style>{`@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`}</style>
             </div>
           )}
@@ -786,7 +763,7 @@ export default function Dashboard() {
             }}>
               <div style={{ fontSize: 48, marginBottom: 16 }}>🎮</div>
               <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 15, fontWeight: 600, letterSpacing: "0.1em" }}>
-                ENTER YOUR AUTH CODE TO BEGIN
+                {t("empty.message")}
               </div>
             </div>
           )}
