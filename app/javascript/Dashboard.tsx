@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { ONBOARDING_KEY } from "./dashboard/constants"
 import { useLibrary } from "./dashboard/useLibrary"
 import { useIsMobile } from "./dashboard/useIsMobile"
+import { colors, fonts } from "./dashboard/theme"
 import { Background } from "./dashboard/components/Background"
 import { Header } from "./dashboard/components/Header"
 import { LibraryCounter } from "./dashboard/components/LibraryCounter"
@@ -40,10 +41,10 @@ export default function Dashboard() {
 
       <div style={{
         minHeight: "100vh",
-        background: "#0D0515",
+        background: colors.bgBase,
         position: "relative",
         overflow: "hidden",
-        fontFamily: "'Syne', sans-serif",
+        fontFamily: fonts.brand,
       }}>
         <Background />
 

@@ -1,5 +1,6 @@
 import React from "react"
 import { Game } from "../types"
+import { colors, gradients, shadows, fonts } from "../theme"
 
 interface Props {
   game: Game
@@ -14,11 +15,9 @@ export const MiniCard = ({ game, onClick, active }: Props) => (
       cursor: "pointer",
       borderRadius: 14,
       overflow: "hidden",
-      border: active
-        ? "1px solid rgba(167,139,250,0.6)"
-        : "1px solid rgba(167,139,250,0.12)",
-      boxShadow: active ? "0 0 20px rgba(124,58,237,0.3)" : "none",
-      background: "rgba(88,28,135,0.1)",
+      border: `1px solid ${active ? colors.borderActive : colors.borderFaint}`,
+      boxShadow: active ? shadows.miniActive : "none",
+      background: colors.surfaceLow,
       backdropFilter: "blur(12px)",
       transition: "all 0.2s ease",
       transform: active ? "translateY(-2px)" : "none",
@@ -34,7 +33,7 @@ export const MiniCard = ({ game, onClick, active }: Props) => (
       ) : (
         <div style={{
           width: "100%", height: "100%",
-          background: "linear-gradient(135deg, rgba(88,28,135,0.4), rgba(49,10,101,0.6))",
+          background: gradients.placeholder,
           display: "flex", alignItems: "center", justifyContent: "center",
         }}>
           <span style={{ fontSize: 28, opacity: 0.3 }}>🎮</span>
@@ -43,13 +42,13 @@ export const MiniCard = ({ game, onClick, active }: Props) => (
       <div style={{
         position: "absolute", bottom: 0, left: 0, right: 0,
         padding: "20px 10px 10px",
-        background: "linear-gradient(to top, rgba(13,5,21,0.95), transparent)",
+        background: gradients.miniCardCaption,
       }}>
         <div style={{
-          fontFamily: "'Syne', sans-serif",
+          fontFamily: fonts.brand,
           fontSize: 11,
           fontWeight: 600,
-          color: "#e9d5ff",
+          color: colors.textSoft,
           lineHeight: 1.3,
           overflow: "hidden",
           display: "-webkit-box",

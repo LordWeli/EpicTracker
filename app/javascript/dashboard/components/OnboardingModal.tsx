@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useI18n, format } from "../../i18n"
 import { ONBOARDING_KEY } from "../constants"
 import { useIsMobile } from "../useIsMobile"
+import { colors, gradients, shadows, fonts } from "../theme"
 
 export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
   const { t } = useI18n()
@@ -9,22 +10,22 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
   const isMobile = useIsMobile()
 
   const pillMono = {
-    fontFamily: "'DM Mono', monospace",
-    color: "#e9d5ff",
-    background: "rgba(124,58,237,0.25)",
-    border: "1px solid rgba(167,139,250,0.3)",
+    fontFamily: fonts.mono,
+    color: colors.textSoft,
+    background: colors.glow25,
+    border: `1px solid ${colors.borderStrong}`,
     borderRadius: 6,
     padding: "2px 8px",
     fontSize: 12,
   } as React.CSSProperties
 
-  const highlight = { color: "#f0abfc", fontWeight: 600 } as React.CSSProperties
+  const highlight = { color: colors.pinkAccent, fontWeight: 600 } as React.CSSProperties
 
   const pillFetch = {
-    fontFamily: "'Syne', sans-serif",
+    fontFamily: fonts.brand,
     fontWeight: 700,
-    color: "#f3e8ff",
-    background: "linear-gradient(135deg, #7c3aed, #a855f7)",
+    color: colors.textBright,
+    background: gradients.cta,
     borderRadius: 6,
     padding: "2px 10px",
     fontSize: 12,
@@ -46,7 +47,7 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
       title: t("modal.step1.title"),
       body: format(t("modal.step1.body"), {
         button: <span style={pillMono}>{t("modal.step1.button")}</span>,
-        field: <span style={{ fontFamily: "'DM Mono', monospace", color: "#f0abfc" }}>{t("modal.step1.field")}</span>,
+        field: <span style={{ fontFamily: fonts.mono, color: colors.pinkAccent }}>{t("modal.step1.field")}</span>,
       }),
       icon: "🔑",
     },
@@ -76,7 +77,7 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
         position: "fixed",
         inset: 0,
         zIndex: 100,
-        background: "rgba(13,5,21,0.75)",
+        background: colors.overlayLight,
         backdropFilter: "blur(8px)",
         WebkitBackdropFilter: "blur(8px)",
         display: "flex",
@@ -93,12 +94,12 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
           position: "relative",
           width: "100%",
           maxWidth: 540,
-          background: "rgba(88,28,135,0.18)",
+          background: colors.surfaceModal,
           backdropFilter: "blur(24px)",
           WebkitBackdropFilter: "blur(24px)",
-          border: "1px solid rgba(167,139,250,0.25)",
+          border: `1px solid ${colors.border}`,
           borderRadius: 24,
-          boxShadow: "0 0 80px rgba(124,58,237,0.25), inset 0 1px 0 rgba(255,255,255,0.05)",
+          boxShadow: shadows.modal,
           overflow: "hidden",
         }}
       >
@@ -111,7 +112,7 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
             right: 14,
             background: "transparent",
             border: "none",
-            color: "rgba(196,181,253,0.5)",
+            color: colors.muted50,
             fontSize: 20,
             cursor: "pointer",
             width: 32,
@@ -124,11 +125,11 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
             zIndex: 1,
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.color = "#e9d5ff"
-            e.currentTarget.style.background = "rgba(167,139,250,0.1)"
+            e.currentTarget.style.color = colors.textSoft
+            e.currentTarget.style.background = colors.borderTrace
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.color = "rgba(196,181,253,0.5)"
+            e.currentTarget.style.color = colors.muted50
             e.currentTarget.style.background = "transparent"
           }}
         >
@@ -141,11 +142,11 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
           </div>
 
           <div style={{
-            fontFamily: "'Syne', sans-serif",
+            fontFamily: fonts.brand,
             fontSize: 11,
             fontWeight: 600,
             letterSpacing: "0.25em",
-            color: "rgba(167,139,250,0.6)",
+            color: colors.borderActive,
             textTransform: "uppercase",
             marginBottom: 12,
             textAlign: "center",
@@ -154,10 +155,10 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
           </div>
 
           <div style={{
-            fontFamily: "'Syne', sans-serif",
+            fontFamily: fonts.brand,
             fontSize: isMobile ? 20 : 24,
             fontWeight: 700,
-            background: "linear-gradient(135deg, #e9d5ff, #a855f7)",
+            background: gradients.brand,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             marginBottom: 18,
@@ -168,10 +169,10 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
           </div>
 
           <div style={{
-            fontFamily: "'DM Mono', monospace",
+            fontFamily: fonts.mono,
             fontSize: 13,
             lineHeight: 1.7,
-            color: "rgba(196,181,253,0.8)",
+            color: colors.muted80,
             textAlign: "center",
             minHeight: isMobile ? 140 : 110,
           }}>
@@ -191,11 +192,11 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
             disabled={step === 0}
             style={{
               background: "transparent",
-              border: "1px solid rgba(167,139,250,0.2)",
+              border: `1px solid ${colors.borderSoft}`,
               borderRadius: 10,
               padding: "10px 18px",
-              color: step === 0 ? "rgba(196,181,253,0.25)" : "rgba(196,181,253,0.8)",
-              fontFamily: "'Syne', sans-serif",
+              color: step === 0 ? colors.muted25 : colors.muted80,
+              fontFamily: fonts.brand,
               fontSize: 12,
               fontWeight: 600,
               letterSpacing: "0.1em",
@@ -218,10 +219,8 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
                   height: 8,
                   borderRadius: 4,
                   border: "none",
-                  background: i === step
-                    ? "linear-gradient(135deg, #7c3aed, #a855f7)"
-                    : "rgba(167,139,250,0.25)",
-                  boxShadow: i === step ? "0 0 12px rgba(124,58,237,0.5)" : "none",
+                  background: i === step ? gradients.cta : colors.border,
+                  boxShadow: i === step ? shadows.dotActive : "none",
                   cursor: "pointer",
                   padding: 0,
                   transition: "all 0.3s ease",
@@ -233,17 +232,17 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
           <button
             onClick={() => isLast ? finish() : setStep(s => s + 1)}
             style={{
-              background: "linear-gradient(135deg, #7c3aed, #a855f7)",
-              border: "1px solid rgba(167,139,250,0.3)",
+              background: gradients.cta,
+              border: `1px solid ${colors.borderStrong}`,
               borderRadius: 10,
               padding: "10px 22px",
-              color: "#f3e8ff",
-              fontFamily: "'Syne', sans-serif",
+              color: colors.textBright,
+              fontFamily: fonts.brand,
               fontSize: 12,
               fontWeight: 600,
               cursor: "pointer",
               letterSpacing: "0.1em",
-              boxShadow: "0 0 20px rgba(124,58,237,0.3)",
+              boxShadow: shadows.cta,
               transition: "all 0.2s ease",
             }}
           >
