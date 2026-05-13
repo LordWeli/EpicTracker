@@ -19,7 +19,16 @@ export function useLibrary() {
     setFeatured(null)
 
     try {
-      const res  = await fetch(`/epic_games/library?auth_code=${encodeURIComponent(authCode)}`)
+      const csrfToken = document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]')?.content ?? ""
+      const res = await fetch("/epic_games/library", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          "X-CSRF-Token": csrfToken,
+        },
+        body: JSON.stringify({ auth_code: authCode }),
+      })
       const data = await res.json()
 
       if (data.error) { setError(data.error); return }
