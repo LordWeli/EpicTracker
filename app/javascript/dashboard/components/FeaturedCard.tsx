@@ -2,6 +2,7 @@ import React from "react"
 import { useI18n } from "../../i18n"
 import { Game } from "../types"
 import { formatHours } from "../formatHours"
+import { useIsMobile } from "../useIsMobile"
 
 const TimeRow = ({ label, value }: { label: string; value: number | null }) => (
   <tr style={{ borderBottom: "1px solid rgba(167,139,250,0.1)" }}>
@@ -24,9 +25,12 @@ const TimeRow = ({ label, value }: { label: string; value: number | null }) => (
 
 export const FeaturedCard = ({ game }: { game: Game }) => {
   const { t } = useI18n()
+  const isMobile = useIsMobile()
+
   return (
     <div style={{
       display: "flex",
+      flexDirection: isMobile ? "column" : "row",
       gap: 0,
       background: "rgba(88,28,135,0.15)",
       backdropFilter: "blur(24px)",
@@ -35,9 +39,14 @@ export const FeaturedCard = ({ game }: { game: Game }) => {
       borderRadius: 20,
       overflow: "hidden",
       boxShadow: "0 0 60px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.05)",
-      minHeight: 320,
+      minHeight: isMobile ? 0 : 320,
     }}>
-      <div style={{ position: "relative", width: 260, flexShrink: 0 }}>
+      <div style={{
+        position: "relative",
+        width: isMobile ? "100%" : 260,
+        height: isMobile ? 200 : "auto",
+        flexShrink: 0,
+      }}>
         {game.image_url ? (
           <img
             src={game.image_url}
@@ -46,7 +55,7 @@ export const FeaturedCard = ({ game }: { game: Game }) => {
           />
         ) : (
           <div style={{
-            width: "100%", height: "100%", minHeight: 320,
+            width: "100%", height: "100%", minHeight: isMobile ? 200 : 320,
             background: "linear-gradient(135deg, rgba(88,28,135,0.4), rgba(49,10,101,0.6))",
             display: "flex", alignItems: "center", justifyContent: "center",
           }}>
@@ -55,16 +64,18 @@ export const FeaturedCard = ({ game }: { game: Game }) => {
         )}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to right, transparent 60%, rgba(13,5,21,0.8))",
+          background: isMobile
+            ? "linear-gradient(to bottom, transparent 50%, rgba(13,5,21,0.8))"
+            : "linear-gradient(to right, transparent 60%, rgba(13,5,21,0.8))",
         }} />
         <div style={{
           position: "absolute", bottom: 0, left: 0, right: 0,
-          padding: "24px 20px 20px",
+          padding: isMobile ? "32px 18px 16px" : "24px 20px 20px",
           background: "linear-gradient(to top, rgba(13,5,21,0.95) 0%, transparent 100%)",
         }}>
           <div style={{
             fontFamily: "'Syne', sans-serif",
-            fontSize: 18,
+            fontSize: isMobile ? 16 : 18,
             fontWeight: 700,
             color: "#f3e8ff",
             lineHeight: 1.2,
@@ -80,7 +91,13 @@ export const FeaturedCard = ({ game }: { game: Game }) => {
         </div>
       </div>
 
-      <div style={{ flex: 1, padding: "28px 24px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+      <div style={{
+        flex: 1,
+        padding: isMobile ? "20px 18px 24px" : "28px 24px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}>
         <div style={{
           fontFamily: "'Syne', sans-serif",
           fontSize: 11,

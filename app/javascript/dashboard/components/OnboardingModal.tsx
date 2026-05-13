@@ -1,10 +1,12 @@
 import React, { useState } from "react"
 import { useI18n, format } from "../../i18n"
 import { ONBOARDING_KEY } from "../constants"
+import { useIsMobile } from "../useIsMobile"
 
 export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
   const { t } = useI18n()
   const [step, setStep] = useState(0)
+  const isMobile = useIsMobile()
 
   const pillMono = {
     fontFamily: "'DM Mono', monospace",
@@ -80,7 +82,7 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: 24,
+        padding: isMobile ? 12 : 24,
         animation: "fadeIn 0.25s ease",
       }}
     >
@@ -133,8 +135,8 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
           ×
         </button>
 
-        <div style={{ padding: "44px 40px 32px" }}>
-          <div style={{ fontSize: 48, marginBottom: 20, textAlign: "center" }}>
+        <div style={{ padding: isMobile ? "44px 22px 24px" : "44px 40px 32px" }}>
+          <div style={{ fontSize: isMobile ? 40 : 48, marginBottom: 20, textAlign: "center" }}>
             {current.icon}
           </div>
 
@@ -153,7 +155,7 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
 
           <div style={{
             fontFamily: "'Syne', sans-serif",
-            fontSize: 24,
+            fontSize: isMobile ? 20 : 24,
             fontWeight: 700,
             background: "linear-gradient(135deg, #e9d5ff, #a855f7)",
             WebkitBackgroundClip: "text",
@@ -171,7 +173,7 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
             lineHeight: 1.7,
             color: "rgba(196,181,253,0.8)",
             textAlign: "center",
-            minHeight: 110,
+            minHeight: isMobile ? 140 : 110,
           }}>
             {current.body}
           </div>
@@ -181,8 +183,8 @@ export const OnboardingModal = ({ onClose }: { onClose: () => void }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "20px 28px 28px",
-          gap: 16,
+          padding: isMobile ? "16px 18px 20px" : "20px 28px 28px",
+          gap: isMobile ? 8 : 16,
         }}>
           <button
             onClick={() => setStep(s => Math.max(0, s - 1))}

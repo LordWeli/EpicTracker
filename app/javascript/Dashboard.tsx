@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { ONBOARDING_KEY } from "./dashboard/constants"
 import { useLibrary } from "./dashboard/useLibrary"
+import { useIsMobile } from "./dashboard/useIsMobile"
 import { Background } from "./dashboard/components/Background"
 import { Header } from "./dashboard/components/Header"
 import { LibraryCounter } from "./dashboard/components/LibraryCounter"
@@ -20,6 +21,7 @@ export default function Dashboard() {
   } = useLibrary()
 
   const [showOnboarding, setShowOnboarding] = useState(false)
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     try {
@@ -45,7 +47,13 @@ export default function Dashboard() {
       }}>
         <Background />
 
-        <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", padding: "32px 24px" }}>
+        <div style={{
+          position: "relative",
+          zIndex: 2,
+          maxWidth: 1200,
+          margin: "0 auto",
+          padding: isMobile ? "20px 14px" : "32px 24px",
+        }}>
           <Header
             authCode={authCode}
             setAuthCode={setAuthCode}

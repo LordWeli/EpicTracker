@@ -1,5 +1,6 @@
 import React from "react"
 import { useI18n, LangSelector } from "../../i18n"
+import { useIsMobile } from "../useIsMobile"
 
 interface Props {
   authCode: string
@@ -11,21 +12,43 @@ interface Props {
 
 export const Header = ({ authCode, setAuthCode, loading, onFetch, onShowOnboarding }: Props) => {
   const { t } = useI18n()
+  const isMobile = useIsMobile()
+
   return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 40 }}>
+    <div style={{
+      display: "flex",
+      flexDirection: isMobile ? "column" : "row",
+      alignItems: isMobile ? "stretch" : "center",
+      justifyContent: "space-between",
+      gap: isMobile ? 16 : 0,
+      marginBottom: isMobile ? 28 : 40,
+    }}>
       <div style={{
-        fontFamily: "'Syne', sans-serif",
-        fontSize: 22,
-        fontWeight: 800,
-        letterSpacing: "0.05em",
-        background: "linear-gradient(135deg, #e9d5ff, #a855f7)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: isMobile ? "space-between" : "flex-start",
+        gap: 12,
       }}>
-        EPIC<span style={{ fontWeight: 400 }}>TRACKER</span>
+        <div style={{
+          fontFamily: "'Syne', sans-serif",
+          fontSize: isMobile ? 18 : 22,
+          fontWeight: 800,
+          letterSpacing: "0.05em",
+          background: "linear-gradient(135deg, #e9d5ff, #a855f7)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}>
+          EPIC<span style={{ fontWeight: 400 }}>TRACKER</span>
+        </div>
+        {isMobile && <LangSelector />}
       </div>
 
-      <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+      <div style={{
+        display: "flex",
+        gap: 10,
+        alignItems: "center",
+        flexWrap: isMobile ? "wrap" : "nowrap",
+      }}>
         <a
           href="https://www.epicgames.com/id/api/redirect?clientId=34a02cf8f4414e29b15921876da36f9a&responseType=code"
           target="_blank"
@@ -39,6 +62,8 @@ export const Header = ({ authCode, setAuthCode, loading, onFetch, onShowOnboardi
             borderBottom: "1px solid rgba(196,181,253,0.2)",
             paddingBottom: 1,
             transition: "color 0.2s ease",
+            order: isMobile ? 1 : 0,
+            width: isMobile ? "100%" : "auto",
           }}
           onMouseEnter={e => (e.currentTarget.style.color = "rgba(196,181,253,0.9)")}
           onMouseLeave={e => (e.currentTarget.style.color = "rgba(196,181,253,0.5)")}
@@ -59,9 +84,11 @@ export const Header = ({ authCode, setAuthCode, loading, onFetch, onShowOnboardi
             color: "#e9d5ff",
             fontFamily: "'DM Mono', monospace",
             fontSize: 13,
-            width: 280,
+            width: isMobile ? "100%" : 280,
+            flex: isMobile ? "1 1 100%" : "none",
             outline: "none",
             backdropFilter: "blur(12px)",
+            order: isMobile ? 2 : 0,
           }}
         />
         <button
@@ -83,6 +110,8 @@ export const Header = ({ authCode, setAuthCode, loading, onFetch, onShowOnboardi
             boxShadow: loading ? "none" : "0 0 20px rgba(124,58,237,0.3)",
             transition: "all 0.2s ease",
             opacity: loading ? 0.6 : 1,
+            flex: isMobile ? "1 1 auto" : "none",
+            order: isMobile ? 3 : 0,
           }}
         >
           {loading ? t("header.loading") : t("header.fetch")}
@@ -108,7 +137,8 @@ export const Header = ({ authCode, setAuthCode, loading, onFetch, onShowOnboardi
             backdropFilter: "blur(12px)",
             transition: "all 0.2s ease",
             flexShrink: 0,
-            marginLeft: 18,
+            marginLeft: isMobile ? 0 : 18,
+            order: isMobile ? 4 : 0,
           }}
           onMouseEnter={e => {
             e.currentTarget.style.color = "#f3e8ff"
@@ -123,7 +153,7 @@ export const Header = ({ authCode, setAuthCode, loading, onFetch, onShowOnboardi
         >
           ?
         </button>
-        <LangSelector />
+        {!isMobile && <LangSelector />}
       </div>
     </div>
   )
