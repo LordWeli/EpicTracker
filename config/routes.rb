@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   namespace :epic_games do
-    get "library", to: "library#index"
+    post "library", to: "library#index"
   end
 
   namespace :howlongtobeat do
