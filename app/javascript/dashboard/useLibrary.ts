@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { useI18n } from "../i18n"
 import { Game } from "./types"
 
@@ -63,7 +63,7 @@ export function useLibrary() {
     }
   }
 
-  const others = (() => {
+  const others = useMemo(() => {
     const seen = new Set<string>()
     const base = featured ? games.filter(g => g.name !== featured.name) : games
     return base.filter(g => {
@@ -71,7 +71,7 @@ export function useLibrary() {
       seen.add(g.name)
       return true
     })
-  })()
+  }, [games, featured])
 
   return {
     authCode, setAuthCode,

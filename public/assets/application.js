@@ -22069,7 +22069,7 @@
         setLoadingGame(null);
       }
     };
-    const others = (() => {
+    const others = (0, import_react2.useMemo)(() => {
       const seen = /* @__PURE__ */ new Set();
       const base = featured ? games.filter((g) => g.name !== featured.name) : games;
       return base.filter((g) => {
@@ -22077,7 +22077,7 @@
         seen.add(g.name);
         return true;
       });
-    })();
+    }, [games, featured]);
     return {
       authCode,
       setAuthCode,
