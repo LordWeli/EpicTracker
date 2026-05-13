@@ -3,18 +3,19 @@ import { useI18n } from "../../i18n"
 import { Game } from "../types"
 import { formatHours } from "../formatHours"
 import { useIsMobile } from "../useIsMobile"
+import { colors, gradients, shadows, fonts } from "../theme"
 
 const TimeRow = ({ label, value }: { label: string; value: number | null }) => (
-  <tr style={{ borderBottom: "1px solid rgba(167,139,250,0.1)" }}>
-    <td style={{ padding: "10px 16px", color: "rgba(196,181,253,0.7)", fontSize: 13, fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" }}>
+  <tr style={{ borderBottom: `1px solid ${colors.borderTrace}` }}>
+    <td style={{ padding: "10px 16px", color: colors.muted70, fontSize: 13, fontFamily: fonts.mono, whiteSpace: "nowrap" }}>
       {label}
     </td>
     <td style={{ padding: "10px 16px", textAlign: "right" }}>
       <span style={{
-        fontFamily: "'DM Mono', monospace",
+        fontFamily: fonts.mono,
         fontSize: 15,
         fontWeight: 600,
-        color: value !== null ? "#e9d5ff" : "rgba(196,181,253,0.3)",
+        color: value !== null ? colors.textSoft : colors.muted30,
         letterSpacing: "0.05em",
       }}>
         {formatHours(value)}
@@ -32,13 +33,13 @@ export const FeaturedCard = ({ game }: { game: Game }) => {
       display: "flex",
       flexDirection: isMobile ? "column" : "row",
       gap: 0,
-      background: "rgba(88,28,135,0.15)",
+      background: colors.surface,
       backdropFilter: "blur(24px)",
       WebkitBackdropFilter: "blur(24px)",
-      border: "1px solid rgba(167,139,250,0.2)",
+      border: `1px solid ${colors.borderSoft}`,
       borderRadius: 20,
       overflow: "hidden",
-      boxShadow: "0 0 60px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.05)",
+      boxShadow: shadows.card,
       minHeight: isMobile ? 0 : 320,
     }}>
       <div style={{
@@ -56,7 +57,7 @@ export const FeaturedCard = ({ game }: { game: Game }) => {
         ) : (
           <div style={{
             width: "100%", height: "100%", minHeight: isMobile ? 200 : 320,
-            background: "linear-gradient(135deg, rgba(88,28,135,0.4), rgba(49,10,101,0.6))",
+            background: gradients.placeholder,
             display: "flex", alignItems: "center", justifyContent: "center",
           }}>
             <span style={{ fontSize: 48, opacity: 0.3 }}>🎮</span>
@@ -64,27 +65,25 @@ export const FeaturedCard = ({ game }: { game: Game }) => {
         )}
         <div style={{
           position: "absolute", inset: 0,
-          background: isMobile
-            ? "linear-gradient(to bottom, transparent 50%, rgba(13,5,21,0.8))"
-            : "linear-gradient(to right, transparent 60%, rgba(13,5,21,0.8))",
+          background: isMobile ? gradients.overlayBottom : gradients.overlayRight,
         }} />
         <div style={{
           position: "absolute", bottom: 0, left: 0, right: 0,
           padding: isMobile ? "32px 18px 16px" : "24px 20px 20px",
-          background: "linear-gradient(to top, rgba(13,5,21,0.95) 0%, transparent 100%)",
+          background: gradients.captionFromBottom,
         }}>
           <div style={{
-            fontFamily: "'Syne', sans-serif",
+            fontFamily: fonts.brand,
             fontSize: isMobile ? 16 : 18,
             fontWeight: 700,
-            color: "#f3e8ff",
+            color: colors.textBright,
             lineHeight: 1.2,
             marginBottom: 4,
           }}>
             {game.name}
           </div>
           {game.release_year && (
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: "rgba(196,181,253,0.6)" }}>
+            <div style={{ fontFamily: fonts.mono, fontSize: 12, color: colors.muted60 }}>
               {game.release_year}
             </div>
           )}
@@ -99,11 +98,11 @@ export const FeaturedCard = ({ game }: { game: Game }) => {
         justifyContent: "center",
       }}>
         <div style={{
-          fontFamily: "'Syne', sans-serif",
+          fontFamily: fonts.brand,
           fontSize: 11,
           fontWeight: 600,
           letterSpacing: "0.2em",
-          color: "rgba(167,139,250,0.5)",
+          color: colors.accentMuted,
           textTransform: "uppercase",
           marginBottom: 16,
         }}>
@@ -118,7 +117,7 @@ export const FeaturedCard = ({ game }: { game: Game }) => {
             </tbody>
           </table>
         ) : (
-          <div style={{ color: "rgba(196,181,253,0.35)", fontFamily: "'DM Mono', monospace", fontSize: 13 }}>
+          <div style={{ color: colors.muted35, fontFamily: fonts.mono, fontSize: 13 }}>
             {t("library.notFound")}
           </div>
         )}

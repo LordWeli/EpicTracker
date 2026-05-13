@@ -1,11 +1,12 @@
 import React from "react"
 import { GlowOrb } from "./GlowOrb"
+import { colors } from "../theme"
 
 export const Background = () => (
   <>
-    <GlowOrb cx="15%" cy="20%" r="500px" color="rgba(109,40,217,0.18)" />
-    <GlowOrb cx="80%" cy="60%" r="400px" color="rgba(139,92,246,0.12)" />
-    <GlowOrb cx="50%" cy="90%" r="300px" color="rgba(168,85,247,0.1)" />
+    <GlowOrb cx="15%" cy="20%" r="500px" color={colors.orbDarker} />
+    <GlowOrb cx="80%" cy="60%" r="400px" color={colors.orbAlt} />
+    <GlowOrb cx="50%" cy="90%" r="300px" color={colors.orbBrand} />
 
     <div style={{
       position: "fixed", inset: 0, pointerEvents: "none", zIndex: 1,

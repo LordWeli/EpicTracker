@@ -1100,9 +1100,9 @@
           }
           return first;
         }
-        function compare(a, b) {
-          var diff = a.sortIndex - b.sortIndex;
-          return 0 !== diff ? diff : a.id - b.id;
+        function compare(a2, b) {
+          var diff = a2.sortIndex - b.sortIndex;
+          return 0 !== diff ? diff : a2.id - b.id;
         }
         function advanceTimers(currentTime) {
           for (var timer = peek(timerQueue); null !== timer; ) {
@@ -1510,8 +1510,8 @@
         exports.requestFormReset = function(form) {
           Internals.d.r(form);
         };
-        exports.unstable_batchedUpdates = function(fn, a) {
-          return fn(a);
+        exports.unstable_batchedUpdates = function(fn, a2) {
+          return fn(a2);
         };
         exports.useFormState = function(action, initialState, permalink) {
           return resolveDispatcher().useFormState(action, initialState, permalink);
@@ -1676,55 +1676,55 @@
               throw Error("Unable to find node on an unmounted component.");
             return alternate !== fiber ? null : fiber;
           }
-          for (var a = fiber, b = alternate; ; ) {
-            var parentA = a.return;
+          for (var a2 = fiber, b = alternate; ; ) {
+            var parentA = a2.return;
             if (null === parentA) break;
             var parentB = parentA.alternate;
             if (null === parentB) {
               b = parentA.return;
               if (null !== b) {
-                a = b;
+                a2 = b;
                 continue;
               }
               break;
             }
             if (parentA.child === parentB.child) {
               for (parentB = parentA.child; parentB; ) {
-                if (parentB === a) return assertIsMounted(parentA), fiber;
+                if (parentB === a2) return assertIsMounted(parentA), fiber;
                 if (parentB === b) return assertIsMounted(parentA), alternate;
                 parentB = parentB.sibling;
               }
               throw Error("Unable to find node on an unmounted component.");
             }
-            if (a.return !== b.return) a = parentA, b = parentB;
+            if (a2.return !== b.return) a2 = parentA, b = parentB;
             else {
               for (var didFindChild = false, _child = parentA.child; _child; ) {
-                if (_child === a) {
+                if (_child === a2) {
                   didFindChild = true;
-                  a = parentA;
+                  a2 = parentA;
                   b = parentB;
                   break;
                 }
                 if (_child === b) {
                   didFindChild = true;
                   b = parentA;
-                  a = parentB;
+                  a2 = parentB;
                   break;
                 }
                 _child = _child.sibling;
               }
               if (!didFindChild) {
                 for (_child = parentB.child; _child; ) {
-                  if (_child === a) {
+                  if (_child === a2) {
                     didFindChild = true;
-                    a = parentB;
+                    a2 = parentB;
                     b = parentA;
                     break;
                   }
                   if (_child === b) {
                     didFindChild = true;
                     b = parentB;
-                    a = parentA;
+                    a2 = parentA;
                     break;
                   }
                   _child = _child.sibling;
@@ -1735,14 +1735,14 @@
                   );
               }
             }
-            if (a.alternate !== b)
+            if (a2.alternate !== b)
               throw Error(
                 "Return fibers should always be each others' alternates. This error is likely caused by a bug in React. Please file an issue."
               );
           }
-          if (3 !== a.tag)
+          if (3 !== a2.tag)
             throw Error("Unable to find node on an unmounted component.");
-          return a.stateNode.current === a ? fiber : alternate;
+          return a2.stateNode.current === a2 ? fiber : alternate;
         }
         function findCurrentHostFiberImpl(node) {
           var tag = node.tag;
@@ -3878,16 +3878,16 @@
             }
           }
         }
-        function batchedUpdates$1(fn, a, b) {
-          if (isInsideEventHandler) return fn(a, b);
+        function batchedUpdates$1(fn, a2, b) {
+          if (isInsideEventHandler) return fn(a2, b);
           isInsideEventHandler = true;
           try {
-            var JSCompiler_inline_result = fn(a);
+            var JSCompiler_inline_result = fn(a2);
             return JSCompiler_inline_result;
           } finally {
             if (isInsideEventHandler = false, null !== restoreTarget || null !== restoreQueue) {
-              if (flushSyncWork$1(), restoreTarget && (a = restoreTarget, fn = restoreQueue, restoreQueue = restoreTarget = null, restoreStateOfTarget(a), fn))
-                for (a = 0; a < fn.length; a++) restoreStateOfTarget(fn[a]);
+              if (flushSyncWork$1(), restoreTarget && (a2 = restoreTarget, fn = restoreQueue, restoreQueue = restoreTarget = null, restoreStateOfTarget(a2), fn))
+                for (a2 = 0; a2 < fn.length; a2++) restoreStateOfTarget(fn[a2]);
             }
           }
         }
@@ -10678,11 +10678,11 @@
                   addendum = null === lastEffect ? " You returned null. If your effect does not require clean up, return undefined (or nothing)." : "function" === typeof lastEffect.then ? "\n\nIt looks like you wrote " + hookName + "(async () => ...) or returned a Promise. Instead, write the async function inside your effect and call it immediately:\n\n" + hookName + "(() => {\n  async function fetchData() {\n    // You can await here\n    const response = await MyAPI.getData(someId);\n    // ...\n  }\n  fetchData();\n}, [someId]); // Or [] if effect doesn't need props or state\n\nLearn more about data fetching with Hooks: https://react.dev/link/hooks-data-fetching" : " You returned: " + lastEffect;
                   runWithFiberInDEV(
                     finishedWork,
-                    function(n, a) {
+                    function(n, a2) {
                       console.error(
                         "%s must not return anything besides a function, which is used for clean-up.%s",
                         n,
-                        a
+                        a2
                       );
                     },
                     hookName,
@@ -17989,8 +17989,8 @@
         function markRetryLaneImpl(fiber, retryLane) {
           fiber = fiber.memoizedState;
           if (null !== fiber && null !== fiber.dehydrated) {
-            var a = fiber.retryLane;
-            fiber.retryLane = 0 !== a && a < retryLane ? a : retryLane;
+            var a2 = fiber.retryLane;
+            fiber.retryLane = 0 !== a2 && a2 < retryLane ? a2 : retryLane;
           }
         }
         function markRetryLaneIfNotHydrated(fiber, retryLane) {
@@ -22109,6 +22109,98 @@
     return isMobile;
   }
 
+  // app/javascript/dashboard/theme.ts
+  var rgb = {
+    lavender: "167,139,250",
+    lightLavender: "196,181,253",
+    surfaceDark: "88,28,135",
+    surfaceDarker: "49,10,101",
+    brandDeep: "124,58,237",
+    brand: "168,85,247",
+    brandAlt: "139,92,246",
+    brandDarker: "109,40,217",
+    bgDeep: "13,5,21",
+    danger: "220,38,38",
+    white: "255,255,255"
+  };
+  var a = (base, alpha) => `rgba(${base},${alpha})`;
+  var colors = {
+    // brand
+    primary: "#a855f7",
+    primaryDeep: "#7c3aed",
+    pinkAccent: "#f0abfc",
+    // text
+    textBright: "#f3e8ff",
+    textSoft: "#e9d5ff",
+    textMuted: "#c4b5fd",
+    textDanger: "#fca5a5",
+    // backgrounds
+    bgBase: "#0D0515",
+    // surfaces (purple-tinted glass)
+    surface: a(rgb.surfaceDark, 0.15),
+    surfaceLow: a(rgb.surfaceDark, 0.1),
+    surfaceModal: a(rgb.surfaceDark, 0.18),
+    surfaceDim: a(rgb.surfaceDark, 0.3),
+    // borders
+    border: a(rgb.lavender, 0.25),
+    borderSoft: a(rgb.lavender, 0.2),
+    borderStrong: a(rgb.lavender, 0.3),
+    borderFaint: a(rgb.lavender, 0.12),
+    borderActive: a(rgb.lavender, 0.6),
+    borderHover: a(rgb.lavender, 0.5),
+    accentMuted: a(rgb.lavender, 0.5),
+    borderTrace: a(rgb.lavender, 0.1),
+    // muted lavender text alphas
+    muted90: a(rgb.lightLavender, 0.9),
+    muted80: a(rgb.lightLavender, 0.8),
+    muted70: a(rgb.lightLavender, 0.7),
+    muted60: a(rgb.lightLavender, 0.6),
+    muted50: a(rgb.lightLavender, 0.5),
+    muted40: a(rgb.lightLavender, 0.4),
+    muted35: a(rgb.lightLavender, 0.35),
+    muted30: a(rgb.lightLavender, 0.3),
+    muted25: a(rgb.lightLavender, 0.25),
+    muted20: a(rgb.lightLavender, 0.2),
+    // overlays
+    overlayDeep: a(rgb.bgDeep, 0.95),
+    overlayMid: a(rgb.bgDeep, 0.8),
+    overlayLight: a(rgb.bgDeep, 0.75),
+    // brand glow (used in shadows/box-shadow)
+    glow15: a(rgb.brandDeep, 0.15),
+    glow25: a(rgb.brandDeep, 0.25),
+    glow30: a(rgb.brandDeep, 0.3),
+    glow50: a(rgb.brandDeep, 0.5),
+    // misc
+    innerHighlight: a(rgb.white, 0.05),
+    dangerSurface: a(rgb.danger, 0.1),
+    dangerBorder: a(rgb.danger, 0.3),
+    // ambient orbs
+    orbDarker: a(rgb.brandDarker, 0.18),
+    orbAlt: a(rgb.brandAlt, 0.12),
+    orbBrand: a(rgb.brand, 0.1)
+  };
+  var gradients = {
+    brand: `linear-gradient(135deg, ${colors.textSoft}, ${colors.primary})`,
+    cta: `linear-gradient(135deg, ${colors.primaryDeep}, ${colors.primary})`,
+    placeholder: `linear-gradient(135deg, ${a(rgb.surfaceDark, 0.4)}, ${a(rgb.surfaceDarker, 0.6)})`,
+    overlayRight: `linear-gradient(to right, transparent 60%, ${colors.overlayMid})`,
+    overlayBottom: `linear-gradient(to bottom, transparent 50%, ${colors.overlayMid})`,
+    captionFromBottom: `linear-gradient(to top, ${colors.overlayDeep} 0%, transparent 100%)`,
+    miniCardCaption: `linear-gradient(to top, ${colors.overlayDeep}, transparent)`
+  };
+  var shadows = {
+    card: `0 0 60px ${colors.glow15}, inset 0 1px 0 ${colors.innerHighlight}`,
+    modal: `0 0 80px ${colors.glow25}, inset 0 1px 0 ${colors.innerHighlight}`,
+    cta: `0 0 20px ${colors.glow30}`,
+    miniActive: `0 0 20px ${colors.glow30}`,
+    dotActive: `0 0 12px ${colors.glow50}`,
+    helpHover: `0 0 16px ${colors.glow25}`
+  };
+  var fonts = {
+    brand: "'Syne', sans-serif",
+    mono: "'DM Mono', monospace"
+  };
+
   // app/javascript/dashboard/components/Background.tsx
   var import_react5 = __toESM(require_react());
 
@@ -22134,7 +22226,7 @@
   );
 
   // app/javascript/dashboard/components/Background.tsx
-  var Background = () => /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(GlowOrb, { cx: "15%", cy: "20%", r: "500px", color: "rgba(109,40,217,0.18)" }), /* @__PURE__ */ import_react5.default.createElement(GlowOrb, { cx: "80%", cy: "60%", r: "400px", color: "rgba(139,92,246,0.12)" }), /* @__PURE__ */ import_react5.default.createElement(GlowOrb, { cx: "50%", cy: "90%", r: "300px", color: "rgba(168,85,247,0.1)" }), /* @__PURE__ */ import_react5.default.createElement("div", { style: {
+  var Background = () => /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(GlowOrb, { cx: "15%", cy: "20%", r: "500px", color: colors.orbDarker }), /* @__PURE__ */ import_react5.default.createElement(GlowOrb, { cx: "80%", cy: "60%", r: "400px", color: colors.orbAlt }), /* @__PURE__ */ import_react5.default.createElement(GlowOrb, { cx: "50%", cy: "90%", r: "300px", color: colors.orbBrand }), /* @__PURE__ */ import_react5.default.createElement("div", { style: {
     position: "fixed",
     inset: 0,
     pointerEvents: "none",
@@ -22161,11 +22253,11 @@
       justifyContent: isMobile ? "space-between" : "flex-start",
       gap: 12
     } }, /* @__PURE__ */ import_react6.default.createElement("div", { style: {
-      fontFamily: "'Syne', sans-serif",
+      fontFamily: fonts.brand,
       fontSize: isMobile ? 18 : 22,
       fontWeight: 800,
       letterSpacing: "0.05em",
-      background: "linear-gradient(135deg, #e9d5ff, #a855f7)",
+      background: gradients.brand,
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent"
     } }, "EPIC", /* @__PURE__ */ import_react6.default.createElement("span", { style: { fontWeight: 400 } }, "TRACKER")), isMobile && /* @__PURE__ */ import_react6.default.createElement(LangSelector, null)), /* @__PURE__ */ import_react6.default.createElement("div", { style: {
@@ -22180,19 +22272,19 @@
         target: "_blank",
         rel: "noopener noreferrer",
         style: {
-          fontFamily: "'DM Mono', monospace",
+          fontFamily: fonts.mono,
           fontSize: 11,
-          color: "rgba(196,181,253,0.5)",
+          color: colors.muted50,
           textDecoration: "none",
           letterSpacing: "0.05em",
-          borderBottom: "1px solid rgba(196,181,253,0.2)",
+          borderBottom: `1px solid ${colors.muted20}`,
           paddingBottom: 1,
           transition: "color 0.2s ease",
           order: isMobile ? 1 : 0,
           width: isMobile ? "100%" : "auto"
         },
-        onMouseEnter: (e) => e.currentTarget.style.color = "rgba(196,181,253,0.9)",
-        onMouseLeave: (e) => e.currentTarget.style.color = "rgba(196,181,253,0.5)"
+        onMouseEnter: (e) => e.currentTarget.style.color = colors.muted90,
+        onMouseLeave: (e) => e.currentTarget.style.color = colors.muted50
       },
       t("header.getAuthCode")
     ), /* @__PURE__ */ import_react6.default.createElement(
@@ -22204,12 +22296,12 @@
         onChange: (e) => setAuthCode(e.target.value),
         onKeyDown: (e) => e.key === "Enter" && onFetch(),
         style: {
-          background: "rgba(88,28,135,0.15)",
-          border: "1px solid rgba(167,139,250,0.25)",
+          background: colors.surface,
+          border: `1px solid ${colors.border}`,
           borderRadius: 10,
           padding: "10px 16px",
-          color: "#e9d5ff",
-          fontFamily: "'DM Mono', monospace",
+          color: colors.textSoft,
+          fontFamily: fonts.mono,
           fontSize: 13,
           width: isMobile ? "100%" : 280,
           flex: isMobile ? "1 1 100%" : "none",
@@ -22224,17 +22316,17 @@
         onClick: onFetch,
         disabled: loading || !authCode.trim(),
         style: {
-          background: loading ? "rgba(88,28,135,0.3)" : "linear-gradient(135deg, #7c3aed, #a855f7)",
-          border: "1px solid rgba(167,139,250,0.3)",
+          background: loading ? colors.surfaceDim : gradients.cta,
+          border: `1px solid ${colors.borderStrong}`,
           borderRadius: 10,
           padding: "10px 22px",
-          color: "#f3e8ff",
-          fontFamily: "'Syne', sans-serif",
+          color: colors.textBright,
+          fontFamily: fonts.brand,
           fontSize: 13,
           fontWeight: 600,
           cursor: loading ? "not-allowed" : "pointer",
           letterSpacing: "0.05em",
-          boxShadow: loading ? "none" : "0 0 20px rgba(124,58,237,0.3)",
+          boxShadow: loading ? "none" : shadows.cta,
           transition: "all 0.2s ease",
           opacity: loading ? 0.6 : 1,
           flex: isMobile ? "1 1 auto" : "none",
@@ -22249,13 +22341,13 @@
         "aria-label": t("header.help"),
         title: t("header.helpTitle"),
         style: {
-          background: "rgba(88,28,135,0.15)",
-          border: "1px solid rgba(167,139,250,0.25)",
+          background: colors.surface,
+          border: `1px solid ${colors.border}`,
           borderRadius: 10,
           width: 38,
           height: 38,
-          color: "#c4b5fd",
-          fontFamily: "'Syne', sans-serif",
+          color: colors.textMuted,
+          fontFamily: fonts.brand,
           fontSize: 16,
           fontWeight: 700,
           cursor: "pointer",
@@ -22269,13 +22361,13 @@
           order: isMobile ? 4 : 0
         },
         onMouseEnter: (e) => {
-          e.currentTarget.style.color = "#f3e8ff";
-          e.currentTarget.style.borderColor = "rgba(167,139,250,0.5)";
-          e.currentTarget.style.boxShadow = "0 0 16px rgba(124,58,237,0.25)";
+          e.currentTarget.style.color = colors.textBright;
+          e.currentTarget.style.borderColor = colors.borderHover;
+          e.currentTarget.style.boxShadow = shadows.helpHover;
         },
         onMouseLeave: (e) => {
-          e.currentTarget.style.color = "#c4b5fd";
-          e.currentTarget.style.borderColor = "rgba(167,139,250,0.25)";
+          e.currentTarget.style.color = colors.textMuted;
+          e.currentTarget.style.borderColor = colors.border;
           e.currentTarget.style.boxShadow = "none";
         }
       },
@@ -22287,33 +22379,29 @@
   var import_react7 = __toESM(require_react());
   var LibraryCounter = ({ count, loadingGame }) => {
     const { t } = useI18n();
-    return /* @__PURE__ */ import_react7.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8, marginBottom: 24 } }, /* @__PURE__ */ import_react7.default.createElement("span", { style: {
-      fontFamily: "'DM Mono', monospace",
+    const labelStyle = {
+      fontFamily: fonts.mono,
       fontSize: 12,
-      color: "rgba(196,181,253,0.4)",
+      color: colors.muted40,
       letterSpacing: "0.1em"
-    } }, t("library.label")), /* @__PURE__ */ import_react7.default.createElement("span", { style: {
-      fontFamily: "'Syne', sans-serif",
+    };
+    return /* @__PURE__ */ import_react7.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8, marginBottom: 24 } }, /* @__PURE__ */ import_react7.default.createElement("span", { style: labelStyle }, t("library.label")), /* @__PURE__ */ import_react7.default.createElement("span", { style: {
+      fontFamily: fonts.brand,
       fontSize: 13,
       fontWeight: 700,
-      color: "#a855f7"
-    } }, count), /* @__PURE__ */ import_react7.default.createElement("span", { style: {
-      fontFamily: "'DM Mono', monospace",
-      fontSize: 12,
-      color: "rgba(196,181,253,0.4)",
-      letterSpacing: "0.1em"
-    } }, loadingGame ? t("library.gamesLoaded") : t("library.games")));
+      color: colors.primary
+    } }, count), /* @__PURE__ */ import_react7.default.createElement("span", { style: labelStyle }, loadingGame ? t("library.gamesLoaded") : t("library.games")));
   };
 
   // app/javascript/dashboard/components/ErrorBanner.tsx
   var import_react8 = __toESM(require_react());
   var ErrorBanner = ({ message }) => /* @__PURE__ */ import_react8.default.createElement("div", { style: {
-    background: "rgba(220,38,38,0.1)",
-    border: "1px solid rgba(220,38,38,0.3)",
+    background: colors.dangerSurface,
+    border: `1px solid ${colors.dangerBorder}`,
     borderRadius: 12,
     padding: "12px 20px",
-    color: "#fca5a5",
-    fontFamily: "'DM Mono', monospace",
+    color: colors.textDanger,
+    fontFamily: fonts.mono,
     fontSize: 13,
     marginBottom: 24
   } }, message);
@@ -22327,17 +22415,17 @@
       alignItems: "center",
       gap: 12,
       marginBottom: 24,
-      color: "rgba(196,181,253,0.6)",
-      fontFamily: "'DM Mono', monospace",
+      color: colors.muted60,
+      fontFamily: fonts.mono,
       fontSize: 12
     } }, /* @__PURE__ */ import_react9.default.createElement("div", { style: {
       width: 6,
       height: 6,
       borderRadius: "50%",
-      background: "#a855f7",
-      boxShadow: "0 0 8px #a855f7",
+      background: colors.primary,
+      boxShadow: `0 0 8px ${colors.primary}`,
       animation: "pulse 1s infinite"
-    } }), t("library.fetchingPrefix"), " ", /* @__PURE__ */ import_react9.default.createElement("span", { style: { color: "#c4b5fd", marginLeft: 4 } }, name), "\u2026", /* @__PURE__ */ import_react9.default.createElement("style", null, `@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`));
+    } }), t("library.fetchingPrefix"), " ", /* @__PURE__ */ import_react9.default.createElement("span", { style: { color: colors.textMuted, marginLeft: 4 } }, name), "\u2026", /* @__PURE__ */ import_react9.default.createElement("style", null, `@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`));
   };
 
   // app/javascript/dashboard/components/FeaturedCard.tsx
@@ -22356,11 +22444,11 @@
   };
 
   // app/javascript/dashboard/components/FeaturedCard.tsx
-  var TimeRow = ({ label, value }) => /* @__PURE__ */ import_react10.default.createElement("tr", { style: { borderBottom: "1px solid rgba(167,139,250,0.1)" } }, /* @__PURE__ */ import_react10.default.createElement("td", { style: { padding: "10px 16px", color: "rgba(196,181,253,0.7)", fontSize: 13, fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" } }, label), /* @__PURE__ */ import_react10.default.createElement("td", { style: { padding: "10px 16px", textAlign: "right" } }, /* @__PURE__ */ import_react10.default.createElement("span", { style: {
-    fontFamily: "'DM Mono', monospace",
+  var TimeRow = ({ label, value }) => /* @__PURE__ */ import_react10.default.createElement("tr", { style: { borderBottom: `1px solid ${colors.borderTrace}` } }, /* @__PURE__ */ import_react10.default.createElement("td", { style: { padding: "10px 16px", color: colors.muted70, fontSize: 13, fontFamily: fonts.mono, whiteSpace: "nowrap" } }, label), /* @__PURE__ */ import_react10.default.createElement("td", { style: { padding: "10px 16px", textAlign: "right" } }, /* @__PURE__ */ import_react10.default.createElement("span", { style: {
+    fontFamily: fonts.mono,
     fontSize: 15,
     fontWeight: 600,
-    color: value !== null ? "#e9d5ff" : "rgba(196,181,253,0.3)",
+    color: value !== null ? colors.textSoft : colors.muted30,
     letterSpacing: "0.05em"
   } }, formatHours(value))));
   var FeaturedCard = ({ game }) => {
@@ -22370,13 +22458,13 @@
       display: "flex",
       flexDirection: isMobile ? "column" : "row",
       gap: 0,
-      background: "rgba(88,28,135,0.15)",
+      background: colors.surface,
       backdropFilter: "blur(24px)",
       WebkitBackdropFilter: "blur(24px)",
-      border: "1px solid rgba(167,139,250,0.2)",
+      border: `1px solid ${colors.borderSoft}`,
       borderRadius: 20,
       overflow: "hidden",
-      boxShadow: "0 0 60px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.05)",
+      boxShadow: shadows.card,
       minHeight: isMobile ? 0 : 320
     } }, /* @__PURE__ */ import_react10.default.createElement("div", { style: {
       position: "relative",
@@ -22394,43 +22482,43 @@
       width: "100%",
       height: "100%",
       minHeight: isMobile ? 200 : 320,
-      background: "linear-gradient(135deg, rgba(88,28,135,0.4), rgba(49,10,101,0.6))",
+      background: gradients.placeholder,
       display: "flex",
       alignItems: "center",
       justifyContent: "center"
     } }, /* @__PURE__ */ import_react10.default.createElement("span", { style: { fontSize: 48, opacity: 0.3 } }, "\u{1F3AE}")), /* @__PURE__ */ import_react10.default.createElement("div", { style: {
       position: "absolute",
       inset: 0,
-      background: isMobile ? "linear-gradient(to bottom, transparent 50%, rgba(13,5,21,0.8))" : "linear-gradient(to right, transparent 60%, rgba(13,5,21,0.8))"
+      background: isMobile ? gradients.overlayBottom : gradients.overlayRight
     } }), /* @__PURE__ */ import_react10.default.createElement("div", { style: {
       position: "absolute",
       bottom: 0,
       left: 0,
       right: 0,
       padding: isMobile ? "32px 18px 16px" : "24px 20px 20px",
-      background: "linear-gradient(to top, rgba(13,5,21,0.95) 0%, transparent 100%)"
+      background: gradients.captionFromBottom
     } }, /* @__PURE__ */ import_react10.default.createElement("div", { style: {
-      fontFamily: "'Syne', sans-serif",
+      fontFamily: fonts.brand,
       fontSize: isMobile ? 16 : 18,
       fontWeight: 700,
-      color: "#f3e8ff",
+      color: colors.textBright,
       lineHeight: 1.2,
       marginBottom: 4
-    } }, game.name), game.release_year && /* @__PURE__ */ import_react10.default.createElement("div", { style: { fontFamily: "'DM Mono', monospace", fontSize: 12, color: "rgba(196,181,253,0.6)" } }, game.release_year))), /* @__PURE__ */ import_react10.default.createElement("div", { style: {
+    } }, game.name), game.release_year && /* @__PURE__ */ import_react10.default.createElement("div", { style: { fontFamily: fonts.mono, fontSize: 12, color: colors.muted60 } }, game.release_year))), /* @__PURE__ */ import_react10.default.createElement("div", { style: {
       flex: 1,
       padding: isMobile ? "20px 18px 24px" : "28px 24px",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center"
     } }, /* @__PURE__ */ import_react10.default.createElement("div", { style: {
-      fontFamily: "'Syne', sans-serif",
+      fontFamily: fonts.brand,
       fontSize: 11,
       fontWeight: 600,
       letterSpacing: "0.2em",
-      color: "rgba(167,139,250,0.5)",
+      color: colors.accentMuted,
       textTransform: "uppercase",
       marginBottom: 16
-    } }, t("library.timeToBeat")), game.found ? /* @__PURE__ */ import_react10.default.createElement("table", { style: { width: "100%", borderCollapse: "collapse" } }, /* @__PURE__ */ import_react10.default.createElement("tbody", null, /* @__PURE__ */ import_react10.default.createElement(TimeRow, { label: t("library.mainStory"), value: game.main_story }), /* @__PURE__ */ import_react10.default.createElement(TimeRow, { label: t("library.mainExtra"), value: game.main_extra }), /* @__PURE__ */ import_react10.default.createElement(TimeRow, { label: t("library.completionist"), value: game.completionist }))) : /* @__PURE__ */ import_react10.default.createElement("div", { style: { color: "rgba(196,181,253,0.35)", fontFamily: "'DM Mono', monospace", fontSize: 13 } }, t("library.notFound"))));
+    } }, t("library.timeToBeat")), game.found ? /* @__PURE__ */ import_react10.default.createElement("table", { style: { width: "100%", borderCollapse: "collapse" } }, /* @__PURE__ */ import_react10.default.createElement("tbody", null, /* @__PURE__ */ import_react10.default.createElement(TimeRow, { label: t("library.mainStory"), value: game.main_story }), /* @__PURE__ */ import_react10.default.createElement(TimeRow, { label: t("library.mainExtra"), value: game.main_extra }), /* @__PURE__ */ import_react10.default.createElement(TimeRow, { label: t("library.completionist"), value: game.completionist }))) : /* @__PURE__ */ import_react10.default.createElement("div", { style: { color: colors.muted35, fontFamily: fonts.mono, fontSize: 13 } }, t("library.notFound"))));
   };
 
   // app/javascript/dashboard/components/GameGrid.tsx
@@ -22446,9 +22534,9 @@
         cursor: "pointer",
         borderRadius: 14,
         overflow: "hidden",
-        border: active ? "1px solid rgba(167,139,250,0.6)" : "1px solid rgba(167,139,250,0.12)",
-        boxShadow: active ? "0 0 20px rgba(124,58,237,0.3)" : "none",
-        background: "rgba(88,28,135,0.1)",
+        border: `1px solid ${active ? colors.borderActive : colors.borderFaint}`,
+        boxShadow: active ? shadows.miniActive : "none",
+        background: colors.surfaceLow,
         backdropFilter: "blur(12px)",
         transition: "all 0.2s ease",
         transform: active ? "translateY(-2px)" : "none"
@@ -22464,7 +22552,7 @@
     ) : /* @__PURE__ */ import_react11.default.createElement("div", { style: {
       width: "100%",
       height: "100%",
-      background: "linear-gradient(135deg, rgba(88,28,135,0.4), rgba(49,10,101,0.6))",
+      background: gradients.placeholder,
       display: "flex",
       alignItems: "center",
       justifyContent: "center"
@@ -22474,12 +22562,12 @@
       left: 0,
       right: 0,
       padding: "20px 10px 10px",
-      background: "linear-gradient(to top, rgba(13,5,21,0.95), transparent)"
+      background: gradients.miniCardCaption
     } }, /* @__PURE__ */ import_react11.default.createElement("div", { style: {
-      fontFamily: "'Syne', sans-serif",
+      fontFamily: fonts.brand,
       fontSize: 11,
       fontWeight: 600,
-      color: "#e9d5ff",
+      color: colors.textSoft,
       lineHeight: 1.3,
       overflow: "hidden",
       display: "-webkit-box",
@@ -22513,8 +22601,8 @@
     return /* @__PURE__ */ import_react13.default.createElement("div", { style: {
       textAlign: "center",
       padding: "80px 0",
-      color: "rgba(196,181,253,0.3)"
-    } }, /* @__PURE__ */ import_react13.default.createElement("div", { style: { fontSize: 48, marginBottom: 16 } }, "\u{1F3AE}"), /* @__PURE__ */ import_react13.default.createElement("div", { style: { fontFamily: "'Syne', sans-serif", fontSize: 15, fontWeight: 600, letterSpacing: "0.1em" } }, t("empty.message")));
+      color: colors.muted30
+    } }, /* @__PURE__ */ import_react13.default.createElement("div", { style: { fontSize: 48, marginBottom: 16 } }, "\u{1F3AE}"), /* @__PURE__ */ import_react13.default.createElement("div", { style: { fontFamily: fonts.brand, fontSize: 15, fontWeight: 600, letterSpacing: "0.1em" } }, t("empty.message")));
   };
 
   // app/javascript/dashboard/components/OnboardingModal.tsx
@@ -22524,20 +22612,20 @@
     const [step, setStep] = (0, import_react14.useState)(0);
     const isMobile = useIsMobile();
     const pillMono = {
-      fontFamily: "'DM Mono', monospace",
-      color: "#e9d5ff",
-      background: "rgba(124,58,237,0.25)",
-      border: "1px solid rgba(167,139,250,0.3)",
+      fontFamily: fonts.mono,
+      color: colors.textSoft,
+      background: colors.glow25,
+      border: `1px solid ${colors.borderStrong}`,
       borderRadius: 6,
       padding: "2px 8px",
       fontSize: 12
     };
-    const highlight = { color: "#f0abfc", fontWeight: 600 };
+    const highlight = { color: colors.pinkAccent, fontWeight: 600 };
     const pillFetch = {
-      fontFamily: "'Syne', sans-serif",
+      fontFamily: fonts.brand,
       fontWeight: 700,
-      color: "#f3e8ff",
-      background: "linear-gradient(135deg, #7c3aed, #a855f7)",
+      color: colors.textBright,
+      background: gradients.cta,
       borderRadius: 6,
       padding: "2px 10px",
       fontSize: 12,
@@ -22558,7 +22646,7 @@
         title: t("modal.step1.title"),
         body: format(t("modal.step1.body"), {
           button: /* @__PURE__ */ import_react14.default.createElement("span", { style: pillMono }, t("modal.step1.button")),
-          field: /* @__PURE__ */ import_react14.default.createElement("span", { style: { fontFamily: "'DM Mono', monospace", color: "#f0abfc" } }, t("modal.step1.field"))
+          field: /* @__PURE__ */ import_react14.default.createElement("span", { style: { fontFamily: fonts.mono, color: colors.pinkAccent } }, t("modal.step1.field"))
         }),
         icon: "\u{1F511}"
       },
@@ -22589,7 +22677,7 @@
           position: "fixed",
           inset: 0,
           zIndex: 100,
-          background: "rgba(13,5,21,0.75)",
+          background: colors.overlayLight,
           backdropFilter: "blur(8px)",
           WebkitBackdropFilter: "blur(8px)",
           display: "flex",
@@ -22608,12 +22696,12 @@
             position: "relative",
             width: "100%",
             maxWidth: 540,
-            background: "rgba(88,28,135,0.18)",
+            background: colors.surfaceModal,
             backdropFilter: "blur(24px)",
             WebkitBackdropFilter: "blur(24px)",
-            border: "1px solid rgba(167,139,250,0.25)",
+            border: `1px solid ${colors.border}`,
             borderRadius: 24,
-            boxShadow: "0 0 80px rgba(124,58,237,0.25), inset 0 1px 0 rgba(255,255,255,0.05)",
+            boxShadow: shadows.modal,
             overflow: "hidden"
           }
         },
@@ -22628,7 +22716,7 @@
               right: 14,
               background: "transparent",
               border: "none",
-              color: "rgba(196,181,253,0.5)",
+              color: colors.muted50,
               fontSize: 20,
               cursor: "pointer",
               width: 32,
@@ -22641,40 +22729,40 @@
               zIndex: 1
             },
             onMouseEnter: (e) => {
-              e.currentTarget.style.color = "#e9d5ff";
-              e.currentTarget.style.background = "rgba(167,139,250,0.1)";
+              e.currentTarget.style.color = colors.textSoft;
+              e.currentTarget.style.background = colors.borderTrace;
             },
             onMouseLeave: (e) => {
-              e.currentTarget.style.color = "rgba(196,181,253,0.5)";
+              e.currentTarget.style.color = colors.muted50;
               e.currentTarget.style.background = "transparent";
             }
           },
           "\xD7"
         ),
         /* @__PURE__ */ import_react14.default.createElement("div", { style: { padding: isMobile ? "44px 22px 24px" : "44px 40px 32px" } }, /* @__PURE__ */ import_react14.default.createElement("div", { style: { fontSize: isMobile ? 40 : 48, marginBottom: 20, textAlign: "center" } }, current.icon), /* @__PURE__ */ import_react14.default.createElement("div", { style: {
-          fontFamily: "'Syne', sans-serif",
+          fontFamily: fonts.brand,
           fontSize: 11,
           fontWeight: 600,
           letterSpacing: "0.25em",
-          color: "rgba(167,139,250,0.6)",
+          color: colors.borderActive,
           textTransform: "uppercase",
           marginBottom: 12,
           textAlign: "center"
         } }, current.badge), /* @__PURE__ */ import_react14.default.createElement("div", { style: {
-          fontFamily: "'Syne', sans-serif",
+          fontFamily: fonts.brand,
           fontSize: isMobile ? 20 : 24,
           fontWeight: 700,
-          background: "linear-gradient(135deg, #e9d5ff, #a855f7)",
+          background: gradients.brand,
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           marginBottom: 18,
           textAlign: "center",
           letterSpacing: "0.02em"
         } }, current.title), /* @__PURE__ */ import_react14.default.createElement("div", { style: {
-          fontFamily: "'DM Mono', monospace",
+          fontFamily: fonts.mono,
           fontSize: 13,
           lineHeight: 1.7,
-          color: "rgba(196,181,253,0.8)",
+          color: colors.muted80,
           textAlign: "center",
           minHeight: isMobile ? 140 : 110
         } }, current.body)),
@@ -22691,11 +22779,11 @@
             disabled: step === 0,
             style: {
               background: "transparent",
-              border: "1px solid rgba(167,139,250,0.2)",
+              border: `1px solid ${colors.borderSoft}`,
               borderRadius: 10,
               padding: "10px 18px",
-              color: step === 0 ? "rgba(196,181,253,0.25)" : "rgba(196,181,253,0.8)",
-              fontFamily: "'Syne', sans-serif",
+              color: step === 0 ? colors.muted25 : colors.muted80,
+              fontFamily: fonts.brand,
               fontSize: 12,
               fontWeight: 600,
               letterSpacing: "0.1em",
@@ -22716,8 +22804,8 @@
               height: 8,
               borderRadius: 4,
               border: "none",
-              background: i === step ? "linear-gradient(135deg, #7c3aed, #a855f7)" : "rgba(167,139,250,0.25)",
-              boxShadow: i === step ? "0 0 12px rgba(124,58,237,0.5)" : "none",
+              background: i === step ? gradients.cta : colors.border,
+              boxShadow: i === step ? shadows.dotActive : "none",
               cursor: "pointer",
               padding: 0,
               transition: "all 0.3s ease"
@@ -22728,17 +22816,17 @@
           {
             onClick: () => isLast ? finish() : setStep((s) => s + 1),
             style: {
-              background: "linear-gradient(135deg, #7c3aed, #a855f7)",
-              border: "1px solid rgba(167,139,250,0.3)",
+              background: gradients.cta,
+              border: `1px solid ${colors.borderStrong}`,
               borderRadius: 10,
               padding: "10px 22px",
-              color: "#f3e8ff",
-              fontFamily: "'Syne', sans-serif",
+              color: colors.textBright,
+              fontFamily: fonts.brand,
               fontSize: 12,
               fontWeight: 600,
               cursor: "pointer",
               letterSpacing: "0.1em",
-              boxShadow: "0 0 20px rgba(124,58,237,0.3)",
+              boxShadow: shadows.cta,
               transition: "all 0.2s ease"
             }
           },
@@ -22773,10 +22861,10 @@
     }, []);
     return /* @__PURE__ */ import_react15.default.createElement(import_react15.default.Fragment, null, /* @__PURE__ */ import_react15.default.createElement("link", { rel: "preconnect", href: "https://fonts.googleapis.com" }), /* @__PURE__ */ import_react15.default.createElement("link", { href: "https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap", rel: "stylesheet" }), showOnboarding && /* @__PURE__ */ import_react15.default.createElement(OnboardingModal, { onClose: () => setShowOnboarding(false) }), /* @__PURE__ */ import_react15.default.createElement("div", { style: {
       minHeight: "100vh",
-      background: "#0D0515",
+      background: colors.bgBase,
       position: "relative",
       overflow: "hidden",
-      fontFamily: "'Syne', sans-serif"
+      fontFamily: fonts.brand
     } }, /* @__PURE__ */ import_react15.default.createElement(Background, null), /* @__PURE__ */ import_react15.default.createElement("div", { style: {
       position: "relative",
       zIndex: 2,

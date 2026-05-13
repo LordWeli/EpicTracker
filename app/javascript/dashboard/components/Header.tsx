@@ -1,6 +1,7 @@
 import React from "react"
 import { useI18n, LangSelector } from "../../i18n"
 import { useIsMobile } from "../useIsMobile"
+import { colors, gradients, shadows, fonts } from "../theme"
 
 interface Props {
   authCode: string
@@ -30,11 +31,11 @@ export const Header = ({ authCode, setAuthCode, loading, onFetch, onShowOnboardi
         gap: 12,
       }}>
         <div style={{
-          fontFamily: "'Syne', sans-serif",
+          fontFamily: fonts.brand,
           fontSize: isMobile ? 18 : 22,
           fontWeight: 800,
           letterSpacing: "0.05em",
-          background: "linear-gradient(135deg, #e9d5ff, #a855f7)",
+          background: gradients.brand,
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
         }}>
@@ -54,19 +55,19 @@ export const Header = ({ authCode, setAuthCode, loading, onFetch, onShowOnboardi
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            fontFamily: "'DM Mono', monospace",
+            fontFamily: fonts.mono,
             fontSize: 11,
-            color: "rgba(196,181,253,0.5)",
+            color: colors.muted50,
             textDecoration: "none",
             letterSpacing: "0.05em",
-            borderBottom: "1px solid rgba(196,181,253,0.2)",
+            borderBottom: `1px solid ${colors.muted20}`,
             paddingBottom: 1,
             transition: "color 0.2s ease",
             order: isMobile ? 1 : 0,
             width: isMobile ? "100%" : "auto",
           }}
-          onMouseEnter={e => (e.currentTarget.style.color = "rgba(196,181,253,0.9)")}
-          onMouseLeave={e => (e.currentTarget.style.color = "rgba(196,181,253,0.5)")}
+          onMouseEnter={e => (e.currentTarget.style.color = colors.muted90)}
+          onMouseLeave={e => (e.currentTarget.style.color = colors.muted50)}
         >
           {t("header.getAuthCode")}
         </a>
@@ -77,12 +78,12 @@ export const Header = ({ authCode, setAuthCode, loading, onFetch, onShowOnboardi
           onChange={e => setAuthCode(e.target.value)}
           onKeyDown={e => e.key === "Enter" && onFetch()}
           style={{
-            background: "rgba(88,28,135,0.15)",
-            border: "1px solid rgba(167,139,250,0.25)",
+            background: colors.surface,
+            border: `1px solid ${colors.border}`,
             borderRadius: 10,
             padding: "10px 16px",
-            color: "#e9d5ff",
-            fontFamily: "'DM Mono', monospace",
+            color: colors.textSoft,
+            fontFamily: fonts.mono,
             fontSize: 13,
             width: isMobile ? "100%" : 280,
             flex: isMobile ? "1 1 100%" : "none",
@@ -95,19 +96,17 @@ export const Header = ({ authCode, setAuthCode, loading, onFetch, onShowOnboardi
           onClick={onFetch}
           disabled={loading || !authCode.trim()}
           style={{
-            background: loading
-              ? "rgba(88,28,135,0.3)"
-              : "linear-gradient(135deg, #7c3aed, #a855f7)",
-            border: "1px solid rgba(167,139,250,0.3)",
+            background: loading ? colors.surfaceDim : gradients.cta,
+            border: `1px solid ${colors.borderStrong}`,
             borderRadius: 10,
             padding: "10px 22px",
-            color: "#f3e8ff",
-            fontFamily: "'Syne', sans-serif",
+            color: colors.textBright,
+            fontFamily: fonts.brand,
             fontSize: 13,
             fontWeight: 600,
             cursor: loading ? "not-allowed" : "pointer",
             letterSpacing: "0.05em",
-            boxShadow: loading ? "none" : "0 0 20px rgba(124,58,237,0.3)",
+            boxShadow: loading ? "none" : shadows.cta,
             transition: "all 0.2s ease",
             opacity: loading ? 0.6 : 1,
             flex: isMobile ? "1 1 auto" : "none",
@@ -121,13 +120,13 @@ export const Header = ({ authCode, setAuthCode, loading, onFetch, onShowOnboardi
           aria-label={t("header.help")}
           title={t("header.helpTitle")}
           style={{
-            background: "rgba(88,28,135,0.15)",
-            border: "1px solid rgba(167,139,250,0.25)",
+            background: colors.surface,
+            border: `1px solid ${colors.border}`,
             borderRadius: 10,
             width: 38,
             height: 38,
-            color: "#c4b5fd",
-            fontFamily: "'Syne', sans-serif",
+            color: colors.textMuted,
+            fontFamily: fonts.brand,
             fontSize: 16,
             fontWeight: 700,
             cursor: "pointer",
@@ -141,13 +140,13 @@ export const Header = ({ authCode, setAuthCode, loading, onFetch, onShowOnboardi
             order: isMobile ? 4 : 0,
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.color = "#f3e8ff"
-            e.currentTarget.style.borderColor = "rgba(167,139,250,0.5)"
-            e.currentTarget.style.boxShadow = "0 0 16px rgba(124,58,237,0.25)"
+            e.currentTarget.style.color = colors.textBright
+            e.currentTarget.style.borderColor = colors.borderHover
+            e.currentTarget.style.boxShadow = shadows.helpHover
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.color = "#c4b5fd"
-            e.currentTarget.style.borderColor = "rgba(167,139,250,0.25)"
+            e.currentTarget.style.color = colors.textMuted
+            e.currentTarget.style.borderColor = colors.border
             e.currentTarget.style.boxShadow = "none"
           }}
         >

@@ -1,13 +1,14 @@
 import React from "react"
+import { colors, fonts } from "../theme"
 
 export const ErrorBanner = ({ message }: { message: string }) => (
   <div style={{
-    background: "rgba(220,38,38,0.1)",
-    border: "1px solid rgba(220,38,38,0.3)",
+    background: colors.dangerSurface,
+    border: `1px solid ${colors.dangerBorder}`,
     borderRadius: 12,
     padding: "12px 20px",
-    color: "#fca5a5",
-    fontFamily: "'DM Mono', monospace",
+    color: colors.textDanger,
+    fontFamily: fonts.mono,
     fontSize: 13,
     marginBottom: 24,
   }}>
