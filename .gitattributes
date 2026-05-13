@@ -1,0 +1,4 @@
+public/assets/*.js linguist-generated=true
+public/assets/*.css linguist-generated=true
+app/assets/builds/*.js linguist-generated=true
+app/assets/builds/*.css linguist-generated=true
