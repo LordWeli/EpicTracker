@@ -75,7 +75,7 @@ Open `http://localhost:3000/dashboard`.
 
 ```bash
 docker build -t epic-tracker .
-docker run -p 3000:3000 -e RAILS_MASTER_KEY=<your_key> epic-tracker
+docker run --rm -e RAILS_ENV=development -e BINDING=0.0.0.0 -p 3000:3000 epic-tracker
 ```
 
 ## Structure
