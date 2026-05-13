@@ -21451,11 +21451,11 @@
   });
 
   // app/javascript/application.tsx
-  var import_react15 = __toESM(require_react());
+  var import_react16 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // app/javascript/Dashboard.tsx
-  var import_react14 = __toESM(require_react());
+  var import_react15 = __toESM(require_react());
 
   // app/javascript/dashboard/constants.ts
   var ONBOARDING_KEY = "epictracker.onboarded.v1";
@@ -22092,12 +22092,29 @@
     };
   }
 
+  // app/javascript/dashboard/useIsMobile.ts
+  var import_react3 = __toESM(require_react());
+  function useIsMobile(breakpoint = 768) {
+    const query = `(max-width: ${breakpoint - 1}px)`;
+    const [isMobile, setIsMobile] = (0, import_react3.useState)(
+      () => typeof window !== "undefined" && window.matchMedia(query).matches
+    );
+    (0, import_react3.useEffect)(() => {
+      const mq = window.matchMedia(query);
+      const onChange = (e) => setIsMobile(e.matches);
+      mq.addEventListener("change", onChange);
+      setIsMobile(mq.matches);
+      return () => mq.removeEventListener("change", onChange);
+    }, [query]);
+    return isMobile;
+  }
+
   // app/javascript/dashboard/components/Background.tsx
-  var import_react4 = __toESM(require_react());
+  var import_react5 = __toESM(require_react());
 
   // app/javascript/dashboard/components/GlowOrb.tsx
-  var import_react3 = __toESM(require_react());
-  var GlowOrb = ({ cx, cy, r, color }) => /* @__PURE__ */ import_react3.default.createElement(
+  var import_react4 = __toESM(require_react());
+  var GlowOrb = ({ cx, cy, r, color }) => /* @__PURE__ */ import_react4.default.createElement(
     "div",
     {
       style: {
@@ -22117,7 +22134,7 @@
   );
 
   // app/javascript/dashboard/components/Background.tsx
-  var Background = () => /* @__PURE__ */ import_react4.default.createElement(import_react4.default.Fragment, null, /* @__PURE__ */ import_react4.default.createElement(GlowOrb, { cx: "15%", cy: "20%", r: "500px", color: "rgba(109,40,217,0.18)" }), /* @__PURE__ */ import_react4.default.createElement(GlowOrb, { cx: "80%", cy: "60%", r: "400px", color: "rgba(139,92,246,0.12)" }), /* @__PURE__ */ import_react4.default.createElement(GlowOrb, { cx: "50%", cy: "90%", r: "300px", color: "rgba(168,85,247,0.1)" }), /* @__PURE__ */ import_react4.default.createElement("div", { style: {
+  var Background = () => /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(GlowOrb, { cx: "15%", cy: "20%", r: "500px", color: "rgba(109,40,217,0.18)" }), /* @__PURE__ */ import_react5.default.createElement(GlowOrb, { cx: "80%", cy: "60%", r: "400px", color: "rgba(139,92,246,0.12)" }), /* @__PURE__ */ import_react5.default.createElement(GlowOrb, { cx: "50%", cy: "90%", r: "300px", color: "rgba(168,85,247,0.1)" }), /* @__PURE__ */ import_react5.default.createElement("div", { style: {
     position: "fixed",
     inset: 0,
     pointerEvents: "none",
@@ -22127,18 +22144,36 @@
   } }));
 
   // app/javascript/dashboard/components/Header.tsx
-  var import_react5 = __toESM(require_react());
+  var import_react6 = __toESM(require_react());
   var Header = ({ authCode, setAuthCode, loading, onFetch, onShowOnboarding }) => {
     const { t } = useI18n();
-    return /* @__PURE__ */ import_react5.default.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 40 } }, /* @__PURE__ */ import_react5.default.createElement("div", { style: {
+    const isMobile = useIsMobile();
+    return /* @__PURE__ */ import_react6.default.createElement("div", { style: {
+      display: "flex",
+      flexDirection: isMobile ? "column" : "row",
+      alignItems: isMobile ? "stretch" : "center",
+      justifyContent: "space-between",
+      gap: isMobile ? 16 : 0,
+      marginBottom: isMobile ? 28 : 40
+    } }, /* @__PURE__ */ import_react6.default.createElement("div", { style: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: isMobile ? "space-between" : "flex-start",
+      gap: 12
+    } }, /* @__PURE__ */ import_react6.default.createElement("div", { style: {
       fontFamily: "'Syne', sans-serif",
-      fontSize: 22,
+      fontSize: isMobile ? 18 : 22,
       fontWeight: 800,
       letterSpacing: "0.05em",
       background: "linear-gradient(135deg, #e9d5ff, #a855f7)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent"
-    } }, "EPIC", /* @__PURE__ */ import_react5.default.createElement("span", { style: { fontWeight: 400 } }, "TRACKER")), /* @__PURE__ */ import_react5.default.createElement("div", { style: { display: "flex", gap: 10, alignItems: "center" } }, /* @__PURE__ */ import_react5.default.createElement(
+    } }, "EPIC", /* @__PURE__ */ import_react6.default.createElement("span", { style: { fontWeight: 400 } }, "TRACKER")), isMobile && /* @__PURE__ */ import_react6.default.createElement(LangSelector, null)), /* @__PURE__ */ import_react6.default.createElement("div", { style: {
+      display: "flex",
+      gap: 10,
+      alignItems: "center",
+      flexWrap: isMobile ? "wrap" : "nowrap"
+    } }, /* @__PURE__ */ import_react6.default.createElement(
       "a",
       {
         href: "https://www.epicgames.com/id/api/redirect?clientId=34a02cf8f4414e29b15921876da36f9a&responseType=code",
@@ -22152,13 +22187,15 @@
           letterSpacing: "0.05em",
           borderBottom: "1px solid rgba(196,181,253,0.2)",
           paddingBottom: 1,
-          transition: "color 0.2s ease"
+          transition: "color 0.2s ease",
+          order: isMobile ? 1 : 0,
+          width: isMobile ? "100%" : "auto"
         },
         onMouseEnter: (e) => e.currentTarget.style.color = "rgba(196,181,253,0.9)",
         onMouseLeave: (e) => e.currentTarget.style.color = "rgba(196,181,253,0.5)"
       },
       t("header.getAuthCode")
-    ), /* @__PURE__ */ import_react5.default.createElement(
+    ), /* @__PURE__ */ import_react6.default.createElement(
       "input",
       {
         type: "text",
@@ -22174,12 +22211,14 @@
           color: "#e9d5ff",
           fontFamily: "'DM Mono', monospace",
           fontSize: 13,
-          width: 280,
+          width: isMobile ? "100%" : 280,
+          flex: isMobile ? "1 1 100%" : "none",
           outline: "none",
-          backdropFilter: "blur(12px)"
+          backdropFilter: "blur(12px)",
+          order: isMobile ? 2 : 0
         }
       }
-    ), /* @__PURE__ */ import_react5.default.createElement(
+    ), /* @__PURE__ */ import_react6.default.createElement(
       "button",
       {
         onClick: onFetch,
@@ -22197,11 +22236,13 @@
           letterSpacing: "0.05em",
           boxShadow: loading ? "none" : "0 0 20px rgba(124,58,237,0.3)",
           transition: "all 0.2s ease",
-          opacity: loading ? 0.6 : 1
+          opacity: loading ? 0.6 : 1,
+          flex: isMobile ? "1 1 auto" : "none",
+          order: isMobile ? 3 : 0
         }
       },
       loading ? t("header.loading") : t("header.fetch")
-    ), /* @__PURE__ */ import_react5.default.createElement(
+    ), /* @__PURE__ */ import_react6.default.createElement(
       "button",
       {
         onClick: onShowOnboarding,
@@ -22224,7 +22265,8 @@
           backdropFilter: "blur(12px)",
           transition: "all 0.2s ease",
           flexShrink: 0,
-          marginLeft: 18
+          marginLeft: isMobile ? 0 : 18,
+          order: isMobile ? 4 : 0
         },
         onMouseEnter: (e) => {
           e.currentTarget.style.color = "#f3e8ff";
@@ -22238,24 +22280,24 @@
         }
       },
       "?"
-    ), /* @__PURE__ */ import_react5.default.createElement(LangSelector, null)));
+    ), !isMobile && /* @__PURE__ */ import_react6.default.createElement(LangSelector, null)));
   };
 
   // app/javascript/dashboard/components/LibraryCounter.tsx
-  var import_react6 = __toESM(require_react());
+  var import_react7 = __toESM(require_react());
   var LibraryCounter = ({ count, loadingGame }) => {
     const { t } = useI18n();
-    return /* @__PURE__ */ import_react6.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8, marginBottom: 24 } }, /* @__PURE__ */ import_react6.default.createElement("span", { style: {
+    return /* @__PURE__ */ import_react7.default.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8, marginBottom: 24 } }, /* @__PURE__ */ import_react7.default.createElement("span", { style: {
       fontFamily: "'DM Mono', monospace",
       fontSize: 12,
       color: "rgba(196,181,253,0.4)",
       letterSpacing: "0.1em"
-    } }, t("library.label")), /* @__PURE__ */ import_react6.default.createElement("span", { style: {
+    } }, t("library.label")), /* @__PURE__ */ import_react7.default.createElement("span", { style: {
       fontFamily: "'Syne', sans-serif",
       fontSize: 13,
       fontWeight: 700,
       color: "#a855f7"
-    } }, count), /* @__PURE__ */ import_react6.default.createElement("span", { style: {
+    } }, count), /* @__PURE__ */ import_react7.default.createElement("span", { style: {
       fontFamily: "'DM Mono', monospace",
       fontSize: 12,
       color: "rgba(196,181,253,0.4)",
@@ -22264,8 +22306,8 @@
   };
 
   // app/javascript/dashboard/components/ErrorBanner.tsx
-  var import_react7 = __toESM(require_react());
-  var ErrorBanner = ({ message }) => /* @__PURE__ */ import_react7.default.createElement("div", { style: {
+  var import_react8 = __toESM(require_react());
+  var ErrorBanner = ({ message }) => /* @__PURE__ */ import_react8.default.createElement("div", { style: {
     background: "rgba(220,38,38,0.1)",
     border: "1px solid rgba(220,38,38,0.3)",
     borderRadius: 12,
@@ -22277,10 +22319,10 @@
   } }, message);
 
   // app/javascript/dashboard/components/LoadingIndicator.tsx
-  var import_react8 = __toESM(require_react());
+  var import_react9 = __toESM(require_react());
   var LoadingIndicator = ({ name }) => {
     const { t } = useI18n();
-    return /* @__PURE__ */ import_react8.default.createElement("div", { style: {
+    return /* @__PURE__ */ import_react9.default.createElement("div", { style: {
       display: "flex",
       alignItems: "center",
       gap: 12,
@@ -22288,18 +22330,18 @@
       color: "rgba(196,181,253,0.6)",
       fontFamily: "'DM Mono', monospace",
       fontSize: 12
-    } }, /* @__PURE__ */ import_react8.default.createElement("div", { style: {
+    } }, /* @__PURE__ */ import_react9.default.createElement("div", { style: {
       width: 6,
       height: 6,
       borderRadius: "50%",
       background: "#a855f7",
       boxShadow: "0 0 8px #a855f7",
       animation: "pulse 1s infinite"
-    } }), t("library.fetchingPrefix"), " ", /* @__PURE__ */ import_react8.default.createElement("span", { style: { color: "#c4b5fd", marginLeft: 4 } }, name), "\u2026", /* @__PURE__ */ import_react8.default.createElement("style", null, `@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`));
+    } }), t("library.fetchingPrefix"), " ", /* @__PURE__ */ import_react9.default.createElement("span", { style: { color: "#c4b5fd", marginLeft: 4 } }, name), "\u2026", /* @__PURE__ */ import_react9.default.createElement("style", null, `@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`));
   };
 
   // app/javascript/dashboard/components/FeaturedCard.tsx
-  var import_react9 = __toESM(require_react());
+  var import_react10 = __toESM(require_react());
 
   // app/javascript/dashboard/formatHours.ts
   var formatHours = (h) => {
@@ -22314,7 +22356,7 @@
   };
 
   // app/javascript/dashboard/components/FeaturedCard.tsx
-  var TimeRow = ({ label, value }) => /* @__PURE__ */ import_react9.default.createElement("tr", { style: { borderBottom: "1px solid rgba(167,139,250,0.1)" } }, /* @__PURE__ */ import_react9.default.createElement("td", { style: { padding: "10px 16px", color: "rgba(196,181,253,0.7)", fontSize: 13, fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" } }, label), /* @__PURE__ */ import_react9.default.createElement("td", { style: { padding: "10px 16px", textAlign: "right" } }, /* @__PURE__ */ import_react9.default.createElement("span", { style: {
+  var TimeRow = ({ label, value }) => /* @__PURE__ */ import_react10.default.createElement("tr", { style: { borderBottom: "1px solid rgba(167,139,250,0.1)" } }, /* @__PURE__ */ import_react10.default.createElement("td", { style: { padding: "10px 16px", color: "rgba(196,181,253,0.7)", fontSize: 13, fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" } }, label), /* @__PURE__ */ import_react10.default.createElement("td", { style: { padding: "10px 16px", textAlign: "right" } }, /* @__PURE__ */ import_react10.default.createElement("span", { style: {
     fontFamily: "'DM Mono', monospace",
     fontSize: 15,
     fontWeight: 600,
@@ -22323,8 +22365,10 @@
   } }, formatHours(value))));
   var FeaturedCard = ({ game }) => {
     const { t } = useI18n();
-    return /* @__PURE__ */ import_react9.default.createElement("div", { style: {
+    const isMobile = useIsMobile();
+    return /* @__PURE__ */ import_react10.default.createElement("div", { style: {
       display: "flex",
+      flexDirection: isMobile ? "column" : "row",
       gap: 0,
       background: "rgba(88,28,135,0.15)",
       backdropFilter: "blur(24px)",
@@ -22333,41 +22377,52 @@
       borderRadius: 20,
       overflow: "hidden",
       boxShadow: "0 0 60px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.05)",
-      minHeight: 320
-    } }, /* @__PURE__ */ import_react9.default.createElement("div", { style: { position: "relative", width: 260, flexShrink: 0 } }, game.image_url ? /* @__PURE__ */ import_react9.default.createElement(
+      minHeight: isMobile ? 0 : 320
+    } }, /* @__PURE__ */ import_react10.default.createElement("div", { style: {
+      position: "relative",
+      width: isMobile ? "100%" : 260,
+      height: isMobile ? 200 : "auto",
+      flexShrink: 0
+    } }, game.image_url ? /* @__PURE__ */ import_react10.default.createElement(
       "img",
       {
         src: game.image_url,
         alt: game.name,
         style: { width: "100%", height: "100%", objectFit: "cover", display: "block" }
       }
-    ) : /* @__PURE__ */ import_react9.default.createElement("div", { style: {
+    ) : /* @__PURE__ */ import_react10.default.createElement("div", { style: {
       width: "100%",
       height: "100%",
-      minHeight: 320,
+      minHeight: isMobile ? 200 : 320,
       background: "linear-gradient(135deg, rgba(88,28,135,0.4), rgba(49,10,101,0.6))",
       display: "flex",
       alignItems: "center",
       justifyContent: "center"
-    } }, /* @__PURE__ */ import_react9.default.createElement("span", { style: { fontSize: 48, opacity: 0.3 } }, "\u{1F3AE}")), /* @__PURE__ */ import_react9.default.createElement("div", { style: {
+    } }, /* @__PURE__ */ import_react10.default.createElement("span", { style: { fontSize: 48, opacity: 0.3 } }, "\u{1F3AE}")), /* @__PURE__ */ import_react10.default.createElement("div", { style: {
       position: "absolute",
       inset: 0,
-      background: "linear-gradient(to right, transparent 60%, rgba(13,5,21,0.8))"
-    } }), /* @__PURE__ */ import_react9.default.createElement("div", { style: {
+      background: isMobile ? "linear-gradient(to bottom, transparent 50%, rgba(13,5,21,0.8))" : "linear-gradient(to right, transparent 60%, rgba(13,5,21,0.8))"
+    } }), /* @__PURE__ */ import_react10.default.createElement("div", { style: {
       position: "absolute",
       bottom: 0,
       left: 0,
       right: 0,
-      padding: "24px 20px 20px",
+      padding: isMobile ? "32px 18px 16px" : "24px 20px 20px",
       background: "linear-gradient(to top, rgba(13,5,21,0.95) 0%, transparent 100%)"
-    } }, /* @__PURE__ */ import_react9.default.createElement("div", { style: {
+    } }, /* @__PURE__ */ import_react10.default.createElement("div", { style: {
       fontFamily: "'Syne', sans-serif",
-      fontSize: 18,
+      fontSize: isMobile ? 16 : 18,
       fontWeight: 700,
       color: "#f3e8ff",
       lineHeight: 1.2,
       marginBottom: 4
-    } }, game.name), game.release_year && /* @__PURE__ */ import_react9.default.createElement("div", { style: { fontFamily: "'DM Mono', monospace", fontSize: 12, color: "rgba(196,181,253,0.6)" } }, game.release_year))), /* @__PURE__ */ import_react9.default.createElement("div", { style: { flex: 1, padding: "28px 24px", display: "flex", flexDirection: "column", justifyContent: "center" } }, /* @__PURE__ */ import_react9.default.createElement("div", { style: {
+    } }, game.name), game.release_year && /* @__PURE__ */ import_react10.default.createElement("div", { style: { fontFamily: "'DM Mono', monospace", fontSize: 12, color: "rgba(196,181,253,0.6)" } }, game.release_year))), /* @__PURE__ */ import_react10.default.createElement("div", { style: {
+      flex: 1,
+      padding: isMobile ? "20px 18px 24px" : "28px 24px",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center"
+    } }, /* @__PURE__ */ import_react10.default.createElement("div", { style: {
       fontFamily: "'Syne', sans-serif",
       fontSize: 11,
       fontWeight: 600,
@@ -22375,15 +22430,15 @@
       color: "rgba(167,139,250,0.5)",
       textTransform: "uppercase",
       marginBottom: 16
-    } }, t("library.timeToBeat")), game.found ? /* @__PURE__ */ import_react9.default.createElement("table", { style: { width: "100%", borderCollapse: "collapse" } }, /* @__PURE__ */ import_react9.default.createElement("tbody", null, /* @__PURE__ */ import_react9.default.createElement(TimeRow, { label: t("library.mainStory"), value: game.main_story }), /* @__PURE__ */ import_react9.default.createElement(TimeRow, { label: t("library.mainExtra"), value: game.main_extra }), /* @__PURE__ */ import_react9.default.createElement(TimeRow, { label: t("library.completionist"), value: game.completionist }))) : /* @__PURE__ */ import_react9.default.createElement("div", { style: { color: "rgba(196,181,253,0.35)", fontFamily: "'DM Mono', monospace", fontSize: 13 } }, t("library.notFound"))));
+    } }, t("library.timeToBeat")), game.found ? /* @__PURE__ */ import_react10.default.createElement("table", { style: { width: "100%", borderCollapse: "collapse" } }, /* @__PURE__ */ import_react10.default.createElement("tbody", null, /* @__PURE__ */ import_react10.default.createElement(TimeRow, { label: t("library.mainStory"), value: game.main_story }), /* @__PURE__ */ import_react10.default.createElement(TimeRow, { label: t("library.mainExtra"), value: game.main_extra }), /* @__PURE__ */ import_react10.default.createElement(TimeRow, { label: t("library.completionist"), value: game.completionist }))) : /* @__PURE__ */ import_react10.default.createElement("div", { style: { color: "rgba(196,181,253,0.35)", fontFamily: "'DM Mono', monospace", fontSize: 13 } }, t("library.notFound"))));
   };
 
   // app/javascript/dashboard/components/GameGrid.tsx
-  var import_react11 = __toESM(require_react());
+  var import_react12 = __toESM(require_react());
 
   // app/javascript/dashboard/components/MiniCard.tsx
-  var import_react10 = __toESM(require_react());
-  var MiniCard = ({ game, onClick, active }) => /* @__PURE__ */ import_react10.default.createElement(
+  var import_react11 = __toESM(require_react());
+  var MiniCard = ({ game, onClick, active }) => /* @__PURE__ */ import_react11.default.createElement(
     "div",
     {
       onClick,
@@ -22399,28 +22454,28 @@
         transform: active ? "translateY(-2px)" : "none"
       }
     },
-    /* @__PURE__ */ import_react10.default.createElement("div", { style: { position: "relative", aspectRatio: "3/4", overflow: "hidden" } }, game.image_url ? /* @__PURE__ */ import_react10.default.createElement(
+    /* @__PURE__ */ import_react11.default.createElement("div", { style: { position: "relative", aspectRatio: "3/4", overflow: "hidden" } }, game.image_url ? /* @__PURE__ */ import_react11.default.createElement(
       "img",
       {
         src: game.image_url,
         alt: game.name,
         style: { width: "100%", height: "100%", objectFit: "cover", display: "block" }
       }
-    ) : /* @__PURE__ */ import_react10.default.createElement("div", { style: {
+    ) : /* @__PURE__ */ import_react11.default.createElement("div", { style: {
       width: "100%",
       height: "100%",
       background: "linear-gradient(135deg, rgba(88,28,135,0.4), rgba(49,10,101,0.6))",
       display: "flex",
       alignItems: "center",
       justifyContent: "center"
-    } }, /* @__PURE__ */ import_react10.default.createElement("span", { style: { fontSize: 28, opacity: 0.3 } }, "\u{1F3AE}")), /* @__PURE__ */ import_react10.default.createElement("div", { style: {
+    } }, /* @__PURE__ */ import_react11.default.createElement("span", { style: { fontSize: 28, opacity: 0.3 } }, "\u{1F3AE}")), /* @__PURE__ */ import_react11.default.createElement("div", { style: {
       position: "absolute",
       bottom: 0,
       left: 0,
       right: 0,
       padding: "20px 10px 10px",
       background: "linear-gradient(to top, rgba(13,5,21,0.95), transparent)"
-    } }, /* @__PURE__ */ import_react10.default.createElement("div", { style: {
+    } }, /* @__PURE__ */ import_react11.default.createElement("div", { style: {
       fontFamily: "'Syne', sans-serif",
       fontSize: 11,
       fontWeight: 600,
@@ -22434,36 +22489,40 @@
   );
 
   // app/javascript/dashboard/components/GameGrid.tsx
-  var GameGrid = ({ games, onSelect }) => /* @__PURE__ */ import_react11.default.createElement("div", { style: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))",
-    gap: 14
-  } }, games.map((game) => /* @__PURE__ */ import_react11.default.createElement(
-    MiniCard,
-    {
-      key: game.name,
-      game,
-      active: false,
-      onClick: () => onSelect(game)
-    }
-  )));
+  var GameGrid = ({ games, onSelect }) => {
+    const isMobile = useIsMobile();
+    return /* @__PURE__ */ import_react12.default.createElement("div", { style: {
+      display: "grid",
+      gridTemplateColumns: isMobile ? "repeat(auto-fill, minmax(100px, 1fr))" : "repeat(auto-fill, minmax(130px, 1fr))",
+      gap: isMobile ? 10 : 14
+    } }, games.map((game) => /* @__PURE__ */ import_react12.default.createElement(
+      MiniCard,
+      {
+        key: game.name,
+        game,
+        active: false,
+        onClick: () => onSelect(game)
+      }
+    )));
+  };
 
   // app/javascript/dashboard/components/EmptyState.tsx
-  var import_react12 = __toESM(require_react());
+  var import_react13 = __toESM(require_react());
   var EmptyState = () => {
     const { t } = useI18n();
-    return /* @__PURE__ */ import_react12.default.createElement("div", { style: {
+    return /* @__PURE__ */ import_react13.default.createElement("div", { style: {
       textAlign: "center",
       padding: "80px 0",
       color: "rgba(196,181,253,0.3)"
-    } }, /* @__PURE__ */ import_react12.default.createElement("div", { style: { fontSize: 48, marginBottom: 16 } }, "\u{1F3AE}"), /* @__PURE__ */ import_react12.default.createElement("div", { style: { fontFamily: "'Syne', sans-serif", fontSize: 15, fontWeight: 600, letterSpacing: "0.1em" } }, t("empty.message")));
+    } }, /* @__PURE__ */ import_react13.default.createElement("div", { style: { fontSize: 48, marginBottom: 16 } }, "\u{1F3AE}"), /* @__PURE__ */ import_react13.default.createElement("div", { style: { fontFamily: "'Syne', sans-serif", fontSize: 15, fontWeight: 600, letterSpacing: "0.1em" } }, t("empty.message")));
   };
 
   // app/javascript/dashboard/components/OnboardingModal.tsx
-  var import_react13 = __toESM(require_react());
+  var import_react14 = __toESM(require_react());
   var OnboardingModal = ({ onClose }) => {
     const { t } = useI18n();
-    const [step, setStep] = (0, import_react13.useState)(0);
+    const [step, setStep] = (0, import_react14.useState)(0);
+    const isMobile = useIsMobile();
     const pillMono = {
       fontFamily: "'DM Mono', monospace",
       color: "#e9d5ff",
@@ -22489,8 +22548,8 @@
         badge: t("modal.welcome.badge"),
         title: t("modal.welcome.title"),
         body: format(t("modal.welcome.body"), {
-          epic: /* @__PURE__ */ import_react13.default.createElement("span", { style: highlight }, t("modal.welcome.epic")),
-          hltb: /* @__PURE__ */ import_react13.default.createElement("span", { style: highlight }, t("modal.welcome.hltb"))
+          epic: /* @__PURE__ */ import_react14.default.createElement("span", { style: highlight }, t("modal.welcome.epic")),
+          hltb: /* @__PURE__ */ import_react14.default.createElement("span", { style: highlight }, t("modal.welcome.hltb"))
         }),
         icon: "\u{1F3AE}"
       },
@@ -22498,8 +22557,8 @@
         badge: t("modal.step1.badge"),
         title: t("modal.step1.title"),
         body: format(t("modal.step1.body"), {
-          button: /* @__PURE__ */ import_react13.default.createElement("span", { style: pillMono }, t("modal.step1.button")),
-          field: /* @__PURE__ */ import_react13.default.createElement("span", { style: { fontFamily: "'DM Mono', monospace", color: "#f0abfc" } }, t("modal.step1.field"))
+          button: /* @__PURE__ */ import_react14.default.createElement("span", { style: pillMono }, t("modal.step1.button")),
+          field: /* @__PURE__ */ import_react14.default.createElement("span", { style: { fontFamily: "'DM Mono', monospace", color: "#f0abfc" } }, t("modal.step1.field"))
         }),
         icon: "\u{1F511}"
       },
@@ -22507,8 +22566,8 @@
         badge: t("modal.step2.badge"),
         title: t("modal.step2.title"),
         body: format(t("modal.step2.body"), {
-          input: /* @__PURE__ */ import_react13.default.createElement("span", { style: pillMono }, t("modal.step2.input")),
-          fetch: /* @__PURE__ */ import_react13.default.createElement("span", { style: pillFetch }, t("modal.step2.fetch"))
+          input: /* @__PURE__ */ import_react14.default.createElement("span", { style: pillMono }, t("modal.step2.input")),
+          fetch: /* @__PURE__ */ import_react14.default.createElement("span", { style: pillFetch }, t("modal.step2.fetch"))
         }),
         icon: "\u{1F4DA}"
       }
@@ -22522,7 +22581,7 @@
       }
       onClose();
     };
-    return /* @__PURE__ */ import_react13.default.createElement(
+    return /* @__PURE__ */ import_react14.default.createElement(
       "div",
       {
         onClick: finish,
@@ -22536,12 +22595,12 @@
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: 24,
+          padding: isMobile ? 12 : 24,
           animation: "fadeIn 0.25s ease"
         }
       },
-      /* @__PURE__ */ import_react13.default.createElement("style", null, `@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }`),
-      /* @__PURE__ */ import_react13.default.createElement(
+      /* @__PURE__ */ import_react14.default.createElement("style", null, `@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }`),
+      /* @__PURE__ */ import_react14.default.createElement(
         "div",
         {
           onClick: (e) => e.stopPropagation(),
@@ -22558,7 +22617,7 @@
             overflow: "hidden"
           }
         },
-        /* @__PURE__ */ import_react13.default.createElement(
+        /* @__PURE__ */ import_react14.default.createElement(
           "button",
           {
             onClick: finish,
@@ -22592,7 +22651,7 @@
           },
           "\xD7"
         ),
-        /* @__PURE__ */ import_react13.default.createElement("div", { style: { padding: "44px 40px 32px" } }, /* @__PURE__ */ import_react13.default.createElement("div", { style: { fontSize: 48, marginBottom: 20, textAlign: "center" } }, current.icon), /* @__PURE__ */ import_react13.default.createElement("div", { style: {
+        /* @__PURE__ */ import_react14.default.createElement("div", { style: { padding: isMobile ? "44px 22px 24px" : "44px 40px 32px" } }, /* @__PURE__ */ import_react14.default.createElement("div", { style: { fontSize: isMobile ? 40 : 48, marginBottom: 20, textAlign: "center" } }, current.icon), /* @__PURE__ */ import_react14.default.createElement("div", { style: {
           fontFamily: "'Syne', sans-serif",
           fontSize: 11,
           fontWeight: 600,
@@ -22601,9 +22660,9 @@
           textTransform: "uppercase",
           marginBottom: 12,
           textAlign: "center"
-        } }, current.badge), /* @__PURE__ */ import_react13.default.createElement("div", { style: {
+        } }, current.badge), /* @__PURE__ */ import_react14.default.createElement("div", { style: {
           fontFamily: "'Syne', sans-serif",
-          fontSize: 24,
+          fontSize: isMobile ? 20 : 24,
           fontWeight: 700,
           background: "linear-gradient(135deg, #e9d5ff, #a855f7)",
           WebkitBackgroundClip: "text",
@@ -22611,21 +22670,21 @@
           marginBottom: 18,
           textAlign: "center",
           letterSpacing: "0.02em"
-        } }, current.title), /* @__PURE__ */ import_react13.default.createElement("div", { style: {
+        } }, current.title), /* @__PURE__ */ import_react14.default.createElement("div", { style: {
           fontFamily: "'DM Mono', monospace",
           fontSize: 13,
           lineHeight: 1.7,
           color: "rgba(196,181,253,0.8)",
           textAlign: "center",
-          minHeight: 110
+          minHeight: isMobile ? 140 : 110
         } }, current.body)),
-        /* @__PURE__ */ import_react13.default.createElement("div", { style: {
+        /* @__PURE__ */ import_react14.default.createElement("div", { style: {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "20px 28px 28px",
-          gap: 16
-        } }, /* @__PURE__ */ import_react13.default.createElement(
+          padding: isMobile ? "16px 18px 20px" : "20px 28px 28px",
+          gap: isMobile ? 8 : 16
+        } }, /* @__PURE__ */ import_react14.default.createElement(
           "button",
           {
             onClick: () => setStep((s) => Math.max(0, s - 1)),
@@ -22646,7 +22705,7 @@
             }
           },
           t("modal.back")
-        ), /* @__PURE__ */ import_react13.default.createElement("div", { style: { display: "flex", gap: 8 } }, slides.map((_, i) => /* @__PURE__ */ import_react13.default.createElement(
+        ), /* @__PURE__ */ import_react14.default.createElement("div", { style: { display: "flex", gap: 8 } }, slides.map((_, i) => /* @__PURE__ */ import_react14.default.createElement(
           "button",
           {
             key: i,
@@ -22664,7 +22723,7 @@
               transition: "all 0.3s ease"
             }
           }
-        ))), /* @__PURE__ */ import_react13.default.createElement(
+        ))), /* @__PURE__ */ import_react14.default.createElement(
           "button",
           {
             onClick: () => isLast ? finish() : setStep((s) => s + 1),
@@ -22703,21 +22762,28 @@
       fetchLibrary,
       others
     } = useLibrary();
-    const [showOnboarding, setShowOnboarding] = (0, import_react14.useState)(false);
-    (0, import_react14.useEffect)(() => {
+    const [showOnboarding, setShowOnboarding] = (0, import_react15.useState)(false);
+    const isMobile = useIsMobile();
+    (0, import_react15.useEffect)(() => {
       try {
         if (!localStorage.getItem(ONBOARDING_KEY)) setShowOnboarding(true);
       } catch {
         setShowOnboarding(true);
       }
     }, []);
-    return /* @__PURE__ */ import_react14.default.createElement(import_react14.default.Fragment, null, /* @__PURE__ */ import_react14.default.createElement("link", { rel: "preconnect", href: "https://fonts.googleapis.com" }), /* @__PURE__ */ import_react14.default.createElement("link", { href: "https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap", rel: "stylesheet" }), showOnboarding && /* @__PURE__ */ import_react14.default.createElement(OnboardingModal, { onClose: () => setShowOnboarding(false) }), /* @__PURE__ */ import_react14.default.createElement("div", { style: {
+    return /* @__PURE__ */ import_react15.default.createElement(import_react15.default.Fragment, null, /* @__PURE__ */ import_react15.default.createElement("link", { rel: "preconnect", href: "https://fonts.googleapis.com" }), /* @__PURE__ */ import_react15.default.createElement("link", { href: "https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap", rel: "stylesheet" }), showOnboarding && /* @__PURE__ */ import_react15.default.createElement(OnboardingModal, { onClose: () => setShowOnboarding(false) }), /* @__PURE__ */ import_react15.default.createElement("div", { style: {
       minHeight: "100vh",
       background: "#0D0515",
       position: "relative",
       overflow: "hidden",
       fontFamily: "'Syne', sans-serif"
-    } }, /* @__PURE__ */ import_react14.default.createElement(Background, null), /* @__PURE__ */ import_react14.default.createElement("div", { style: { position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", padding: "32px 24px" } }, /* @__PURE__ */ import_react14.default.createElement(
+    } }, /* @__PURE__ */ import_react15.default.createElement(Background, null), /* @__PURE__ */ import_react15.default.createElement("div", { style: {
+      position: "relative",
+      zIndex: 2,
+      maxWidth: 1200,
+      margin: "0 auto",
+      padding: isMobile ? "20px 14px" : "32px 24px"
+    } }, /* @__PURE__ */ import_react15.default.createElement(
       Header,
       {
         authCode,
@@ -22726,14 +22792,14 @@
         onFetch: fetchLibrary,
         onShowOnboarding: () => setShowOnboarding(true)
       }
-    ), games.length > 0 && /* @__PURE__ */ import_react14.default.createElement(LibraryCounter, { count: games.length, loadingGame }), error && /* @__PURE__ */ import_react14.default.createElement(ErrorBanner, { message: error }), loadingGame && /* @__PURE__ */ import_react14.default.createElement(LoadingIndicator, { name: loadingGame }), featured && /* @__PURE__ */ import_react14.default.createElement("div", { style: { marginBottom: 32 } }, /* @__PURE__ */ import_react14.default.createElement(FeaturedCard, { game: featured })), others.length > 0 && /* @__PURE__ */ import_react14.default.createElement(GameGrid, { games: others, onSelect: setFeatured }), !loading && games.length === 0 && !error && /* @__PURE__ */ import_react14.default.createElement(EmptyState, null))));
+    ), games.length > 0 && /* @__PURE__ */ import_react15.default.createElement(LibraryCounter, { count: games.length, loadingGame }), error && /* @__PURE__ */ import_react15.default.createElement(ErrorBanner, { message: error }), loadingGame && /* @__PURE__ */ import_react15.default.createElement(LoadingIndicator, { name: loadingGame }), featured && /* @__PURE__ */ import_react15.default.createElement("div", { style: { marginBottom: 32 } }, /* @__PURE__ */ import_react15.default.createElement(FeaturedCard, { game: featured })), others.length > 0 && /* @__PURE__ */ import_react15.default.createElement(GameGrid, { games: others, onSelect: setFeatured }), !loading && games.length === 0 && !error && /* @__PURE__ */ import_react15.default.createElement(EmptyState, null))));
   }
 
   // app/javascript/application.tsx
   var container = document.getElementById("root");
   if (container) {
     (0, import_client.createRoot)(container).render(
-      /* @__PURE__ */ import_react15.default.createElement(I18nProvider, null, /* @__PURE__ */ import_react15.default.createElement(Dashboard, null))
+      /* @__PURE__ */ import_react16.default.createElement(I18nProvider, null, /* @__PURE__ */ import_react16.default.createElement(Dashboard, null))
     );
   }
 })();
